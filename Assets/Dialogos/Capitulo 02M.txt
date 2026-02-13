@@ -1,0 +1,24 @@
+NPC1: ¡Nathaniel! Siempre es un placer verte.
+NPC2: Buenas noches, Nathaniel.
+NATHANIEL: Caballeros, buenas noches.
+NPC2: He oído que tu hermana hizo su debut esta tarde.
+Dicen que causó una excelente impresión.
+NPC1: Un brindis por la joven señorita Hastings.
+NPC2: ¡Por Sophie!
+TODOS: ¡Salud!
+NPC1: Y dime, Nathaniel…
+¿no has considerado adentrarte tú también en el mercado de las solteras este año?
+
+#CHOICE matrimonio_nathaniel
+
+#A amor +2 reputacion -1
+Lo haré cuando sea el momento adecuado. Algunas decisiones no deberían tomarse por conveniencia.
+
+#B reputacion +2 amor -1
+Lo haré cuando encuentre a la mujer indicada para ocupar el lugar de Baronesa.
+
+#C dinero +2 reputacion +1
+Lo haré cuando la unión lo justifique. Un matrimonio debe fortalecer una casa… no ponerla en riesgo.
+
+NPC2: ¡Salud por eso, caballeros!
+TODOS: ¡Salud!

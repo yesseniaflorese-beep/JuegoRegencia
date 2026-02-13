@@ -1,0 +1,27 @@
+Lady Henrietta Fairchild: ¡Estuviste fabulosa hoy Sophie!
+Lady Georgiana Sinclair: A este punto serás la primera de la temporada en conseguir esposo
+Sophie: Tampoco es que sea tan especial
+Lady Henrietta Fairchild: Si que lo es, no todas logran cautivar sin esfuerzo.
+Lady Georgiana Sinclair: El Barón debe estar muy complacido.
+Lady Henrietta Fairchild: Si que lo es, no todas logran cautivar sin esfuerzo.
+Lady Georgiana Sinclair: Una hija bien presentada es un gran alivio para cualquier familia.
+Sophie: Mi padre solo quiere que todo salga bien
+Lady Henrietta Fairchild: Y saldrá, querida.
+Lady Henrietta Fairchild: Eres joven, bonita y… muy conveniente.
+Sophie: …
+Lady Georgiana Sinclair: Deberías estar retozando de felicidad 
+Lady Georgiana Sinclair: Muchas darían lo que fuera por estar en tu lugar.
+Lady Henrietta Fairchild: Además, un buen matrimonio lo resuelve todo.
+Lady Henrietta Fairchild: La estabilidad, la posición… incluso la felicidad.
+Lady Georgiana Sinclair: Dime, Sophie…
+Lady Georgiana Sinclair: ¿Qué es lo que más esperas de esta temporada?
+
+@CHOICE
+Amor | Que alguien se case por amor, aunque no sea lo habitual. | amor +1
+Reputación | Cumplir con lo que se espera de mí y no dar de qué hablar. | reputacion +1
+Dinero | Que nada falte; el resto siempre se puede aprender a soportar. | dinero +3
+@END
+
+Lady Georgiana Sinclair: Interesante respuesta…
+Lady Henrietta Fairchild: Veremos qué trae esta temporada.
+
