@@ -3,8 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    // [Header("Capítulos")]
-    // public string[] chapters;
+    public static SceneController instance;
 
     [Header("Capítulos")]
     public string capitulo1;
@@ -13,46 +12,80 @@ public class SceneController : MonoBehaviour
     public string capitulo2_Hombre;
     public string capitulo2_Mujer;
 
-    public int currentChapter = 0;
-    // public int currentChapter = 0;
+    private int currentChapter = 0;
 
     [Header("Escenas fijas")]
     public string menuScene = "MenuInicial";
     public string instruccionesScene = "Instrucciones";
     public string seleccionScene = "SeleccionPersonaje";
 
-    // ▶ MENÚ
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // 🔥 Persiste entre escenas
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    // ================================
+    // ESCENAS FIJAS
+    // ================================
     public void LoadMenu()
     {
-        SceneManager.LoadScene(menuScene);
+        LoadSceneSafe(menuScene);
     }
 
     public void LoadInstrucciones()
     {
-        SceneManager.LoadScene(instruccionesScene);
+        LoadSceneSafe(instruccionesScene);
     }
 
     public void LoadSeleccionPersonaje()
     {
-        SceneManager.LoadScene(seleccionScene);
+        LoadSceneSafe(seleccionScene);
     }
+
+    // ================================
+    // INICIAR JUEGO
+    // ================================
     public void StartGame()
     {
         currentChapter = 0;
-        SceneManager.LoadScene(capitulo1);
+        LoadSceneSafe(capitulo1);
     }
 
-    public void LoadCurrentChapter()
-    {
-        currentChapter = 0;
-        SceneManager.LoadScene(capitulo1);
-    }
-
+    // ================================
+    // SIGUIENTE CAPÍTULO
+    // ================================
     public void LoadNextChapter()
     {
-        if (currentChapter == 0)
+        currentChapter++;
+
+        switch (currentChapter)
+        {
+            case 1:
+                LoadCapitulo2PorRuta();
+                break;
+
+            default:
+                Debug.Log("🏁 Fin del juego");
+                LoadMenu();
+                break;
+        }
+    }
+
+    private void LoadCapitulo2PorRuta()
     {
-        currentChapter = 1;
+        if (GameManager.instance == null)
+        {
+            Debug.LogError("❌ GameManager no encontrado");
+            return;
+        }
 
         string nextScene = "";
 
@@ -61,24 +94,25 @@ public class SceneController : MonoBehaviour
         else
             nextScene = capitulo2_Mujer;
 
-        if (string.IsNullOrEmpty(nextScene))
+        LoadSceneSafe(nextScene);
+    }
+
+    // ================================
+    // MÉTODO SEGURO
+    // ================================
+    private void LoadSceneSafe(string sceneName)
+    {
+        if (string.IsNullOrEmpty(sceneName))
         {
-            Debug.LogError("❌ Capítulo 2 no asignado en SceneController");
+            Debug.LogError("❌ Nombre de escena vacío");
             return;
         }
 
-        SceneManager.LoadScene(nextScene);
-        return;
-    }
-
-    Debug.Log("🏁 Fin del juego");
-    LoadMenu();
+        SceneManager.LoadScene(sceneName);
     }
 
     public void LoadSceneByName(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        LoadSceneSafe(sceneName);
     }
 }
-
-

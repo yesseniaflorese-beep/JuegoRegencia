@@ -877,6 +877,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: capitulo2_Mujer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulo2_Hombre
       value: 
       objectReference: {fileID: 0}

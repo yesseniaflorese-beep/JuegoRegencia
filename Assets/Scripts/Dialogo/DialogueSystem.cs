@@ -3,16 +3,19 @@ using System.Collections.Generic;
 
 public class DialogueSystem : MonoBehaviour
 {
-    public bool dialogueFinished => index >= lines.Count;
-    public bool waitingForChoice = false;
-    public List<ChoiceData> currentChoices = new List<ChoiceData>();
     public static DialogueSystem instance;
 
-    [Header("Dialogue File")]
-    public TextAsset dialogueFile; // Arrastra aquí el TXT
+    public TextAsset dialogueFile;
+
+    public bool waitingForChoice = false;
+    public List<ChoiceData> currentChoices = new List<ChoiceData>();
 
     private List<string> lines;
+    private Dictionary<string, int> labels = new Dictionary<string, int>();
     private int index = 0;
+
+    // 🔥 NECESARIO PARA DialogueRunner
+    public bool dialogueFinished => lines != null && index >= lines.Count;
 
     void Awake()
     {
@@ -26,26 +29,90 @@ public class DialogueSystem : MonoBehaviour
     {
         if (dialogueFile == null)
         {
-            Debug.LogError("❌ Dialogue file NOT assigned");
+            Debug.LogError("Dialogue file not assigned!");
             return;
         }
 
         lines = new List<string>(dialogueFile.text.Split('\n'));
-        index = 0;
+
+        // Registrar labels
+        for (int i = 0; i < lines.Count; i++)
+        {
+            if (lines[i].StartsWith("@LABEL"))
+            {
+                string label = lines[i].Replace("@LABEL", "").Trim();
+                labels[label] = i;
+            }
+        }
     }
 
-    // ▶ AVANZAR
+    // =============================
+    // ▶ SIGUIENTE LÍNEA
+    // =============================
     public string GetNextLine()
     {
         if (lines == null || index >= lines.Count)
             return null;
 
-        string line = lines[index].TrimEnd();
+        string line = lines[index].Trim();
         index++;
 
         if (string.IsNullOrWhiteSpace(line))
             return "";
-            
+
+        // =============================
+        // COMANDOS
+        // =============================
+
+        if (line.StartsWith("@SPRITE"))
+        {
+            string[] parts = line.Split(' ');
+            if (parts.Length >= 4)
+                SpriteManager.instance.ShowSprite(parts[1], parts[2], parts[3]);
+
+            return GetNextLine();
+        }
+
+        if (line.StartsWith("@BG"))
+        {
+            string bgName = line.Replace("@BG", "").Trim();
+            BackgroundManager.instance.ChangeBackground(bgName);
+            return GetNextLine();
+        }
+
+        if (line.StartsWith("@MUSIC"))
+        {
+            string musicName = line.Replace("@MUSIC", "").Trim();
+            AudioManager.instance.PlayMusic(musicName);
+            return GetNextLine();
+        }
+
+        if (line.StartsWith("@SFX"))
+        {
+            string sfxName = line.Replace("@SFX", "").Trim();
+            AudioManager.instance.PlaySFX(sfxName);
+            return GetNextLine();
+        }
+
+        if (line.StartsWith("@GOTO"))
+        {
+            string label = line.Replace("@GOTO", "").Trim();
+            if (labels.ContainsKey(label))
+                index = labels[label] + 1;
+
+            return GetNextLine();
+        }
+
+        if (line.StartsWith("@IF"))
+        {
+            if (!EvaluateCondition(line.Replace("@IF", "").Trim()))
+            {
+                SkipUntilEndIf();
+            }
+
+            return GetNextLine();
+        }
+
         if (line == "@CHOICE")
         {
             ParseChoices();
@@ -56,16 +123,17 @@ public class DialogueSystem : MonoBehaviour
         return line;
     }
 
+    // =============================
     // ◀ RETROCEDER
+    // =============================
     public string GetPreviousLine()
     {
         if (lines == null || lines.Count == 0)
             return null;
 
-        // Retroceder 2 posiciones porque ya se incrementó antes
         index = Mathf.Clamp(index - 2, 0, lines.Count - 1);
 
-        string line = lines[index].TrimEnd();
+        string line = lines[index].Trim();
         index++;
 
         if (string.IsNullOrWhiteSpace(line))
@@ -73,50 +141,80 @@ public class DialogueSystem : MonoBehaviour
 
         return line;
     }
+
+    // =============================
+    // PARSEAR DECISIONES
+    // =============================
     void ParseChoices()
-{
-    currentChoices.Clear();
-
-    while (index < lines.Count)
     {
-        string line = lines[index].Trim();
-        index++;
+        currentChoices.Clear();
 
-        if (line == "@END")
-            break;
-
-        string[] parts = line.Split('|');
-
-        ChoiceData choice = new ChoiceData
+        while (index < lines.Count)
         {
-            id = parts[0].Trim(),
-            text = parts[1].Trim(),
-        };
+            string line = lines[index].Trim();
+            index++;
 
-        string stat = parts[2].Trim();
+            if (line == "@END")
+                break;
 
-        if (stat.Contains("amor"))
-            choice.amor = int.Parse(stat.Split('+')[1]);
-        if (stat.Contains("reputacion"))
-            choice.reputacion = int.Parse(stat.Split('+')[1]);
-        if (stat.Contains("dinero"))
-            choice.dinero = int.Parse(stat.Split('+')[1]);
+            string[] parts = line.Split('|');
 
-        currentChoices.Add(choice);
+            if (parts.Length < 3)
+                continue;
+
+            ChoiceData choice = new ChoiceData();
+            choice.id = parts[0].Trim();
+            choice.text = parts[1].Trim();
+
+            string stat = parts[2].Trim();
+            choice.statName = stat.Split('+')[0];
+            choice.statValue = int.Parse(stat.Split('+')[1]);
+
+            currentChoices.Add(choice);
+        }
     }
-}
-public void SkipChoiceBlock()
-{
-    while (index < lines.Count)
+
+    // =============================
+    // EVALUAR CONDICIONES
+    // =============================
+    bool EvaluateCondition(string condition)
     {
-        string line = lines[index].Trim();
-        index++;
+        string[] parts = condition.Split(' ');
 
-        if (line == "@END")
-            break;
+        if (parts.Length < 3)
+            return false;
+
+        string stat = parts[0];
+        string op = parts[1];
+        int value = int.Parse(parts[2]);
+
+        int currentValue = GameManager.instance.GetStat(stat);
+
+        switch (op)
+        {
+            case ">=": return currentValue >= value;
+            case "<=": return currentValue <= value;
+            case ">": return currentValue > value;
+            case "<": return currentValue < value;
+            case "==": return currentValue == value;
+        }
+
+        return false;
+    }
+
+    // =============================
+    // SALTAR IF
+    // =============================
+    void SkipUntilEndIf()
+    {
+        while (index < lines.Count)
+        {
+            if (lines[index].Trim() == "@ENDIF")
+            {
+                index++;
+                break;
+            }
+            index++;
+        }
     }
 }
-
-}
-
-

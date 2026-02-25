@@ -1,8 +1,199 @@
+@BG ExteriorNoche
+@MUSIC vals_temporada
+
+@SPRITE Sophie neutral protagonista
+@SPRITE Nathaniel neutral derecha
 Nathaniel: ¿Te encuentras bien, Sophie?
+
 Sophie: Sabes que no me gustan estas cosas.
+
 Nathaniel: Y aun así fuiste una de las favoritas en la ceremonia de debut esta tarde.
+
+@SPRITE Sophie sad protagonista
 Sophie: Ni me lo menciones.
+
 Nathaniel: Tal vez, en el fondo, esto es lo que deseas.
 Nathaniel: ¿No es lo que hacen todas las chicas de tu edad?
+
 Sophie: …
+
 Nathaniel: Vamos, no querrás perderte ningún baile.
+
+@IF genero == 0
+@BG SalonBaile
+@SPRITE Sophie neutral protagonista
+@SPRITE Henrietta neutral izquierda
+Lady Henrietta Fairchild: ¡Estuviste fabulosa hoy, Sophie!
+
+@SPRITE Georgiana neutral derecha
+Lady Georgiana Sinclair: A este punto serás la primera de la temporada en conseguir esposo.
+
+Sophie: Tampoco es que sea tan especial.
+
+Lady Henrietta Fairchild: Sí que lo es. No todas logran cautivar sin esfuerzo.
+Lady Georgiana Sinclair: El Barón debe estar muy complacido.
+Lady Henrietta Fairchild: Una hija bien presentada es un gran alivio para cualquier familia.
+
+Sophie: Mi padre solo quiere que todo salga bien.
+
+Lady Henrietta Fairchild: Y saldrá, querida.
+Lady Henrietta Fairchild: Eres joven, bonita y… muy conveniente.
+
+Sophie: …
+
+Lady Georgiana Sinclair: Deberías estar retozando de felicidad.
+Lady Georgiana Sinclair: Muchas darían lo que fuera por estar en tu lugar.
+
+Lady Henrietta Fairchild: Además, un buen matrimonio lo resuelve todo.
+Lady Henrietta Fairchild: La estabilidad, la posición… incluso la felicidad.
+
+Lady Georgiana Sinclair: Dime, Sophie…
+Lady Georgiana Sinclair: ¿Qué es lo que más esperas de esta temporada?
+
+@CHOICE
+amor | Que alguien se case por amor, aunque no sea lo habitual. | amor+1
+reputacion | Cumplir con lo que se espera de mí y no dar de qué hablar. | reputacion+1
+dinero | Que nada falte; el resto siempre se puede aprender a soportar. | dinero+3
+@END
+
+Lady Georgiana Sinclair: Interesante respuesta…
+Lady Henrietta Fairchild: Veremos qué trae esta temporada.
+@ENDIF
+
+
+@IF genero == 1
+@BG SalaHastings
+@SPRITE Nathaniel neutral protagonista
+
+NPC1: ¡Nathaniel! Siempre es un placer verte.
+NPC2: Buenas noches, Nathaniel.
+
+Nathaniel: Caballeros, buenas noches.
+
+NPC2: He oído que tu hermana hizo su debut esta tarde.
+NPC2: Dicen que causó una excelente impresión.
+
+NPC1: Un brindis por la joven señorita Hastings.
+NPC2: ¡Por Sophie!
+TODOS: ¡Salud!
+
+NPC1: Y dime, Nathaniel…
+NPC1: ¿No has considerado adentrarte tú también en el mercado de las solteras este año?
+
+@CHOICE
+amor | Lo haré cuando sea el momento adecuado. Algunas decisiones no deberían tomarse por conveniencia. | amor+2
+reputacion | Lo haré cuando encuentre a la mujer indicada para ocupar el lugar de Baronesa. | reputacion+2
+dinero | Lo haré cuando la unión lo justifique. Un matrimonio debe fortalecer una casa… no ponerla en riesgo. | dinero+2
+@END
+
+NPC2: ¡Salud por eso, caballeros!
+TODOS: ¡Salud!
+@ENDIF
+
+
+@BG SalaHastings
+@SPRITE Nathaniel neutral derecha
+Nathaniel: ¿Cómo estuvo el baile, Sophie? Varios hombres parecían interesados en ti.
+
+@SPRITE Sophie neutral protagonista
+Sophie: …
+
+Nathaniel: ¿Qué ocurre?
+
+Sophie: Es solo que…
+Sophie: ¿Escucharon eso?
+
+@SFX grito
+
+Desconocido: ¡Ahhg!
+
+Nathaniel: ¡Padre!
+
+Sophie: ¡Oh, padre! ¿Qué ha sucedido?
+
+@SPRITE Baron herido izquierda
+Barón Hastings: Agh… estoy bien…
+
+Sophie: Nathaniel, ayúdalo a levantarse.
+
+Nathaniel: ¿Qué ha pasado?
+
+Barón Hastings: Nada… nada importante.
+
+Sophie: Es evidente que no está bien. Padre, díganos la verdad.
+
+Barón Hastings: Eres tan obstinada como tu madre…
+
+Nathaniel: ¡Padre, basta! ¿Qué ha ocurrido?
+
+Barón Hastings: He perdido todo…
+Barón Hastings: Lo hemos perdido todo.
+
+Nathaniel: Pero… habías dicho que estaba bajo control…
+
+Sophie: ¿De qué están hablando?
+Sophie: ¿Tú sabías algo, Nathaniel?
+
+Nathaniel: …
+
+Sophie: ¡Digan algo! ¿Qué me están ocultando?
+
+Nathaniel: No te preocupes, Sophie. Lo resolveremos.
+
+Sophie: Soy tan parte de esta familia como tú.
+Sophie: Merezco saber qué está pasando.
+Sophie: Y esta vez… quiero toda la verdad.
+
+Barón Hastings: Aposté todo lo que nos quedaba.
+Barón Hastings: Tu dote… la casa… todo.
+
+Sophie: …¿Mi dote?
+Sophie: ¿Apostaste… mi dote?
+
+Nathaniel: Padre, dime que eso no es cierto.
+
+Barón Hastings: Intenté recuperarlo. Solo era una partida más.
+Barón Hastings: Estaba seguro de que ganaría.
+Barón Hastings: Al menos… he conseguido tiempo.
+
+Nathaniel: ¿Cuánto tiempo?
+
+Barón Hastings: Hasta el final de la temporada.
+
+Sophie: Cinco meses…
+
+@IF genero == 0
+@BG HabitacionSophie
+@SPRITE Sophie neutral protagonista
+Sophie: Cinco meses…
+Sophie: Cinco meses para salvar el apellido Hastings.
+Sophie: Mi dote…
+Sophie: Mi futuro…
+Sophie: Apostado como si fuese una ficha más sobre la mesa.
+Sophie: Si no hago nada… perderemos la casa.
+Sophie: Nuestro nombre será motivo de burla.
+Sophie: Y yo… seré recordada como la hija que no pudo salvarlos.
+Sophie: Pero si actúo…
+Sophie: Puedo elegir.
+Sophie: Podría casarme… Buscar al mejor postor y saldar las deudas
+Sophie: Aunque eso esté en contra de todo lo que he buscado 
+Sophie: Un matrimonio sin amor…
+Sophie: Una vida cómoda… pero vacía.
+Sophie: O quizá…
+Sophie: Si voy a casarme… podría hacerlo por algo más que dinero.
+Sophie: Tal vez aún exista alguien que vea en mí algo más que una dote perdida.
+Sophie: Pero también existe otra opción.
+Sophie: El apellido Hastings no caerá mientras yo respire.
+Sophie: Si debo convertirme en la esposa perfecta para restaurar nuestro honor… lo haré.
+Sophie: No por amor.
+Sophie: Sino por legado.
+Sophie: Por mi madre.
+Sophie: Podría dejar de jugar con reglas que nunca escribí.
+Sophie: Mi padre jugó mal sus cartas.
+Sophie: Yo no lo haré.
+
+@CHOICE
+amor | Si he de casarme…buscare algo auténtico. | amor+5
+reputacion | Haré lo necesario para restaurar el nombre Hastings. | reputacion+5
+dinero | No seré una pieza en su juego. Crearé mi propio destino. | dinero+5
+@END

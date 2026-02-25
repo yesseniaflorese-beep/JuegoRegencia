@@ -12,29 +12,21 @@ public class ChoiceButton : MonoBehaviour
         label.text = choice.text;
     }
 
-public void Select()
-{
-    // Aplicar consecuencias
-    GameManager.instance.amor += data.amor;
-    GameManager.instance.reputacion += data.reputacion;
-    GameManager.instance.dinero += data.dinero;
-
-    DialogueSystem ds = DialogueSystem.instance;
-
-    // Salir del modo elección
-    ds.waitingForChoice = false;
-    ds.currentChoices.Clear();
-
-    // Ocultar panel
-    transform.parent.gameObject.SetActive(false);
-
-    // 🔥 FORZAR CONTINUACIÓN DEL DIÁLOGO
-    DialogueRunner runner = Object.FindFirstObjectByType<DialogueRunner>();
-    if (runner != null)
+    public void Select()
     {
-        runner.AdvanceDialogue();
+        if (!string.IsNullOrEmpty(data.statName))
+        {
+            GameManager.instance.AddStat(data.statName, data.statValue);
+        }
+
+        DialogueSystem ds = DialogueSystem.instance;
+        ds.waitingForChoice = false;
+        ds.currentChoices.Clear();
+
+        transform.parent.gameObject.SetActive(false);
+
+        DialogueRunner runner = FindFirstObjectByType<DialogueRunner>();
+        if (runner != null)
+            runner.AdvanceDialogue();
     }
 }
-
-}
-

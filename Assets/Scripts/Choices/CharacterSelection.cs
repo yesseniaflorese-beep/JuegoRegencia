@@ -4,24 +4,27 @@ public class CharacterSelection : MonoBehaviour
 {
     public void ElegirHombre()
     {
-        GameManager.instance.selectedRoute = GameManager.PlayerRoute.Hombre;
-
-        SceneController sceneController = FindFirstObjectByType<SceneController>();
-        if (sceneController != null)
-            sceneController.LoadCurrentChapter();
-        else
-            Debug.LogError("❌ No hay SceneController en la escena");
+        SeleccionarRuta(GameManager.PlayerRoute.Hombre);
     }
 
     public void ElegirMujer()
     {
-        GameManager.instance.selectedRoute = GameManager.PlayerRoute.Mujer;
+        SeleccionarRuta(GameManager.PlayerRoute.Mujer);
+    }
 
-        SceneController sceneController = FindFirstObjectByType<SceneController>();
-        if (sceneController != null)
-            sceneController.LoadCurrentChapter();
+    private void SeleccionarRuta(GameManager.PlayerRoute ruta)
+    {
+        if (GameManager.instance == null)
+        {
+            Debug.LogError("❌ GameManager no encontrado");
+            return;
+        }
+
+        GameManager.instance.selectedRoute = ruta;
+
+        if (SceneController.instance != null)
+            SceneController.instance.StartGame();
         else
-            Debug.LogError("❌ No hay SceneController en la escena");
+            Debug.LogError("❌ SceneController no encontrado");
     }
 }
-
