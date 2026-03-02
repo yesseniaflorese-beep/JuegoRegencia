@@ -14,9 +14,19 @@ public class AudioManager : MonoBehaviour
     public List<string> sfxNames;
     public List<AudioClip> sfxClips;
 
+    bool sonidoActivo = true;
+
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // opcional pero recomendado
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void PlayMusic(string name)
@@ -42,5 +52,41 @@ public class AudioManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    // 🔇 Mutear todo
+    public void MutearTodo()
+    {
+        musicSource.mute = true;
+        sfxSource.mute = true;
+        sonidoActivo = false;
+    }
+
+    // 🔊 Activar sonido
+    public void ActivarSonido()
+    {
+        musicSource.mute = false;
+        sfxSource.mute = false;
+        sonidoActivo = true;
+    }
+
+    // 🔁 Botón toggle (recomendado)
+    public void ToggleSonido()
+    {
+        sonidoActivo = !sonidoActivo;
+
+        musicSource.mute = !sonidoActivo;
+        sfxSource.mute = !sonidoActivo;
+    }
+
+    public void SetVolumenMusica(float valor)
+{
+    Debug.Log("Cambiando volumen a: " + valor);
+    musicSource.volume = valor;
+}
+
+    public void SetVolumenSFX(float valor)
+    {
+        sfxSource.volume = valor;
     }
 }

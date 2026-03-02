@@ -4,6 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    // 🔥 Evento para notificar cambio de stats
+    public delegate void OnStatChanged(string statName);
+    public static event OnStatChanged onStatChanged;
+
     public enum PlayerRoute
     {
         Mujer = 0,
@@ -32,11 +36,13 @@ public class GameManager : MonoBehaviour
     }
 
     // ============================
-    // SUMAR STATS
+    // SUMAR / RESTAR STATS
     // ============================
     public void AddStat(string stat, int value)
     {
-        switch (stat.ToLower())
+        stat = stat.ToLower();
+
+        switch (stat)
         {
             case "amor":
                 amor += value;
@@ -49,7 +55,14 @@ public class GameManager : MonoBehaviour
             case "dinero":
                 dinero += value;
                 break;
+
+            default:
+                Debug.LogWarning("⚠ Stat no reconocido: " + stat);
+                return;
         }
+
+        // 🔥 Notifica a las barras que cambió el stat
+        onStatChanged?.Invoke(stat);
 
         Debug.Log($"📊 {stat} ahora es {GetStat(stat)}");
     }
@@ -65,7 +78,7 @@ public class GameManager : MonoBehaviour
             case "reputacion": return reputacion;
             case "dinero": return dinero;
 
-            // 👇 NECESARIO PARA @IF genero ==
+            // 👇 Para condiciones tipo @IF genero ==
             case "genero": return (int)selectedRoute;
         }
 
