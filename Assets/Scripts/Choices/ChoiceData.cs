@@ -8,4 +8,5 @@ public class ChoiceData
 
     public string statName;
     public int statValue;
+    public string gotoLabel;
 }

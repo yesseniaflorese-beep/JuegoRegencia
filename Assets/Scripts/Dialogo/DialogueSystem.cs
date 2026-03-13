@@ -14,7 +14,6 @@ public class DialogueSystem : MonoBehaviour
     private Dictionary<string, int> labels = new Dictionary<string, int>();
     private int index = 0;
 
-    // 🔥 NECESARIO PARA DialogueRunner
     public bool dialogueFinished => lines != null && index >= lines.Count;
 
     void Awake()
@@ -60,10 +59,7 @@ public class DialogueSystem : MonoBehaviour
         if (string.IsNullOrWhiteSpace(line))
             return "";
 
-        // =============================
-        // COMANDOS
-        // =============================
-
+        // SPRITE
         if (line.StartsWith("@SPRITE"))
         {
             string[] parts = line.Split(' ');
@@ -73,6 +69,7 @@ public class DialogueSystem : MonoBehaviour
             return GetNextLine();
         }
 
+        // BACKGROUND
         if (line.StartsWith("@BG"))
         {
             string bgName = line.Replace("@BG", "").Trim();
@@ -80,6 +77,7 @@ public class DialogueSystem : MonoBehaviour
             return GetNextLine();
         }
 
+        // MUSIC
         if (line.StartsWith("@MUSIC"))
         {
             string musicName = line.Replace("@MUSIC", "").Trim();
@@ -87,6 +85,7 @@ public class DialogueSystem : MonoBehaviour
             return GetNextLine();
         }
 
+        // SFX
         if (line.StartsWith("@SFX"))
         {
             string sfxName = line.Replace("@SFX", "").Trim();
@@ -94,15 +93,28 @@ public class DialogueSystem : MonoBehaviour
             return GetNextLine();
         }
 
+        // MINIGAME
+        if (line.StartsWith("@MINIGAME"))
+        {
+            string minigameName = line.Replace("@MINIGAME", "").Trim();
+
+            MinigameManager.instance.StartMinigame(minigameName);
+
+            return null;
+        }
+
+        // GOTO
         if (line.StartsWith("@GOTO"))
         {
             string label = line.Replace("@GOTO", "").Trim();
+
             if (labels.ContainsKey(label))
                 index = labels[label] + 1;
 
             return GetNextLine();
         }
 
+        // IF
         if (line.StartsWith("@IF"))
         {
             if (!EvaluateCondition(line.Replace("@IF", "").Trim()))
@@ -113,6 +125,7 @@ public class DialogueSystem : MonoBehaviour
             return GetNextLine();
         }
 
+        // CHOICE
         if (line == "@CHOICE")
         {
             ParseChoices();
@@ -163,6 +176,7 @@ public class DialogueSystem : MonoBehaviour
                 continue;
 
             ChoiceData choice = new ChoiceData();
+
             choice.id = parts[0].Trim();
             choice.text = parts[1].Trim();
 
@@ -170,8 +184,29 @@ public class DialogueSystem : MonoBehaviour
             choice.statName = stat.Split('+')[0];
             choice.statValue = int.Parse(stat.Split('+')[1]);
 
+            if (parts.Length >= 4)
+                choice.gotoLabel = parts[3].Trim();
+
             currentChoices.Add(choice);
         }
+    }
+
+    // =============================
+    // CUANDO EL JUGADOR ELIGE
+    // =============================
+    public void SelectChoice(ChoiceData choice)
+    {
+        GameManager.instance.AddStat(choice.statName, choice.statValue);
+
+        if (!string.IsNullOrEmpty(choice.gotoLabel))
+        {
+            if (labels.ContainsKey(choice.gotoLabel))
+            {
+                index = labels[choice.gotoLabel] + 1;
+            }
+        }
+
+        waitingForChoice = false;
     }
 
     // =============================

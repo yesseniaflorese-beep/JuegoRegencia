@@ -1,0 +1,190 @@
+@BG HabitacionSophie
+@SFX TocToc
+@SPRITE Sophie neutral protagonista
+
+Nathaniel: El carruaje está listo, Sophie. Es hora de irnos.
+
+Sophie: ¡En un momento bajo!
+
+Sophie: Hoy es mi gran oportunidad… el baile de la duquesa de Cavendish.
+
+Sophie: Si todo sale bien, los problemas de esta familia podrían resolverse más pronto de lo que imagino.
+
+Sophie: Solo tengo que encontrar…
+
+@MINIGAME buscar_objetos
+
+@SFX TocToc
+
+Nathaniel: ¡Sophie! ¡Llegaremos tarde!
+
+Sophie: ¡Voy!
+
+@BG SalonBaileCav
+@MUSIC vals_temporada
+@SPRITE Sophie neutral protagonista
+@SPRITE Lottie neutral izquierda
+
+Lady Charlotte Wentworth: Qué placer verte, Sophie.
+
+Lady Charlotte Wentworth: Escuché que el duque Ellington está buscando esposa esta temporada.
+
+Lady Charlotte Wentworth: Sin duda será el caballero más codiciado.
+
+@SPRITE Ruby neutral derecha
+
+Lady Rosamund Ashbourne: Yo escuché algo aún más interesante.
+
+Lady Rosamund Ashbourne: Parece que el príncipe Sebastian honrará el baile con su presencia esta noche.
+
+Sophie: ¿El príncipe?
+
+Lady Rosamund Ashbourne: Eso dijo mi padre. Lo vieron llegar al palacio esta mañana.
+
+Lady Charlotte Wentworth: ¿Y qué te hace pensar que vendrá aquí?
+
+Lady Rosamund Ashbourne: La duquesa de Cavendish suele conseguir lo que quiere.
+
+Lady Rosamund Ashbourne: Y este es uno de los bailes más importantes de la temporada.
+
+Lady Rosamund Ashbourne: Sería extraño que alguien de importancia decidiera perdérselo.
+
+*Las voces aumentan*
+
+Sophie: ¿Por qué tanto revuelo?
+
+Lady Rosamund Ashbourne: ¿Será el príncipe?
+
+Lady Charlotte Wentworth: ¿O el duque?
+
+Nathaniel: Buenas noches, señoritas.
+
+Sophie: Oh, Nathaniel… ¿Sabes qué sucede?
+
+Nathaniel: De hecho… hay alguien a quien quiero que conozcas.
+
+Nathaniel: Ven conmigo.
+
+Nathaniel: Una disculpa, señoritas.
+
+Lady Charlotte Wentworth: Hasta luego, Sophie.
+
+@BG SalonBaileCav2
+
+Sophie: ¿Quién es?
+
+Nathaniel: Ya lo verás.
+
+Sophie: ¿Por qué tanto misterio?
+
+Nathaniel: ¡Theo! Creí que no asistirías esta temporada.
+
+Theo: No estaba en mis planes.
+
+Nathaniel: ¿Qué te hizo cambiar de opinión?
+
+Theo: Hay asuntos que no admiten demora.
+
+Nathaniel: Sophie… Su Gracia, Theodore Ellington.
+
+Nathaniel: Duque de Ravenshire.
+
+Sophie: Es un honor conocerlo, su gracia.
+
+Theo: Señorita Hastings…
+
+Theo: Su hermano y yo compartimos estudios durante un tiempo.
+
+Nathaniel: Theo heredó su título antes de lo previsto.
+
+Sophie: Lo siento mucho.
+
+Theo: No es necesario.
+
+Theo: Tarde o temprano… el deber siempre alcanza a uno.
+
+Sophie: Cuando el deber llega antes que el deseo… uno no tiene mucha elección.
+
+Theo: Entonces comprende que algunas decisiones no se toman por gusto…
+
+Theo: …sino por necesidad.
+
+Sophie: …
+
+*La música sube*
+
+Theo: Señorita Hastings…
+
+Theo: ¿Me concedería este baile?
+
+@CHOICE
+amor | Tal vez no seamos tan distintos después de todo. | amor+4
+reputacion | Un duque no invita sin intención… y esta es una oportunidad que no puedo ignorar. | reputacion+4
+dinero | Ravenshire es un título poderoso… podría significar estabilidad para mi familia. | dinero+3
+@END
+
+Sophie: Será un honor, su gracia.
+
+*cambio a salón de baile con más personas*
+
+Theo: Escuché que tu debut fue todo un éxito.
+
+Theo: Supongo que has recibido varias propuestas.
+
+Sophie: Algunas… sí.
+
+Sophie: Pero ninguna ha logrado captar realmente mi interés.
+
+Theo: ¿De verdad?
+
+Theo: Me sorprende.
+
+Sophie: Digamos que algunas propuestas… no eran las más convenientes.
+
+Sophie: Hubo un caballero bastante mayor…
+
+Sophie: Y otro cuya reputación sugiere que aprecia más las fortunas que a las esposas.
+
+Theo: Entonces eres selectiva.
+
+Sophie: Prefiero pensar que soy prudente.
+
+Theo: Una cualidad poco común en esta temporada.
+
+Sophie: ¿Y usted, su gracia?
+
+Sophie: Si ha venido esta noche… imagino que también tiene sus motivos.
+
+Theo: Digamos que… estoy buscando algo específico.
+
+Sophie: ¿Una esposa?
+
+Theo: Tal vez.
+
+Theo: ¿Y usted?
+
+Theo: ¿Qué busca esta noche, señorita Hastings?
+
+@CHOICE
+amor | Puede que yo también esté buscando algo | amor+3
+reputacion | Cumplir con lo que se espera de mí. | reputacion+3
+dinero | Asegurar el futuro de mi familia. | dinero+3
+@END
+
+@LABEL amor_resp
+Sophie: Puede que yo también esté buscando algo en específico.
+Theo: Entonces espero ser parte de aquello que busca.
+@GOTO despues
+
+@LABEL rep_resp
+Sophie: A cumplir con mi deber, supongo.
+Theo: El deber suele ser una razón poderosa.
+@GOTO despues
+
+@LABEL dinero_resp
+Sophie: A asegurar el futuro de mi familia.
+Theo: Una motivación bastante sensata.
+@GOTO despues
+
+@LABEL despues
+Theo: Debo admitir que no esperaba una conversación tan interesante esta noche.

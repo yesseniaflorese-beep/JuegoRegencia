@@ -22,33 +22,33 @@ Nathaniel: Vamos, no querrás perderte ningún baile.
 
 @BG SalonBaile
 @SPRITE Sophie neutral protagonista
-@SPRITE Henrietta neutral izquierda
-Lady Henrietta Fairchild: ¡Estuviste fabulosa hoy, Sophie!
+@SPRITE Ruby neutral izquierda
+Rosamund Ashbourne: ¡Estuviste fabulosa hoy, Sophie!
 
-@SPRITE Georgiana neutral derecha
-Lady Georgiana Sinclair: A este punto serás la primera de la temporada en conseguir esposo.
+@SPRITE Lottie neutral derecha
+Lady Charlotte Wentworth: A este punto serás la primera de la temporada en conseguir esposo.
 
 Sophie: Tampoco es que sea tan especial.
 
-Lady Henrietta Fairchild: Sí que lo es. No todas logran cautivar sin esfuerzo.
-Lady Georgiana Sinclair: El Barón debe estar muy complacido.
-Lady Henrietta Fairchild: Una hija bien presentada es un gran alivio para cualquier familia.
+Rosamund Ashbourned: Sí que lo es. No todas logran cautivar sin esfuerzo.
+Lady Charlotte Wentworth: El Barón debe estar muy complacido.
+Rosamund Ashbourne: Una hija bien presentada es un gran alivio para cualquier familia.
 
 Sophie: Mi padre solo quiere que todo salga bien.
 
-Lady Henrietta Fairchild: Y saldrá, querida.
-Lady Henrietta Fairchild: Eres joven, bonita y… muy conveniente.
+Rosamund Ashbourne: Y saldrá, querida.
+Rosamund Ashbourne: Eres joven, bonita y… muy conveniente.
 
 Sophie: …
 
-Lady Georgiana Sinclair: Deberías estar retozando de felicidad.
-Lady Georgiana Sinclair: Muchas darían lo que fuera por estar en tu lugar.
+Lady Charlotte Wentworth: Deberías estar retozando de felicidad.
+Lady Charlotte Wentworth: Muchas darían lo que fuera por estar en tu lugar.
 
-Lady Henrietta Fairchild: Además, un buen matrimonio lo resuelve todo.
-Lady Henrietta Fairchild: La estabilidad, la posición… incluso la felicidad.
+Rosamund Ashbourne: Además, un buen matrimonio lo resuelve todo.
+Rosamund Ashbourne: La estabilidad, la posición… incluso la felicidad.
 
-Lady Georgiana Sinclair: Dime, Sophie…
-Lady Georgiana Sinclair: ¿Qué es lo que más esperas de esta temporada?
+Lady Charlotte Wentworth: Dime, Sophie…
+Lady Charlotte Wentworth: ¿Qué es lo que más esperas de esta temporada?
 
 @CHOICE
 amor | Que alguien se case por amor, aunque no sea lo habitual. | amor+1
@@ -57,7 +57,7 @@ dinero | Que nada falte; el resto siempre se puede aprender a soportar. | dinero
 @END
 
 Lady Georgiana Sinclair: Interesante respuesta…
-Lady Henrietta Fairchild: Veremos qué trae esta temporada.
+Rosamund Ashbourne: Veremos qué trae esta temporada.
 
 @BG SalaHastings
 @SPRITE Nathaniel neutral derecha
