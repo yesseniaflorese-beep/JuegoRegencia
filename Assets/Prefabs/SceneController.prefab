@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneController
   capitulos:
+  - 'Capitulo Inicial '
   - Capitulo 1
   - Capitulo 2
   menuScene: MenuInicial
