@@ -44,10 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b889a38ca248794ea533df800deafc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneController
-  capitulo1: Capitulo 1
-  capitulo2_Hombre: Capitulo2H
-  capitulo2_Mujer: Capitulo2F
-  currentChapter: 0
+  capitulos:
+  - Capitulo 1
+  - Capitulo 2
   menuScene: MenuInicial
   instruccionesScene: Instrucciones
   seleccionScene: SeleccionPersonaje

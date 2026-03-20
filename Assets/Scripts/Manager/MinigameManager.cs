@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MinigameManager : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class MinigameManager : MonoBehaviour
     }
 
     public void EndMinigame()
-    {
-        buscarObjetosUI.SetActive(false);
+{
+    StartCoroutine(EndMinigameDelay());
+}
 
-        DialogueSystem.instance.waitingForChoice = false;
+IEnumerator EndMinigameDelay()
+{
+    yield return new WaitForSeconds(3f);
 
-    }
+    buscarObjetosUI.SetActive(false);
+
+    DialogueSystem.instance.waitingForChoice = false;
+}
 }

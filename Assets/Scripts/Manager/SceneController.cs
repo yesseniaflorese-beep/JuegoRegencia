@@ -1,16 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
 
-    [Header("Capítulos")]
-    public string capitulo1;
-
-    [Header("Capítulo 2 por ruta")]
-    public string capitulo2_Hombre;
-    public string capitulo2_Mujer;
+    [Header("Capítulos en orden")]
+    public List<string> capitulos;
 
     private int currentChapter = 0;
 
@@ -24,7 +21,7 @@ public class SceneController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // 🔥 Persiste entre escenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -56,7 +53,15 @@ public class SceneController : MonoBehaviour
     public void StartGame()
     {
         currentChapter = 0;
-        LoadSceneSafe(capitulo1);
+
+        if (capitulos.Count > 0)
+        {
+            LoadSceneSafe(capitulos[currentChapter]);
+        }
+        else
+        {
+            Debug.LogError("❌ No hay capítulos asignados");
+        }
     }
 
     // ================================
@@ -66,35 +71,15 @@ public class SceneController : MonoBehaviour
     {
         currentChapter++;
 
-        switch (currentChapter)
+        if (currentChapter < capitulos.Count)
         {
-            case 1:
-                LoadCapitulo2PorRuta();
-                break;
-
-            default:
-                Debug.Log("🏁 Fin del juego");
-                LoadMenu();
-                break;
+            LoadSceneSafe(capitulos[currentChapter]);
         }
-    }
-
-    private void LoadCapitulo2PorRuta()
-    {
-        if (GameManager.instance == null)
-        {
-            Debug.LogError("❌ GameManager no encontrado");
-            return;
-        }
-
-        string nextScene = "";
-
-        if (GameManager.instance.selectedRoute == GameManager.PlayerRoute.Hombre)
-            nextScene = capitulo2_Hombre;
         else
-            nextScene = capitulo2_Mujer;
-
-        LoadSceneSafe(nextScene);
+        {
+            Debug.Log("🏁 Fin del juego");
+            LoadMenu();
+        }
     }
 
     // ================================

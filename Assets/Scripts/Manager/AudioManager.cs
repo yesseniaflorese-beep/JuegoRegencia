@@ -1,18 +1,28 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    [Header("Audio Sources")]
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
+    [Header("Music")]
     public List<string> musicNames;
     public List<AudioClip> musicClips;
 
+    [Header("SFX")]
     public List<string> sfxNames;
     public List<AudioClip> sfxClips;
+
+    [Header("UI Sonido")]
+    public Image iconoSonido;   // Imagen del botón
+    public Sprite iconoActivo;  // 🔊
+    public Sprite iconoMute;    // 🔇
 
     bool sonidoActivo = true;
 
@@ -21,7 +31,7 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // opcional pero recomendado
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -29,6 +39,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        ActualizarIcono(); // asegura que el icono esté bien al iniciar
+    }
+
+    // 🎵 Reproducir música
     public void PlayMusic(string name)
     {
         for (int i = 0; i < musicNames.Count; i++)
@@ -42,6 +58,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // 🔊 Reproducir SFX
     public void PlaySFX(string name)
     {
         for (int i = 0; i < sfxNames.Count; i++)
@@ -57,33 +74,55 @@ public class AudioManager : MonoBehaviour
     // 🔇 Mutear todo
     public void MutearTodo()
     {
+        sonidoActivo = false;
         musicSource.mute = true;
         sfxSource.mute = true;
-        sonidoActivo = false;
+
+        ActualizarIcono();
     }
 
     // 🔊 Activar sonido
     public void ActivarSonido()
     {
+        sonidoActivo = true;
         musicSource.mute = false;
         sfxSource.mute = false;
-        sonidoActivo = true;
+
+        ActualizarIcono();
     }
 
-    // 🔁 Botón toggle (recomendado)
+    // 🔁 Toggle desde botón
     public void ToggleSonido()
     {
         sonidoActivo = !sonidoActivo;
 
         musicSource.mute = !sonidoActivo;
         sfxSource.mute = !sonidoActivo;
+
+        ActualizarIcono();
     }
 
+    // 🔄 Cambiar icono
+    void ActualizarIcono()
+    {
+        if (iconoSonido == null) return;
+
+        if (sonidoActivo)
+        {
+            iconoSonido.sprite = iconoActivo;
+        }
+        else
+        {
+            iconoSonido.sprite = iconoMute;
+        }
+    }
+
+    // 🎚 Volumen
     public void SetVolumenMusica(float valor)
-{
-    Debug.Log("Cambiando volumen a: " + valor);
-    musicSource.volume = valor;
-}
+    {
+        Debug.Log("Cambiando volumen a: " + valor);
+        musicSource.volume = valor;
+    }
 
     public void SetVolumenSFX(float valor)
     {

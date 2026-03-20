@@ -1,6 +1,6 @@
 @BG HabitacionSophie
 @SFX TocToc
-@SPRITE Sophie neutral protagonista
+@SPRITE Sophie noArete protagonista
 
 Nathaniel: El carruaje está listo, Sophie. Es hora de irnos.
 
@@ -20,7 +20,7 @@ Nathaniel: ¡Sophie! ¡Llegaremos tarde!
 
 Sophie: ¡Voy!
 
-@BG SalonBaileCav
+@BG SalonBaile
 @MUSIC vals_temporada
 @SPRITE Sophie neutral protagonista
 @SPRITE Lottie neutral izquierda
@@ -49,18 +49,19 @@ Lady Rosamund Ashbourne: Y este es uno de los bailes más importantes de la temp
 
 Lady Rosamund Ashbourne: Sería extraño que alguien de importancia decidiera perdérselo.
 
-*Las voces aumentan*
-
 Sophie: ¿Por qué tanto revuelo?
 
 Lady Rosamund Ashbourne: ¿Será el príncipe?
 
 Lady Charlotte Wentworth: ¿O el duque?
 
+@SPRITE Nathaniel neutral derecha
+
 Nathaniel: Buenas noches, señoritas.
 
 Sophie: Oh, Nathaniel… ¿Sabes qué sucede?
 
+@SPRITE Nathaniel neutral derecha
 Nathaniel: De hecho… hay alguien a quien quiero que conozcas.
 
 Nathaniel: Ven conmigo.
@@ -69,8 +70,9 @@ Nathaniel: Una disculpa, señoritas.
 
 Lady Charlotte Wentworth: Hasta luego, Sophie.
 
-@BG SalonBaileCav2
-
+@BG SalonBaile
+@SPRITE Sophie neutral protagonista
+@SPRITE Nathaniel neutral derecha
 Sophie: ¿Quién es?
 
 Nathaniel: Ya lo verás.
@@ -79,6 +81,7 @@ Sophie: ¿Por qué tanto misterio?
 
 Nathaniel: ¡Theo! Creí que no asistirías esta temporada.
 
+@SPRITE Theo neutral izquierda
 Theo: No estaba en mis planes.
 
 Nathaniel: ¿Qué te hizo cambiar de opinión?
@@ -111,21 +114,17 @@ Theo: …sino por necesidad.
 
 Sophie: …
 
-*La música sube*
-
 Theo: Señorita Hastings…
 
 Theo: ¿Me concedería este baile?
 
 @CHOICE
 amor | Tal vez no seamos tan distintos después de todo. | amor+4
-reputacion | Un duque no invita sin intención… y esta es una oportunidad que no puedo ignorar. | reputacion+4
-dinero | Ravenshire es un título poderoso… podría significar estabilidad para mi familia. | dinero+3
+reputacion | Esta es una oportunidad que no puedo ignorar. | reputacion+4
+dinero | Ravenshire es un título poderoso…| dinero+3
 @END
 
 Sophie: Será un honor, su gracia.
-
-*cambio a salón de baile con más personas*
 
 Theo: Escuché que tu debut fue todo un éxito.
 
