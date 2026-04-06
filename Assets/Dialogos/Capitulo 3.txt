@@ -1,0 +1,463 @@
+@BG HabitacionSophie
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+Sophie: No he podido dormir bien desde el baile de la duquesa.
+
+Sophie: Las visitas de los demás caballeros han estado bien, pero…
+
+Sophie: El duque y el príncipe…
+
+Sophie: Definitivamente son hombres influyentes.
+
+Sophie: Podrían resolver todos mis problemas fácilmente.
+
+Sophie: La deuda de la familia…
+
+Sophie: Nuestra posición social…
+
+Sophie: Incluso el futuro de Nathaniel.
+
+@SFX Suspiro
+
+Sophie: Sin embargo…
+
+Sophie: No sé si ellos podrían sentir algo real más allá de una alianza.
+
+Sophie: O si los problemas de mi familia los harían dudar.
+
+Sophie: Es obvio que no necesitan el dinero de mi dote…
+
+Sophie: Pero eso también significa que pueden elegir a alguien mejor.
+
+Sophie: Alguien sin problemas.
+
+Sophie: Alguien sin responsabilidades.
+
+Sophie: Alguien más conveniente.
+
+@SFX TocToc
+
+@SPRITE Sophie sorprendida protagonista
+
+@SPRITE Nathaniel neutral derecha
+
+Nathaniel: Sophie.
+
+Sophie: Nathaniel, ¿ocurre algo?
+
+Nathaniel: Ha llegado una carta.
+
+Sophie: ¿Una carta?
+
+Nathaniel: De la duquesa de Cavendish.
+
+Sophie: …
+
+Nathaniel: Ha organizado un té privado esta tarde.
+
+Nathaniel: Y estás invitada.
+
+Sophie: ¿Quién más asistirá?
+
+Nathaniel: Lottie, Ruby, El principe Pembroke y Theo
+
+Sophie: …
+
+@CHOICE
+amor | Tal vez pueda conocerlos mejor | amor+2
+reputacion | Debo comportarme con cuidado | reputacion+2
+dinero | Esta es una oportunidad importante | dinero+2
+@END
+
+@BG SalaCav
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+@SPRITE Lottie neutral derecha
+
+Lottie: ¡Sophie! Me alegro de verte ¿Como has estado?
+Lottie: Me he enterado que muchos caballeros han ido a verte.
+Lottie: ¿Alguno ha llamado tu atención? 
+
+@CHOICE
+amor | Por el momento no | amor+2
+reputacion | No, pero ha sido interesante | reputacion+2
+dinero | Ninguno que valga la pena | dinero+2
+@END
+
+Lottie: Ya veo. 
+@SPRITE Ruby neutral izquierda
+Ruby: ¡Hola! 
+Ruby: Escuche que el duque y el príncipe vienen ¿Será que por fin están buscando sentar cabeza?
+Lottie: Es probable, es muy raro verlos en este tipo de eventos
+
+Lottie: Y dudo mucho que la duquesa de Cavendish sea demasiado convincente como para hacerlos asistir a dos de sus eventos.
+
+Ruby: Creeme, la duquesa puede hacer que tu reputación se arruine con solo una mirada
+Sophie: ¿Tan influyente es?
+
+Lottie: Mucho más de lo que imaginas.
+
+Lottie: Si la duquesa decide que alguien no es adecuado para la temporada…
+
+Lottie: Esa persona prácticamente desaparece de la sociedad.
+
+Ruby: Nadie quiere quedar mal ante ella.
+
+Sophie: Entonces este té no es solo una reunión social.
+
+Lottie: No.
+
+Lottie: Es una evaluación.
+
+@SPRITE Ruby emocionada derecha
+
+Ruby: Creo que ya llegaron.
+
+Sophie: ¿Quién?
+
+Ruby: El duque y el príncipe, obvio
+
+Lottie: Me pregunto que los habrá motivado a venir
+
+Ruby: ¿Crees que ya hayan encontrado a quien cortejar?
+
+Sophie: Disculpenme, regreso en un momento.
+
+@BG SalaCav
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+Sophie: La duquesa no puede enterarse sobre lo de mi padre
+
+Sophie: Si es asi, estare arruinada… y mi familia también
+
+Sophie: Si sospecha algo debo distraerla
+ 
+Sophie: Debería…
+
+@SPRITE Theo neutral derecha
+
+Theo: Señorita Hastings
+
+Sophie: ¡Theo!
+
+Theo: Lamento interrumpirle
+
+Sophie: Descuide su gracia, no estaba haciendo nada importante
+
+Theo: ¿Segura?
+
+@CHOICE
+amor | Necesitaba un poco de aire, eso es todo | amor+2 | amor_resp
+reputacion | Si, estoy bien| reputacion+2 | rep_resp
+dinero | Segura su gracia | dinero+2 | dinero_resp
+@END
+
+Theo: Me alegro entonces. 
+
+Theo: He querido hablar con usted desde desde el baile
+
+Sophie: ¿En serio?
+
+Theo: Si, pero los deberes de mi apresurado título me lo han impedido.
+
+Theo: Una disculpa 
+
+@IF reputacion > amor
+@IF reputacion > dinero
+Sophie: Entiendo, no tiene por qué disculparse
+Sophie: El deber es primero ¿No es así?
+Theo: Claro
+@ENDIF
+@ENDIF
+
+@IF amor > reputacion
+@IF amor > dinero
+Sophie: Entiendo, no tiene por qué disculparse su gracia
+@ENDIF
+@ENDIF
+
+
+@IF dinero > reputacion
+@IF dinero > amor
+Sophie: Entiendo, no tiene por qué disculparse
+@ENDIF
+@ENDIF
+
+Theo: Quería decirle que aquella noche…
+Theo: la pase bastante bien
+
+@CHOICE
+amor | Su compañia fue de lo mas esplendido su gracia | amor+2
+reputacion | yo tambien, creo que a ambos nos ayudó | reputacion+2
+dinero | Su compañia fue bastante grata | dinero+2
+@END
+
+Theo: Me gustaría visitarla…Si así lo desea por su puesto  
+
+@CHOICE
+amor | ¿Quiere verme de nuevo? | amor+2
+reputacion | Esto podría mejorar mi posición| reputacion+2
+dinero | Una visita del duque sería muy útil | dinero+2
+@END
+
+Sophie: Sería un honor su gracia.
+
+Theo: Espléndido, hablaré con su hermano, hasta entonces
+Theo: Disfrute la velada señorita Hastings. 
+
+@IF amor > reputacion
+@IF amor > dinero
+Sophie: Puedes llamarme Sophie.
+Theo: Tal vez luego, cuando sea más… apropiado
+@ENDIF
+@ENDIF
+
+Sophie: Adios su gracia
+
+@BG SalaCav
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+Sophie: Una visita del duque…
+
+@IF amor > reputacion
+@IF amor > dinero
+Sophie: Que emocionante
+Sophie: Si todo sale bien… puede que mis problemas estén resueltos antes de lo esperado
+@ENDIF
+@ENDIF
+
+@IF reputacion > amor
+@IF reputacion > dinero
+Sophie: Esto si que impresionara a la duquesa de Cavendish
+@ENDIF
+@ENDIF
+
+@IF dinero > amor
+@IF dinero > reputacion
+Sophie: Esto podría ayudar mucho a la situación de mi familia
+@ENDIF
+@ENDIF
+
+@SPRITE Sebastian neutral derecha
+
+Sebastian: Señorita Hastings
+
+Sophie: Su alteza, que honor
+
+Sophie: ¿Que lo trae por aquí?
+
+Sebastian: La duquesa me ha invitado 
+
+@SPRITE Ruby neutral izquierda
+
+Ruby: Su alteza, creo que no nos han presentado formalmente
+
+Ruby: Rosamund Ashbourne, un placer
+
+Sebastian: ¿Es amiga de la señorita Hastings?
+
+Ruby: ¡Claro!
+
+Sebastian: Encantado de conocerla entonces.
+
+Ruby: Igualmente. ¿No es una velada encantadora su alteza?
+
+Sebastian: Claro
+
+MUSICA COMIENZA A SUBIR
+
+Sebastian: Creo que podria ser aun más interesante…
+
+Sebastian: Señorita Hastings, ¿Me permite el primer baile?
+
+@CHOICE
+amor | ¿El príncipe me ha invitado a bailar? | amor+2
+reputacion | Con esto definitivamente dare de que hablar | reputacion+2
+dinero | Hoy estoy de suerte | dinero+2
+@END
+
+Sophie: Encantada su alteza.
+
+@BG SalonBaileCav
+@SPRITE Sophie neutral protagonista
+@MUSIC vals_temporada
+@SPRITE Sebastian neutral derecha
+
+Sebastian: ¿Cómo ha estado señorita Hastings? 
+
+Sophie: Bien, su alteza. 
+
+Sebastian: Me alegra escuchar eso.
+Sebastian: La temporada suele ser abrumadora para algunas personas
+Sebastian: ¿No lo cree señorita Hastings?
+
+Sophie: Supongo que depende de las expectativas…
+Sophie: Las expectativas que ponemos sobre nosotros…
+Sophie: y las expectativas que los demás nos adjudican.
+
+Sebastian: Tiene usted razón
+
+Sophie: …
+
+Sebastian: La he visto hablando con el duque…
+Sebastian: Parece disfrutar particularmente su compañia.
+
+Sophie: Solo está siendo amable… eso es todo
+
+Sebastian: Ya veo…
+
+Sebastian: El duque no suele ser considerado sin un motivo.
+
+Sebastian: ¿Confía usted en él?
+
+@CHOICE
+amor | Creo que es una buena persona | amor+2
+reputacion | Es un caballero respetable | reputacion+2
+dinero | Es un aliado importante | dinero+2
+@END
+
+Sebastian: Entiendo.
+
+Sophie: Su alteza…
+Sophie: Si no es mucha indiscreción… 
+Sophie: Puedo preguntarle porque ha mencionado lo anterior
+
+Sebastian: ¿Por qué? ¿Estás interesada en él? 
+
+@CHOICE
+amor | … | amor+2
+reputacion | Es importante conocerlo antes de tomar una decisión | reputacion+2
+dinero | Es simple curiosidad | dinero+2
+@END
+
+Sebastian: Ya veo…
+
+Sebastian: La curiosidad suele ser el primer paso hacia una decisión importante.
+
+Sophie: Entonces… ¿usted también está tomando decisiones, su alteza?
+
+Sebastian: Siempre
+
+Sophie: Entonces, el asistir a esta velada ha sido una de esas?
+
+Sebastian: Si
+
+Sophie: ¿Qué lo ha motivado?
+
+Sebastian: La confirmación de mis sospechas
+
+Sophie: ¿Ha encontrado la respuesta su alteza?
+
+Sebastian: Puede que sí. 
+
+Sophie: ¿Puedo preguntar cuáles eran esas sospechas?
+
+Sebastian: Podría…
+
+Sebastian: Pero no sería prudente.
+
+Sophie: ¿Prudente para usted o para mí?
+
+Sebastian: Para ambos.
+
+Sophie: …
+
+Sophie: Su alteza tiene una forma bastante inquietante de hablar.
+
+Sebastian: Me lo han dicho antes.
+
+Sophie: ¿Siempre habla en acertijos?
+
+Sebastian: Solo cuando la respuesta es demasiado obvia.
+
+Sophie: …
+
+Sebastian: El duque parece bastante interesado en usted.
+
+Sophie: Ya ha mencionado eso antes.
+
+Sebastian: Porque es evidente.
+
+Sophie: ¿Le molesta, su alteza?
+
+Sebastian: No.
+
+Sebastian: Puede que este haciendo la pregunta a la persona incorrecta
+
+Sophie: No entiendo a qué se refiere, su alteza.
+
+Sebastian: ¿No?
+
+Sebastian: El duque no ha apartado la mirada desde que comenzó el baile.
+
+Sophie: Ha dicho que me visitará…
+Sophie: supongo…
+
+Sebastian: Yo tambien lo hare
+
+Sophie: ¿Disculpe?
+
+Sebastian: Yo tambien la visitare
+
+Sophie: Oh… Su alteza… Sera todo un honor
+
+Sebastian: Ha sido un baile placentero
+Sebastian: La vere luego Señorita Hastings…
+Sebastian: Asegúrese de mantenerse dentro del salón.
+Sophie: Lo haré su alteza
+Sebastian: Nos vemos pronto señorita Hastings 
+
+@BG HabitacionSophie
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+Sophie: No esperaba que la noche terminara de esta manera.
+Sophie: Dos visitas en tan poco tiempo…
+Sophie: El duque es amable, directo, y claramente interesado.
+Sophie: Su posición es sólida… y su reputación impecable.
+Sophie: Podría ofrecer estabilidad a mi familia.
+Sophie: Podría resolver muchos problemas.
+Sophie: En cambio el príncipe…
+
+Sophie: Sigue siendo un misterio sin resolver…
+
+Sophie: Sin embargo, es el principe, es evidente que su compañia me ayudaria
+
+@IF amor > reputacion
+@IF amor > dinero
+
+@CHOICE
+duque | Recordar la forma en que el duque la miraba | 
+principe | Intentar descifrar al príncipe | 
+neutral | Creer que ambos pueden ser una oportunidad | 
+@END
+
+@ENDIF
+@ENDIF
+
+@IF reputacion > amor
+@IF reputacion > dinero
+
+@CHOICE
+duque | Pensar como la duquesa reaccionaria ante el duque | 
+principe | Pensar como reaccionaria la corte ante el príncipe | 
+neutral | Mantenerse prudente | dinero+0
+@END
+
+@ENDIF
+@ENDIF
+
+@IF dinero > amor
+@IF dinero > reputacion
+
+@CHOICE
+duque | El duque podría asegurar la estabilidad de su familia | 
+principe | El príncipe podría abrir nuevas oportunidades | 
+neutral | Evaluar ambas opciones | 
+@END
+
+@ENDIF
+@ENDIF

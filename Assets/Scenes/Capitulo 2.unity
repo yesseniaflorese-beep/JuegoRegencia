@@ -992,6 +992,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas-main
       objectReference: {fileID: 0}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: characters.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: characters.Array.data[6].characterName
+      value: Sebastian
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: characters.Array.data[6].textures.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: characters.Array.data[6].expressions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: 'characters.Array.data[6].textures.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 838e534b76df60548af53a9b08604f92, type: 3}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: 'characters.Array.data[6].textures.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 838e534b76df60548af53a9b08604f92, type: 3}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: 'characters.Array.data[6].textures.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 838e534b76df60548af53a9b08604f92, type: 3}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: 'characters.Array.data[6].expressions.Array.data[0]'
+      value: neutral
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: 'characters.Array.data[6].expressions.Array.data[1]'
+      value: feliz
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740183144959257170, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: 'characters.Array.data[6].expressions.Array.data[2]'
+      value: triste
+      objectReference: {fileID: 0}
     - target: {fileID: 2893187510334124631, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: clickCursor
       value: 

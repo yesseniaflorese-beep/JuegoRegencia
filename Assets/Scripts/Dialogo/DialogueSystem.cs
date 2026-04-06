@@ -53,11 +53,24 @@ public class DialogueSystem : MonoBehaviour
         if (lines == null || index >= lines.Count)
             return null;
 
+        
         string line = lines[index].Trim();
         index++;
 
         if (string.IsNullOrWhiteSpace(line))
             return "";
+
+        // LABEL
+        if (line.StartsWith("@LABEL"))
+        {
+            return GetNextLine();
+        }
+
+        // ENDIF
+        if (line.StartsWith("@ENDIF"))
+        {
+            return GetNextLine();
+        }
 
         // SPRITE
         if (line.StartsWith("@SPRITE"))
@@ -213,29 +226,41 @@ public class DialogueSystem : MonoBehaviour
     // EVALUAR CONDICIONES
     // =============================
     bool EvaluateCondition(string condition)
-    {
-        string[] parts = condition.Split(' ');
+{
+    string[] parts = condition.Split(' ');
 
-        if (parts.Length < 3)
-            return false;
-
-        string stat = parts[0];
-        string op = parts[1];
-        int value = int.Parse(parts[2]);
-
-        int currentValue = GameManager.instance.GetStat(stat);
-
-        switch (op)
-        {
-            case ">=": return currentValue >= value;
-            case "<=": return currentValue <= value;
-            case ">": return currentValue > value;
-            case "<": return currentValue < value;
-            case "==": return currentValue == value;
-        }
-
+    if (parts.Length < 3)
         return false;
+
+    string leftStat = parts[0];
+    string op = parts[1];
+    string rightValue = parts[2];
+
+    int left = GameManager.instance.GetStat(leftStat);
+    int right;
+
+    // si es número
+    if (int.TryParse(rightValue, out int number))
+    {
+        right = number;
     }
+    else
+    {
+        // si es otra estadística
+        right = GameManager.instance.GetStat(rightValue);
+    }
+
+    switch (op)
+    {
+        case ">=": return left >= right;
+        case "<=": return left <= right;
+        case ">": return left > right;
+        case "<": return left < right;
+        case "==": return left == right;
+    }
+
+    return false;
+}
 
     // =============================
     // SALTAR IF

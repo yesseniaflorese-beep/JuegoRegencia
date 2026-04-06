@@ -128,15 +128,9 @@ Sophie: Será un honor, su gracia.
 
 Theo: Escuché que tu debut fue todo un éxito.
 
-Theo: Supongo que has recibido varias propuestas.
-
-Sophie: Algunas… sí.
-
-Sophie: Pero ninguna ha logrado captar realmente mi interés.
+Sophie: Supongo... Aunque no he tenido suerte
 
 Theo: ¿De verdad?
-
-Theo: Me sorprende.
 
 Sophie: Digamos que algunas propuestas… no eran las más convenientes.
 
@@ -165,9 +159,9 @@ Theo: ¿Y usted?
 Theo: ¿Qué busca esta noche, señorita Hastings?
 
 @CHOICE
-amor | Puede que yo también esté buscando algo | amor+3
-reputacion | Cumplir con lo que se espera de mí. | reputacion+3
-dinero | Asegurar el futuro de mi familia. | dinero+3
+amor | Puede que yo también esté buscando algo | amor+3 | amor_resp
+reputacion | Cumplir con lo que se espera de mí. | reputacion+3 | rep_resp
+dinero | Asegurar el futuro de mi . | dinero+3 | dinero_resp
 @END
 
 @LABEL amor_resp
@@ -187,3 +181,117 @@ Theo: Una motivación bastante sensata.
 
 @LABEL despues
 Theo: Debo admitir que no esperaba una conversación tan interesante esta noche.
+Sophie: Igualmente...
+Sophie: si me disculpa iré a tomar un poco de aire
+@BG ExteriorJardin
+@SPRITE Sophie neutral protagonista
+
+Sophie: ¿Qué acaba de pasar?…
+Sophie: ¡No puede ser!
+Sophie: Acabo de dejar al duque en medio del salón de baile.
+Sophie: ¿Me despedí?
+Sophie: Oh, por Dios.
+Sophie: ¿Qué te pasa, Sophie? Es solo el duque…
+Sophie: No hay por qué ponerse así… Agh.
+
+@SFX ramas
+@SPRITE Sophie asustada protagonista
+@SPRITE Sebastian neutral derecha
+
+Desconocido: La mayoría de los invitados suelen estar en el salón.
+Sophie: Lo siento, no sabía que había alguien más aquí.
+Desconocido: No tiene por qué disculparse.
+Desconocido: El baile puede ser un poco…
+
+@SPRITE Sophie neutral protagonista
+
+Sophie: ¿Ruidoso?
+Desconocido: Sí.
+Desconocido: Sin embargo, es peligroso que esté aquí sola.
+
+Desconocido: ¿Dónde está su chaperón?
+
+Sophie: Debe estar dentro del salón.
+Sophie: Solo salí por un momento a tomar aire.
+
+Desconocido: Entonces debería regresar, no es prudente permanecer aquí, mucho menos sin compañía apropiada.
+
+Sophie: Como dije, solo salí a tomar aire.
+
+Desconocido: ¿Acaso pasó algo dentro que la tiene tan preocupada?
+
+Sophie: Nada de su interés.
+Sophie: Tiene razón, debería regresar. Buenas noches.
+
+@BG SalonBaileCav
+@SPRITE Sophie neutral protagonista
+@MUSIC vals_temporada
+@SPRITE Lottie neutral izquierda
+
+Lady Charlotte Wentworth: ¡Sophie! ¿Dónde estabas?
+Lady Charlotte Wentworth: ¡Todos están hablando de tu baile con el duque!
+Lady Charlotte Wentworth: ¿De qué hablaron?
+Sophie: Nosotros…
+
+@SFX Voces
+@SFX Gasp
+
+Lady Charlotte Wentworth: ¡Mira! ¡El príncipe ha llegado!
+Sophie: ¿De verdad?
+Lady Charlotte Wentworth: ¡Viene hacia acá!
+Sophie: Ese es…
+
+@SPRITE Sebastian neutral derecha
+Sebastian: Buenas noches, señoritas.
+Lady Charlotte Wentworth: Su alteza, es un honor.
+Lady Charlotte Wentworth: Soy Lady Charlotte Wentworth.
+Lady Charlotte Wentworth: Y ella es Sophie Hastings.
+
+Sebastian: Un placer.
+Sebastian: Señorita Hastings…
+
+Sophie: Su alteza…
+Sophie: No sabía que…
+
+Sebastian: Está bien, no espero que todo el mundo me reconozca.
+
+Lady Charlotte Wentworth: ¿Ya se conocían?
+
+Sophie: Nosotros…
+
+Sebastian: Coincidimos brevemente en el jardín.
+Sophie: …
+
+Sebastian: Fue una conversación breve.
+Sebastian: La señorita Hastings estaba sola.
+
+Sebastian: Consideré apropiado asegurarme de que regresara al salón.
+
+Lady Charlotte Wentworth: Su alteza es muy considerado.
+
+Sebastian: Es mi deber.
+
+Sophie: …
+
+Lady Charlotte Wentworth: ¿Su alteza ha disfrutado del baile?
+
+Sebastian: Sí.
+
+Sebastian: Debo admitir que la temporada promete ser… interesante.
+
+Sophie: …
+
+Lady Charlotte Wentworth: ¡Oh! Su alteza debería conocer al duque de Ravenshire.
+
+Lady Charlotte Wentworth: Él también está aquí esta noche.
+
+Sebastian: Lo sé.
+Sebastian: Ya nos hemos visto.
+
+Sebastian: Señorita Hastings...
+
+Sebastian: Espero que esta vez permanezca dentro del salón.
+
+Sophie: Sí, su alteza.
+
+Sebastian: Buenas noches.

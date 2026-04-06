@@ -13,22 +13,17 @@ public class ChoiceButton : MonoBehaviour
     label.text = choice.text;
 }
 
-    public void Select()
+public void Select()
 {
     if (data == null)
     {
         Debug.LogError("ChoiceButton: data no fue asignado. Setup() no se ejecutó.");
         return;
     }
+    Debug.Log("Elegiste: " + data.gotoLabel);
 
-    if (!string.IsNullOrEmpty(data.statName))
-    {
-        GameManager.instance.AddStat(data.statName, data.statValue);
-    }
-
-    DialogueSystem ds = DialogueSystem.instance;
-    ds.waitingForChoice = false;
-    ds.currentChoices.Clear();
+    // ejecutar la elección correctamente
+    DialogueSystem.instance.SelectChoice(data);
 
     transform.parent.gameObject.SetActive(false);
 

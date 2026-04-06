@@ -1720,7 +1720,7 @@ PrefabInstance:
       objectReference: {fileID: 2011273049178122096}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: sceneSlots.Array.size
@@ -1791,6 +1791,10 @@ PrefabInstance:
       value: Theo
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: characters.Array.data[6].characterName
+      value: Sebastian
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[0].sprites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1816,6 +1820,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[5].textures.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: characters.Array.data[6].textures.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
@@ -1931,6 +1939,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: f9356d9eedc05644cb95def0fabc9d1c, type: 3}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: characters.Array.data[6].expressions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: 'characters.Array.data[6].textures.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 838e534b76df60548af53a9b08604f92, type: 3}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: 'characters.Array.data[6].textures.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 838e534b76df60548af53a9b08604f92, type: 3}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: 'characters.Array.data[6].textures.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 838e534b76df60548af53a9b08604f92, type: 3}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[0].expressions.Array.data[0]'
       value: neutral
       objectReference: {fileID: 0}
@@ -2040,6 +2064,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[5].expressions.Array.data[2]'
+      value: triste
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: 'characters.Array.data[6].expressions.Array.data[0]'
+      value: neutral
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: 'characters.Array.data[6].expressions.Array.data[1]'
+      value: feliz
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: 'characters.Array.data[6].expressions.Array.data[2]'
       value: triste
       objectReference: {fileID: 0}
     - target: {fileID: 2119760605779242430, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}

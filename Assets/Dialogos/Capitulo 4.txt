@@ -1,0 +1,271 @@
+@BG HabitacionSophie
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+Sophie: La visita de el duque es hoy
+Sophie: Debo mantener la calma
+Sophie: pero no debo bajar la guardia
+Sophie: Desde la velada de la duquesa de Cavendish los ojos se han posado en mi mas de lo normal
+Sophie: Las personas no dejan de hablar…
+Sophie: y sobre todo de hacer preguntas…
+
+@SFX TocToc
+
+@SPRITE Nathaniel neutral derecha
+
+Nathaniel: Sophie.
+
+Sophie: Nathaniel, ¿ocurre algo?
+
+Nathaniel: El duque ha llegado.
+
+Sophie: ¿Tan pronto? En un momento bajo.
+
+MINIJUEGO
+
+@BG SalaHastings
+@SPRITE Theo neutral derecha
+@SPRITE Sophie neutral protagonista
+
+Sophie: Su gracia bienvenido, espero no haberlo hecho esperar mucho. 
+
+Theo: No se preocupe, gracias por recibirme. 
+@CHOICE
+amor | Me alegra que haya venido su gracia | amor+2 
+reputacion | Las visitas siempre son bien recibidas | reputacion+2
+dinero | Es un honor recibir al duque en nuestra casa | dinero+2
+@END
+
+Theo: Señorita Hastings…¿Puedo hacerle una pregunta?
+
+Sophie: Claro.
+
+Theo: ¿Está disfrutando la temporada?
+
+Sophie: Supongo que si.
+
+Theo: No suena muy convencida.
+
+@CHOICE
+amor | Las emociones suelen interponerse en el camino  | amor+2 
+reputacion | Estoy bien, no se preocupe | reputacion+2
+dinero | La temporada puede ser… complicada | dinero+2
+@END
+
+Theo: Lo entiendo.
+
+Theo: Señorita Hastings…
+
+Theo: ¿Puedo ser honesto con usted?
+
+Sophie: Adelante su gracia.
+
+Theo: He pensado en nuestras conversaciones…
+
+Theo: Fue una de las pocas conversaciones sinceras que tuve en toda la temporada.
+
+Sophie: ¿En serio?
+
+Theo: Sí.
+
+Theo: La mayoría de las personas intenta impresionar.
+
+Theo: Usted solo habló conmigo.
+
+Sophie: No pensé que fuera algo especial.
+
+Theo: Lo fue.
+
+
+@CHOICE
+amor | ¿Por eso quiso verme de nuevo? | amor+2 
+reputacion | Es un honor que piense eso su gracia | reputacion+2 
+dinero | Supongo que una buena conversación siempre es útil | dinero+2 
+@END
+
+Theo: Si.
+
+Theo: He escuchado de su popularidad esta temporada…
+
+Theo: ¿Algún hombre llamado su atención?
+
+Sophie: …
+
+Theo: Disculpe el atrevimiento señorita Hastings 
+
+@CHOICE
+amor | Responder de manera sincera | amor+2 | amor_resp
+reputacion | Responder de manera prudente | reputacion+2 | rep_resp
+dinero | Responder de manera cautelosa | dinero+2 | dinero_resp
+@END
+
+@LABEL amor_resp
+Sophie: Para ser honesta…
+
+Sophie: Aún no estoy segura.
+
+Sophie: He conocido a personas interesantes esta temporada.
+
+Sophie: Pero creo que aún es pronto para decir que alguien ha llamado realmente mi atención.
+
+Theo: Entiendo.
+
+Theo: Es una respuesta bastante honesta.
+
+Sophie: Prefiero ser sincera.
+
+Theo: Y eso es algo que valoro mucho.
+@GOTO despues
+
+
+@LABEL dinero_resp
+Sophie: Creo que la temporada es una oportunidad para conocer a las personas adecuadas.
+
+Sophie: Y entender qué tipo de alianzas pueden construirse.
+
+Theo: Ya veo.
+
+Theo: Es una forma bastante práctica de verlo.
+
+Sophie: Supongo que todos buscamos estabilidad de alguna manera.
+
+Theo: Tiene razón.
+@GOTO despues
+
+@LABEL rep_resp
+Sophie: Creo que aún es pronto para pensar en ese tipo de cosas.
+
+Theo: Una respuesta bastante prudente.
+
+Sophie: Intento mantener la compostura.
+
+Theo: Eso habla muy bien de usted.
+
+Theo: No todos saben comportarse correctamente en este tipo de situaciones.
+Theo: Claro
+@GOTO despues
+
+@LABEL despues
+Theo: En cualquier caso…
+
+Theo: Me alegra saber que aún está conociendo a las personas de la temporada.
+
+Sophie: ¿Por qué su gracia?
+
+Theo: Porque eso significa que aún tiene tiempo para decidir.
+
+Sophie: …
+
+Theo: Y me gustaría ser parte de ese proceso.
+
+@CHOICE
+amor | ¿Planea cortejar a alguien esta temporada su gracia? | amor+2
+reputacion | Es un honor escuchar eso | reputacion+2
+dinero | ¿Planea formar una alianza esta temporada? | dinero+2 
+@END
+
+
+@IF amor > reputacion
+@IF amor > dinero
+
+Theo: Si…
+Theo: Espero que mis intenciones hayan quedado claras…
+
+Sophie: ¿A que se refiere?
+
+Theo: Me interesa señorita Hastings
+
+Sophie: …
+
+Theo: No tiene que decir nada… No espero una respuesta inmediata.
+
+Theo: Se que muchos hombres han estado interesados en usted
+
+Theo: si estuviera en su lugar no tomaría una decisión apresurada teniendo en cuenta las opciones…
+
+Theo: Solo espero que me tome en consideración… en su futuro.
+
+Sophie: Su gracia…
+
+Sophie: Aprecio su honestidad.
+
+Theo: No deseo presionarla.
+
+Theo: Solo conocerla mejor.
+
+Sophie: …
+
+Theo: Si me lo permite, me gustaría seguir visitándola.
+
+Theo: Y continuar nuestras conversaciones.
+
+Sophie: Entiendo.
+
+@ENDIF
+@ENDIF
+
+@IF reputacion > dinero
+@IF reputacion > amor
+
+Theo: Si…
+Theo: Espero que mis intenciones hayan quedado claras…
+
+Sophie: ¿A que se refiere?
+
+Theo: Me interesa señorita Hastings
+
+Sophie: …
+
+Theo: No tiene que decir nada… No espero una respuesta inmediata.
+
+Theo: Se que muchos hombres han estado interesados en usted
+
+Theo: si estuviera en su lugar no tomaría una decisión apresurada teniendo en cuenta las opciones…
+
+Theo: Solo espero que me tome en consideración… en su futuro.
+
+Sophie: Su gracia…
+
+Sophie: Aprecio su honestidad.
+
+Theo: No deseo presionarla.
+
+Theo: Solo conocerla mejor.
+
+Sophie: …
+
+Theo: Si me lo permite, me gustaría seguir visitándola.
+
+Theo: Y continuar nuestras conversaciones.
+
+Sophie: Entiendo.
+
+@ENDIF
+@ENDIF
+
+<-- RUTA DE DINERO ES DIFERENTE A LAS DE AMOR Y REP, AMOR Y REP ES IGUAL -->
+@IF dinero > reputacion
+@IF dinero > amor
+
+
+Theo: Si me lo permite, me gustaría seguir visitándola.
+
+Sophie: Entiendo.
+@ENDIF
+@ENDIF
+
+
+
+@CHOICE
+amor | Me gustaría conocerlo mejor su gracia | amor+2 
+reputacion | Será un honor recibir sus visitas | reputacion+2 
+dinero | Las visitas siempre son importantes para una familia como la mía | dinero+2 
+@END
+
+Theo: Me alegra escuchar eso.
+
+Theo: Ha sido una visita muy agradable señorita Hastings.
+
+Sophie: Gracias por venir su gracia.
+
+Theo: Nos veremos pronto.
