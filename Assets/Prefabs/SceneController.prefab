@@ -48,6 +48,8 @@ MonoBehaviour:
   - 'Capitulo Inicial '
   - Capitulo 1
   - Capitulo 2
+  - Capitulo 3
+  - Capitulo 4
   menuScene: MenuInicial
   instruccionesScene: Instrucciones
   seleccionScene: SeleccionPersonaje

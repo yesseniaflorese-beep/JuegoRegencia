@@ -1,0 +1,238 @@
+@BG SalaHastings
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+Sophie: El duque está interesado en mi…
+
+Sophie: Me pregunto qué fue lo que lo atrajo…
+
+Sophie: Mi reputación esta temporada… el nombre de mi familia o…
+
+Sophie: simplemente yo
+
+Sophie: Sean cuales sean sus razones, sin duda su gracia es un buen hombre pero debería…
+
+@SFX TocToc
+
+@SPRITE Nathaniel neutral derecha
+
+Nathaniel: El principe ha llegado.
+
+Sophie: ¿El príncipe?
+
+Nathaniel: Si ¿Hay algo que deba saber?
+
+Sophie: …
+
+Sophie: Hazlo pasar, no lo hagas esperar.
+
+@SPRITE Sebastian neutral derecha
+
+Sebastian: Disculpe haber venido sin avisar señorita Hastings.
+
+Sophie: No se preocupe su alteza
+
+Sophie: Es un honor recibirlo.
+
+Sebastian: Espero no haber interrumpido sus actividades.
+
+Sophie: En lo absoluto
+
+Sebastian: Tenía la intención de visitarla pronto.
+
+Sophie: ¿De verdad?
+Sebastian: Si
+
+Sebastian: Considero nuestras conversaciones bastante agradables…
+
+Sebastian: además… en la velada anterior la conversación quedo inconclusa.
+
+Sophie: Su alteza, le recuerdo que no soy muy buena con los acertijos…
+
+Sebastian: Oh, esto no es un acertijo
+
+Sebastian: Pensé que había sido claro…
+
+Sebastian: Me disculpo señorita Hastings.
+
+Sophie: No tiene por qué.
+
+Sophie: Si alguien debería disculparse aquí soy yo. 
+
+Sebastian: ¿Usted?
+
+Sophie: Puede que no haya entendido correctamente sus palabras en la velada anterior.
+
+Sebastian: ¿de verdad?
+
+Sophie: …
+
+Sebastian: Su silencio parece darme una respuesta, pero también me parece inquietante
+
+Sebastian: ¿A que le teme señorita Hastings?
+
+@CHOICE
+amor | Hacerme ideas erróneas | amor+5 reputacion-2
+reputacion | A nada su alteza, estoy bien | reputacion+3 dinero-2
+dinero | Que las cosas no terminen bien | dinero+2 reputacion-3
+@END
+
+Sebastian: Valoro mucho su sinceridad.
+
+Sebastian: Por eso hare lo mismo
+
+Sebastian: He disfrutado de su compañía, es difícil encontrar a alguien con quien hablar
+
+Sebastian: Sobre todo una vez que la temporada inicia
+
+Sebastian: Cada conversación parece forzada y…
+
+Sophie: ¿Sofocante?
+
+Sebastian: En efecto.
+
+Sophie: Supongo que la temporada obliga a las personas a actuar de cierta manera.
+
+Sebastian: Por eso disfruto hablar con usted.
+
+Sebastian: Porque no parece hablar conmigo como con un príncipe.
+
+@CHOICE
+amor | Solo soy sincera | amor+3 
+reputacion | Supongo he aprendido a comportarme de la manera correcta | reputacion+2 dinero+2
+dinero | … | dinero+2 reputacion-2
+@END
+
+Sebastian: Me he topado al duque en el camino
+
+Sophie: ¿En serio?
+
+Sebastian: Supongo que ha venido a visitarla ¿No es así?
+
+Sophie: Si…
+
+Sebastian: Ya veo…
+
+Sebastian: El duque no suele visitar a muchas personas.
+
+Sophie: Eso me dijo.
+
+Sebastian: Entonces sus intenciones deben ser bastante claras.
+
+@CHOICE
+amor | El duque ha sido muy amable conmigo | amor+2
+reputacion | Fue una visita cordial | reputacion+2
+dinero | Fue una visita importante para mi familia | dinero+2
+@END
+
+Sebastian: A diferencia del duque yo suelo observar antes de actuar
+
+Sebastian: Y asegurarme de que mis decisiones sean correctas.
+
+Sophie: ¿Y ya ha tomado una decisión?
+
+Sebastian: Aún no completamente.
+
+Sebastian: Pero estoy en proceso de hacerlo.
+
+Sophie: ¿Tiene algo que ver conmigo su alteza?
+
+Sebastian: Bastante
+
+@CHOICE
+amor | Me gustaría entender sus intenciones | amor+2 
+reputacion | Estoy dispuesta a escuchar su gracia | reputacion+2
+dinero | Supongo que está evaluando sus opciones | dinero+2
+@END
+
+Sebastian: Me gustaría conocerla más.
+
+Sebastian: Considero nuestras conversaciones muy valiosas…
+
+Sebastian: Y me gustaria que continuaran 
+
+@CHOICE
+amor | A mi tambien me gustaria| amor+5 
+reputacion | Seria un honor  | reputacion+5 amor+1
+dinero | Claro su alteza | dinero+5 amor-2
+@END
+
+Sebastian: Entonces la visitare si así lo desea
+
+@CHOICE
+amor | No hay nada que desee más | amor+2 
+reputacion | Sera un placer recibirlo  | reputacion+2
+dinero | Mi familia estara encantada | dinero+2
+@END
+
+Sebastian: Nos vemos luego señorita Hastings.
+
+Sophie: Adiós su alteza.
+
+@BG HabitacionSophie
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+Sophie: Ha sido un dia tan agotador…
+
+Sophie: Primero la visita del duque y luego el príncipe…
+
+Sophie: Oh… no se que hacer…
+
+Sophie: Ambos mostraron interés y yo…
+
+Sophie: ¡No se que hacer!
+
+Sophie: El duque se ha portado como todo un caballero conmigo, disfruto nuestras charlas, es amable, encantador….
+
+Sophie: Pero el príncipe…
+
+Sophie: Parece un hombre determinado, es amable y apesar de hablar con acertijos me siento atraída a descifrarlos, por no mencionar que su compañía me parece de lo más agradable
+
+Sophie: Sin embargo, tengo que tomar una decision.
+
+Sophie: Pero temo herir a alguien.
+
+Sophie: o peor… tomar la decisión incorrecta
+
+Sophie: La temporada ha avanzado rápidamente y si no le doy una respuesta a alguno de los 2 buscaran a alguien más
+
+Sophie: Y no puedo permitir que eso pase.
+
+Sophie: Tengo que ser honesta conmigo misma…
+
+Sophie: Si sigo dudando, terminaré perdiendo a ambos.
+
+Sophie: Y eso sería peor.
+
+@CHOICE
+duque | Elegir al duque | routeTheo+1 
+principe | Elegir al principe | routeSebastian+1 
+@END
+
+@IF routeTheo == 1
+
+Sophie: El duque ha sido sincero conmigo desde el inicio.
+
+Sophie: Me hace sentir tranquila…
+
+Sophie: Segura.
+
+Sophie: Tal vez… él es la persona correcta.
+
+Sophie: Debo hablar con él en la próxima velada.
+
+@end
+@IF routeSebastian == 1
+
+Sophie: El príncipe entiende mis pensamientos.
+
+Sophie: Me observa… me escucha…
+
+Sophie: Y sus palabras no parecen vacías.
+
+Sophie: Tal vez… él es la persona correcta.
+
+Sophie: Debo hablar con él en la próxima velada.
+
+@end

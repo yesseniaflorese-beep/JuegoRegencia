@@ -243,17 +243,39 @@ Sophie: Entiendo.
 @ENDIF
 @ENDIF
 
-<-- RUTA DE DINERO ES DIFERENTE A LAS DE AMOR Y REP, AMOR Y REP ES IGUAL -->
 @IF dinero > reputacion
 @IF dinero > amor
+Theo: Las alianzas son parte de la unión y van más allá de cómo me puedan beneficiar.
 
+Theo: Así que, contestando a su pregunta, sí.
+
+Theo: Considero que las alianzas que se forman a raíz de lazos emocionales son las más fuertes.
+Theo: ¿No lo cree?
+
+Sophie: En efecto, su gracia.
+
+Sophie: Las palabras pueden ser engañosas y vacías.
+
+Sophie: Pero los sentimientos no; podemos engañar a los demás, pero a nosotros mismos jamás.
+
+Theo: ¿Considera que una alianza debe basarse en beneficios o en sentimientos?
+
+Sophie: Debe basarse en ambas; al fin y al cabo, una alianza no sería una si no se tiene algo a cambio.
+Sophie: ¿No es así?
+
+Theo: Es una forma bastante directa de verlo.
+
+Theo: La mayoría de las personas en la alta sociedad intenta ocultar ese tipo de pensamientos tras palabras elegantes.
+
+Theo: Usted, en cambio, parece comprender cómo funciona realmente este mundo.
+
+Theo: Y aun así, no deja de lado la importancia de los sentimientos…
+
+Theo: Debo admitir que eso me resulta particularmente interesante.
 
 Theo: Si me lo permite, me gustaría seguir visitándola.
-
-Sophie: Entiendo.
 @ENDIF
 @ENDIF
-
 
 
 @CHOICE

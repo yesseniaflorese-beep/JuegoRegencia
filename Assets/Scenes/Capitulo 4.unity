@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: dialogueFile
       value: 
       objectReference: {fileID: 4900000, guid: cea7a1f7ffb33f048bf13b45ed44abc0, type: 3}
+    - target: {fileID: 6817069609669289993, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6872050978940126713, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: m_Pivot.x
       value: 0

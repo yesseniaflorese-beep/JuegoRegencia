@@ -1,75 +1,3 @@
-@BG HabitacionSophie
-@SFX TocToc
-@SPRITE Sophie noArete protagonista
-
-Nathaniel: El carruaje está listo, Sophie. Es hora de irnos.
-
-Sophie: ¡En un momento bajo!
-
-Sophie: Hoy es mi gran oportunidad… el baile de la duquesa de Cavendish.
-
-Sophie: Si todo sale bien, los problemas de esta familia podrían resolverse más pronto de lo que imagino.
-
-Sophie: Solo tengo que encontrar…
-
-@MINIGAME buscar_objetos
-
-@SFX TocToc
-
-Nathaniel: ¡Sophie! ¡Llegaremos tarde!
-
-Sophie: ¡Voy!
-
-@BG SalonBaile
-@MUSIC vals_temporada
-@SPRITE Sophie neutral protagonista
-@SPRITE Lottie neutral izquierda
-
-Lady Charlotte Wentworth: Qué placer verte, Sophie.
-
-Lady Charlotte Wentworth: Escuché que el duque Ellington está buscando esposa esta temporada.
-
-Lady Charlotte Wentworth: Sin duda será el caballero más codiciado.
-
-@SPRITE Ruby neutral derecha
-
-Lady Rosamund Ashbourne: Yo escuché algo aún más interesante.
-
-Lady Rosamund Ashbourne: Parece que el príncipe Sebastian honrará el baile con su presencia esta noche.
-
-Sophie: ¿El príncipe?
-
-Lady Rosamund Ashbourne: Eso dijo mi padre. Lo vieron llegar al palacio esta mañana.
-
-Lady Charlotte Wentworth: ¿Y qué te hace pensar que vendrá aquí?
-
-Lady Rosamund Ashbourne: La duquesa de Cavendish suele conseguir lo que quiere.
-
-Lady Rosamund Ashbourne: Y este es uno de los bailes más importantes de la temporada.
-
-Lady Rosamund Ashbourne: Sería extraño que alguien de importancia decidiera perdérselo.
-
-Sophie: ¿Por qué tanto revuelo?
-
-Lady Rosamund Ashbourne: ¿Será el príncipe?
-
-Lady Charlotte Wentworth: ¿O el duque?
-
-@SPRITE Nathaniel neutral derecha
-
-Nathaniel: Buenas noches, señoritas.
-
-Sophie: Oh, Nathaniel… ¿Sabes qué sucede?
-
-@SPRITE Nathaniel neutral derecha
-Nathaniel: De hecho… hay alguien a quien quiero que conozcas.
-
-Nathaniel: Ven conmigo.
-
-Nathaniel: Una disculpa, señoritas.
-
-Lady Charlotte Wentworth: Hasta luego, Sophie.
-
 @BG SalonBaile
 @SPRITE Sophie neutral protagonista
 @SPRITE Nathaniel neutral derecha
@@ -106,22 +34,33 @@ Theo: No es necesario.
 
 Theo: Tarde o temprano… el deber siempre alcanza a uno.
 
-Sophie: Cuando el deber llega antes que el deseo… uno no tiene mucha elección.
+@CHOICE
+amor | Nadie debería cargar con todo eso solo… | amor+7 theopoints+5| amor_resp_1
+reputacion | Cuando el deber llega antes que el deseo… uno no tiene mucha elección. | reputacion+5 amor+1 theopoints+3| rep_resp_1
+dinero | El deber también es poder… | dinero+5 ambicion+2 theopoints+3 | dinero_resp_1
+@END
 
-Theo: Entonces comprende que algunas decisiones no se toman por gusto…
-
-Theo: …sino por necesidad.
-
-Sophie: …
+//SI ESCOGE AMOR
+@LABEL amor_resp_1
+Theo: Agradezco que lo vea de esa forma, señorita Hastings.
+Sophie: Si necesita algo, lo que sea mi hermano y yo estaremos para usted
+Sophie: ¿verdad Nathaniel?
+Nathaniel: Claro, su gracia me ayudo bastante cuando madre fallecio
+Sophie: ¿De verdad?
+Theo: No fue nada.
+Nathaniel: Esta siendo modesto.
+Sophie: Aveces es bueno recibir el credito de nuestras acciones su gracia.
+Sophie: Valoro mucho lo que hizo por mi hermano
+Theo: No hay de que.
 
 Theo: Señorita Hastings…
 
 Theo: ¿Me concedería este baile?
 
 @CHOICE
-amor | Tal vez no seamos tan distintos después de todo. | amor+4
-reputacion | Esta es una oportunidad que no puedo ignorar. | reputacion+4
-dinero | Ravenshire es un título poderoso…| dinero+3
+amor | El duque ha sido tan amable, no puedo rechazarlo | amor+5
+reputacion | Esta es una oportunidad que no puedo ignorar. | reputacion+4 dinero+2
+dinero | Ravenshire es un título poderoso… | dinero+3 amor-3
 @END
 
 Sophie: Será un honor, su gracia.
@@ -158,10 +97,154 @@ Theo: ¿Y usted?
 
 Theo: ¿Qué busca esta noche, señorita Hastings?
 
+@GOTO despues_5
+//FIN AMOR
+
+//SI ESCOGE REP
+@LABEL rep_resp_1
+Theo: Entonces comprende que algunas decisiones no se toman por gusto…
+Theo: …sino por necesidad.
+Sophie: Por su puesto su gracia
+Sophie: La necesidad suele ser un combustible sensato en la toma de decisiones
+Theo: Asi como una condena 
+Theo: ¿No lo cree?
+
+
 @CHOICE
-amor | Puede que yo también esté buscando algo | amor+3 | amor_resp
+amor | Coincidir con el duque | reputacion+2 ambicion+3 theopoints+2 | amor_resp_3
+reputacion | Mantenerse imparcial | reputacion+1 | rep_resp_3
+dinero | Negar | dinero-2 reputacion-5 theopoints-2 | dinero_resp_3
+@END
+
+@LABEL amor_resp_3
+Sophie: Por supuesto 
+Theo: Me alegra que lo entienda.
+@GOTO despues_1
+
+
+@LABEL rep_resp_3
+Sophie: Depende de cómo se maneje.
+Theo: Una respuesta prudente.
+@GOTO despues_1
+
+
+@LABEL dinero_resp_3
+Sophie: Ver las necesidades como condena es extremista
+Sophie: Entiendo que hay necesidades que pueden limitarnos, pero siempre podemos decidir ¿No?
+Theo: Hay necesidades que no podemos ignorar
+Sophie: Tiene razón, sin embargo...
+Nathaniel: Lo siento su gracia mi hermana suele ser un poco
+Theo: ¿Terca?
+Nathaniel: Si
+Nathaniel: Ya veo 
+
+@CHOICE
+amor | Disculparse de manera sincera | reputacion+2 theopoints+2 | amor_resp_4
+reputacion | Disculparse | reputacion+2 theopoints+1 | rep_resp_4
+dinero | Mantener postura | dinero-2 reputacion-1 theopoints-1 | dinero_resp_4
+@END
+
+@LABEL amor_resp_4
+Sophie: Le ofrezco una sincera disculpa su gracia... me deje llevar por la emoción del momento
+Theo: No se preocupe, a todos nos pasa, me alegro que sea capaz de reconocerlo, eso habla muy bien de usted
+@GOTO despues_1
+
+@LABEL rep_resp_4
+Sophie: Lo siento su gracia.
+Theo: No se preocupe.
+@GOTO despues_1
+
+@LABEL dinero_resp_4
+Sophie: ...
+Theo: Aun asi...
+
+@GOTO despues_1
+//FIN REPUTACION
+
+
+//SI ESCOGE DINERO
+@LABEL dinero_resp_1
+Theo: El poder puede llegar a ser una carga…
+Theo: Pero también puede ser una herramienta.
+Theo: ¿No lo cree?
+
+@CHOICE
+amor | Coincidir con el duque | dinero+2 ambicion+3 theopoints+2| amor_resp_2
+reputacion | Mantenerse imparcial | dinero+1 | rep_resp_2
+dinero | Negar | dinero-3 ambicion-3 theopoints-2| dinero_resp_2
+@END
+
+
+@LABEL amor_resp_2
+Sophie: Por supuesto su gracia, el poder puede facilitar el camino.
+Theo: Me alegra que lo entienda.
+@GOTO despues_1
+
+
+@LABEL rep_resp_2
+Sophie: Depende de cómo se maneje.
+Theo: Una respuesta prudente.
+@GOTO despues_1
+
+
+@LABEL dinero_resp_2
+Sophie: No lo creo su gracia, el poder puede llegar a ser malo en las manos equivocadas.
+Theo: Interesante punto de vista.
+        
+@GOTO despues_1
+//FIN DINERO
+
+@LABEL despues_1
+Theo: Señorita Hastings…
+
+Theo: ¿Me concedería este baile?
+
+@CHOICE
+amor | Tal vez no seamos tan distintos después de todo. | amor+5
+reputacion | Esta es una oportunidad que no puedo ignorar. | reputacion+4 dinero+2
+dinero | Ravenshire es un título poderoso…| dinero+3 amor-3
+@END
+
+Sophie: Será un honor, su gracia.
+
+Theo: Escuché que tu debut fue todo un éxito.
+
+Sophie: Supongo... Aunque no he tenido suerte
+
+Theo: ¿De verdad?
+
+Sophie: Digamos que algunas propuestas… no eran las más convenientes.
+
+Sophie: Hubo un caballero bastante mayor…
+
+Sophie: Y otro cuya reputación sugiere que aprecia más las fortunas que a las esposas.
+
+Theo: Entonces eres selectiva.
+
+Sophie: Prefiero pensar que soy prudente.
+
+Theo: Una cualidad poco común en esta temporada.
+
+Sophie: ¿Y usted, su gracia?
+
+Sophie: Si ha venido esta noche… imagino que también tiene sus motivos.
+
+Theo: Digamos que… estoy buscando algo específico.
+
+Sophie: ¿Una esposa?
+
+Theo: Tal vez.
+
+Theo: ¿Y usted?
+
+Theo: ¿Qué busca esta noche, señorita Hastings?
+@GOTO despues_5
+
+@LABEL despues_5
+@CHOICE
+amor | Puede que yo también esté buscando algo | amor+5 | amor_resp
 reputacion | Cumplir con lo que se espera de mí. | reputacion+3 | rep_resp
-dinero | Asegurar el futuro de mi . | dinero+3 | dinero_resp
+dinero | Asegurar el futuro de mi familia. | dinero+3 | dinero_resp
 @END
 
 @LABEL amor_resp

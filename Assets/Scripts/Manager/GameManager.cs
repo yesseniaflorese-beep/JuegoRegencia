@@ -8,19 +8,26 @@ public class GameManager : MonoBehaviour
     public delegate void OnStatChanged(string statName);
     public static event OnStatChanged onStatChanged;
 
-    public enum PlayerRoute
-    {
-        Mujer = 0,
-        Hombre = 1
-    }
+    // public enum PlayerRoute
+    // {
+    //     Mujer = 0,
+    //     Hombre = 1
+    // }
 
     [Header("Ruta Inicial")]
-    public PlayerRoute selectedRoute;
+    // public PlayerRoute selectedRoute;
 
     [Header("Stats")]
     public int amor = 0;
     public int reputacion = 0;
     public int dinero = 0;
+
+    public int ambicion = 0;
+    public int theoPoints = 0;
+    public int sebastianPoints = 0;
+    public int routeTheo = 0;
+    public int routeSebastian = 0;
+    
 
     private void Awake()
     {
@@ -45,15 +52,35 @@ public class GameManager : MonoBehaviour
         switch (stat)
         {
             case "amor":
-                amor += value;
+                amor = Mathf.Clamp(amor + value, 0, 100);
                 break;
 
             case "reputacion":
-                reputacion += value;
+                reputacion = Mathf.Clamp(reputacion + value, 0, 100);
                 break;
 
             case "dinero":
-                dinero += value;
+                dinero = Mathf.Clamp(dinero + value, 0, 100);
+                break;
+
+            case "ambicion":
+                ambicion = Mathf.Clamp(ambicion + value, 0, 100);
+                break;
+
+             case "theopoints":
+                theoPoints = Mathf.Clamp(theoPoints + value, 0, 100);
+                break;
+
+             case "sebastianpoints":
+                sebastianPoints = Mathf.Clamp(sebastianPoints + value, 0, 100);
+                break;
+
+            case "routetheo":
+                routeTheo += value;
+                break;
+
+            case "routesebastian":
+                routeSebastian += value;
                 break;
 
             default:
@@ -77,9 +104,16 @@ public class GameManager : MonoBehaviour
             case "amor": return amor;
             case "reputacion": return reputacion;
             case "dinero": return dinero;
+            case "ambicion": return ambicion;
+            case "theopoints": return theoPoints;
+            case "sebastianpoints": return sebastianPoints;
+
+
+            case "routetheo": return routeTheo;
+            case "routesebastian": return routeSebastian;
 
             // 👇 Para condiciones tipo @IF genero ==
-            case "genero": return (int)selectedRoute;
+            //case "genero": return (int)selectedRoute;
         }
 
         return 0;

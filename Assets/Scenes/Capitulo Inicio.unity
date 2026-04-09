@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733400881088889732, guid: 897a6313826e8544081b1fb746172ec0, type: 3}
       propertyPath: amor
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4733400881088889732, guid: 897a6313826e8544081b1fb746172ec0, type: 3}
       propertyPath: dinero
@@ -825,6 +825,18 @@ PrefabInstance:
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: seleccionScene
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: capitulos.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: 'capitulos.Array.data[3]'
+      value: Capitulo 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: 'capitulos.Array.data[4]'
+      value: Capitulo 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -53,8 +53,28 @@ public class DialogueSystem : MonoBehaviour
         if (lines == null || index >= lines.Count)
             return null;
 
-        
+        if (lines == null || index >= lines.Count)
+            return null;
+
         string line = lines[index].Trim();
+
+        // ignorar comentarios y líneas vacías
+        while (
+            string.IsNullOrEmpty(line) ||
+            line.StartsWith("//") ||
+            line.StartsWith("/*") ||
+            line.StartsWith("*") ||
+            line.StartsWith("*/")
+        )
+        {
+            index++;
+
+            if (index >= lines.Count)
+                return null;
+
+            line = lines[index].Trim();
+        }
+
         index++;
 
         if (string.IsNullOrWhiteSpace(line))
@@ -110,9 +130,7 @@ public class DialogueSystem : MonoBehaviour
         if (line.StartsWith("@MINIGAME"))
         {
             string minigameName = line.Replace("@MINIGAME", "").Trim();
-
             MinigameManager.instance.StartMinigame(minigameName);
-
             return null;
         }
 
@@ -193,9 +211,31 @@ public class DialogueSystem : MonoBehaviour
             choice.id = parts[0].Trim();
             choice.text = parts[1].Trim();
 
-            string stat = parts[2].Trim();
-            choice.statName = stat.Split('+')[0];
-            choice.statValue = int.Parse(stat.Split('+')[1]);
+            // =============================
+            // MULTIPLES STATS
+            // =============================
+            string statBlock = parts[2].Trim();
+            string[] stats = statBlock.Split(' ');
+
+            foreach (string s in stats)
+            {
+                if (s.Contains("+"))
+                {
+                    string[] statParts = s.Split('+');
+                    string name = statParts[0];
+                    int value = int.Parse(statParts[1]);
+
+                    choice.stats[name] = value;
+                }
+                else if (s.Contains("-"))
+                {
+                    string[] statParts = s.Split('-');
+                    string name = statParts[0];
+                    int value = -int.Parse(statParts[1]);
+
+                    choice.stats[name] = value;
+                }
+            }
 
             if (parts.Length >= 4)
                 choice.gotoLabel = parts[3].Trim();
@@ -209,7 +249,10 @@ public class DialogueSystem : MonoBehaviour
     // =============================
     public void SelectChoice(ChoiceData choice)
     {
-        GameManager.instance.AddStat(choice.statName, choice.statValue);
+        foreach (var stat in choice.stats)
+        {
+            GameManager.instance.AddStat(stat.Key, stat.Value);
+        }
 
         if (!string.IsNullOrEmpty(choice.gotoLabel))
         {
@@ -226,41 +269,39 @@ public class DialogueSystem : MonoBehaviour
     // EVALUAR CONDICIONES
     // =============================
     bool EvaluateCondition(string condition)
-{
-    string[] parts = condition.Split(' ');
+    {
+        string[] parts = condition.Split(' ');
 
-    if (parts.Length < 3)
+        if (parts.Length < 3)
+            return false;
+
+        string leftStat = parts[0];
+        string op = parts[1];
+        string rightValue = parts[2];
+
+        int left = GameManager.instance.GetStat(leftStat);
+        int right;
+
+        if (int.TryParse(rightValue, out int number))
+        {
+            right = number;
+        }
+        else
+        {
+            right = GameManager.instance.GetStat(rightValue);
+        }
+
+        switch (op)
+        {
+            case ">=": return left >= right;
+            case "<=": return left <= right;
+            case ">": return left > right;
+            case "<": return left < right;
+            case "==": return left == right;
+        }
+
         return false;
-
-    string leftStat = parts[0];
-    string op = parts[1];
-    string rightValue = parts[2];
-
-    int left = GameManager.instance.GetStat(leftStat);
-    int right;
-
-    // si es número
-    if (int.TryParse(rightValue, out int number))
-    {
-        right = number;
     }
-    else
-    {
-        // si es otra estadística
-        right = GameManager.instance.GetStat(rightValue);
-    }
-
-    switch (op)
-    {
-        case ">=": return left >= right;
-        case "<=": return left <= right;
-        case ">": return left > right;
-        case "<": return left < right;
-        case "==": return left == right;
-    }
-
-    return false;
-}
 
     // =============================
     // SALTAR IF

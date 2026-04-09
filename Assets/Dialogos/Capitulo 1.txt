@@ -51,9 +51,9 @@ Lady Charlotte Wentworth: Dime, Sophie…
 Lady Charlotte Wentworth: ¿Qué es lo que más esperas de esta temporada?
 
 @CHOICE
-amor | Que alguien se case por amor, aunque no sea lo habitual. | amor+1
-reputacion | Cumplir con lo que se espera de mí y no dar de qué hablar. | reputacion+1
-dinero | Que nada falte; el resto siempre se puede aprender a soportar. | dinero+3
+amor | Que alguien se case por amor, aunque no sea lo habitual. | amor+5 dinero-3
+reputacion | Cumplir con lo que se espera de mí y no dar de qué hablar. | reputacion+5 amor-1
+dinero | Que nada falte; el resto siempre se puede aprender a soportar. | dinero+5 amor-1
 @END
 
 Lady Georgiana Sinclair: Interesante respuesta…
@@ -175,7 +175,7 @@ Sophie: Yo no lo haré.
 @SPRITE Sophie neutral protagonista
 
 @CHOICE
-amor | Si he de casarme…buscare algo auténtico. | amor+5
-reputacion | Haré lo necesario para restaurar el nombre Hastings. | reputacion+5
-dinero | No seré una pieza en su juego. Crearé mi propio destino. | dinero+5
+amor | Si he de casarme…buscare algo auténtico. | amor+5 dinero-3
+reputacion | Haré lo necesario para restaurar el nombre Hastings. | reputacion+3 
+dinero | No seré una pieza en su juego. Crearé mi propio destino. | dinero+3 ambicion+3
 @END

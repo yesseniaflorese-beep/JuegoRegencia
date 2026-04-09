@@ -60,14 +60,12 @@ Nathaniel: Y estás invitada.
 
 Sophie: ¿Quién más asistirá?
 
-Nathaniel: Lottie, Ruby, El principe Pembroke y Theo
-
-Sophie: …
+Nathaniel: Ya lo veras
 
 @CHOICE
-amor | Tal vez pueda conocerlos mejor | amor+2
-reputacion | Debo comportarme con cuidado | reputacion+2
-dinero | Esta es una oportunidad importante | dinero+2
+amor | Espero que mi camino se encuentre con el duque y el principe | amor+2 reputacion+2
+reputacion | Debo comportarme con cuidado | reputacion+2 amor-1
+dinero | Esta es una oportunidad importante | dinero+2 
 @END
 
 @BG SalaCav
@@ -75,17 +73,25 @@ dinero | Esta es una oportunidad importante | dinero+2
 @SPRITE Sophie neutral protagonista
 @SPRITE Lottie neutral derecha
 
-Lottie: ¡Sophie! Me alegro de verte ¿Como has estado?
-Lottie: Me he enterado que muchos caballeros han ido a verte.
-Lottie: ¿Alguno ha llamado tu atención? 
+Lottie: ¡Sophie! Me alegro de verte.
+Lottie: Han pasado tantas cosas...
+Sophie: ¿Te encuentras bien, Lottie?
+Lottie: La verdad... ¿Puedo ser sincera contigo, Sophie?
+Sophie: ¡Claro!
+Lottie: Hay una... una persona a la que he estado viendo.
+Lottie: Creo que estoy enamorada.
+Sophie: ¡Qué felicidad escuchar eso, Lottie!
+Sophie: Entonces, ¿por qué estás preocupada?
+Lottie: Es un buen hombre, de familia decente, pero no lo suficiente para que mis padres lo aprueben.
+Lottie: ¿Qué debería hacer?
 
 @CHOICE
-amor | Por el momento no | amor+2
-reputacion | No, pero ha sido interesante | reputacion+2
-dinero | Ninguno que valga la pena | dinero+2
+amor | Si realmente se aman, superarán cualquier obstáculo | amor+5 dinero-3
+reputacion | Deberías ser cautelosa y pensar antes de actuar por impulso | reputacion+5 amor-3
+dinero | Deberías pensar en tu futuro y en tu estabilidad | dinero+5 amor-2
 @END
 
-Lottie: Ya veo. 
+Lottie: Gracias, Sophie. Lo tomaré en cuenta.
 @SPRITE Ruby neutral izquierda
 Ruby: ¡Hola! 
 Ruby: Escuche que el duque y el príncipe vienen ¿Será que por fin están buscando sentar cabeza?
