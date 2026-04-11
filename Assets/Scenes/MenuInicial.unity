@@ -672,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733400881088889732, guid: 897a6313826e8544081b1fb746172ec0, type: 3}
       propertyPath: amor
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4733400881088889732, guid: 897a6313826e8544081b1fb746172ec0, type: 3}
       propertyPath: dinero
@@ -680,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733400881088889732, guid: 897a6313826e8544081b1fb746172ec0, type: 3}
       propertyPath: reputacion
-      value: 80
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -883,6 +883,18 @@ PrefabInstance:
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulo2_Hombre
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: capitulos.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: 'capitulos.Array.data[5]'
+      value: Capitulo 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: 'capitulos.Array.data[6]'
+      value: Capitulo 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

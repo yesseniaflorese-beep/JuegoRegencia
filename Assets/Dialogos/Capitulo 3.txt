@@ -48,6 +48,8 @@ Sophie: Nathaniel, ¿ocurre algo?
 
 Nathaniel: Ha llegado una carta.
 
+//PUEDE HABER UN JUEGO O ALGO DE QUE ABRE LA CARTA Y LA LEE EN LUGAR DE DECIR TODO ESTO
+
 Sophie: ¿Una carta?
 
 Nathaniel: De la duquesa de Cavendish.
@@ -63,9 +65,9 @@ Sophie: ¿Quién más asistirá?
 Nathaniel: Ya lo veras
 
 @CHOICE
-amor | Espero que mi camino se encuentre con el duque y el principe | amor+2 reputacion+2
+amor | Espero que mi camino se encuentre con el duque y el principe | amor+2 sebastianpoints+2 theopoints+2
 reputacion | Debo comportarme con cuidado | reputacion+2 amor-1
-dinero | Esta es una oportunidad importante | dinero+2 
+dinero | Esta es una oportunidad importante | dinero+2 sebastianpoints+1 theopoints+1
 @END
 
 @BG SalaCav
@@ -87,11 +89,12 @@ Lottie: ¿Qué debería hacer?
 
 @CHOICE
 amor | Si realmente se aman, superarán cualquier obstáculo | amor+5 dinero-3
-reputacion | Deberías ser cautelosa y pensar antes de actuar por impulso | reputacion+5 amor-3
-dinero | Deberías pensar en tu futuro y en tu estabilidad | dinero+5 amor-2
+reputacion | Deberías ser cautelosa y pensar antes de actuar por impulso | reputacion+5 amor-1
+dinero | Deberías pensar en tu futuro y en tu estabilidad | dinero+5 amor-1
 @END
 
 Lottie: Gracias, Sophie. Lo tomaré en cuenta.
+
 @SPRITE Ruby neutral izquierda
 Ruby: ¡Hola! 
 Ruby: Escuche que el duque y el príncipe vienen ¿Será que por fin están buscando sentar cabeza?
@@ -138,10 +141,8 @@ Sophie: La duquesa no puede enterarse sobre lo de mi padre
 
 Sophie: Si es asi, estare arruinada… y mi familia también
 
-Sophie: Si sospecha algo debo distraerla
+Sophie: Si sospecha... estare arruinada
  
-Sophie: Debería…
-
 @SPRITE Theo neutral derecha
 
 Theo: Señorita Hastings
@@ -155,8 +156,8 @@ Sophie: Descuide su gracia, no estaba haciendo nada importante
 Theo: ¿Segura?
 
 @CHOICE
-amor | Necesitaba un poco de aire, eso es todo | amor+2 | amor_resp
-reputacion | Si, estoy bien| reputacion+2 | rep_resp
+amor | Necesitaba un poco de aire, eso es todo | amor+2 theopoints+2 | amor_resp
+reputacion | Si, estoy bien | reputacion+2 theopoints+1 | rep_resp
 dinero | Segura su gracia | dinero+2 | dinero_resp
 @END
 
@@ -191,27 +192,48 @@ Sophie: Entiendo, no tiene por qué disculparse
 @ENDIF
 @ENDIF
 
+@IF theopoints >= 5
 Theo: Quería decirle que aquella noche…
 Theo: la pase bastante bien
+@ENDIF
 
 @CHOICE
-amor | Su compañia fue de lo mas esplendido su gracia | amor+2
-reputacion | yo tambien, creo que a ambos nos ayudó | reputacion+2
+amor | Su compañia fue de lo mas esplendido su gracia | amor+2 theopoints+2
+reputacion | yo tambien, creo que a ambos nos ayudó | reputacion+2 theopoints+1
 dinero | Su compañia fue bastante grata | dinero+2
 @END
 
-Theo: Me gustaría visitarla…Si así lo desea por su puesto  
+Theo: Me gustaría visitarla… Si así lo desea por su puesto  
 
 @CHOICE
-amor | ¿Quiere verme de nuevo? | amor+2
-reputacion | Esto podría mejorar mi posición| reputacion+2
-dinero | Una visita del duque sería muy útil | dinero+2
+amor | Me haria muy feliz | amor+3 theopoints+2
+reputacion | Esto podría mejorar mi posición | reputacion+2 theopoints-2
+dinero | Una visita del duque sería muy útil | dinero+2 ambicion+2 theopoints-2
 @END
 
 Sophie: Sería un honor su gracia.
 
 Theo: Espléndido, hablaré con su hermano, hasta entonces
 Theo: Disfrute la velada señorita Hastings. 
+@ENDIF
+
+@IF theopoints < 5
+Theo: Su hermano me ha propuesto visitarla...
+Sohie: ¿En serio? 
+Sophie: No tiene que hacerlo si no quiere su gracia... Mi hermano tambien es terco
+Theo: Y quiere lo mejor para usted
+Theo: ¿Le gustaria que la visitara señorita Hastings?
+
+@CHOICE
+amor | Deberia darle una oportunidad | amor+3 theopoints+2
+reputacion | Esto podría mejorar mi posición | reputacion+2 theopoints-2
+dinero | Una visita del duque sería muy útil | dinero+2 ambicion+1 theopoints-2
+@END
+
+Theo: Hablaré con su hermano, hasta entonces
+Theo: Disfrute la velada señorita Hastings. 
+
+@ENDIF 
 
 @IF amor > reputacion
 @IF amor > dinero
@@ -247,6 +269,7 @@ Sophie: Esto podría ayudar mucho a la situación de mi familia
 @ENDIF
 @ENDIF
 
+
 @SPRITE Sebastian neutral derecha
 
 Sebastian: Señorita Hastings
@@ -273,16 +296,16 @@ Ruby: Igualmente. ¿No es una velada encantadora su alteza?
 
 Sebastian: Claro
 
-MUSICA COMIENZA A SUBIR
+//MUSICA COMIENZA A SUBIR
 
 Sebastian: Creo que podria ser aun más interesante…
 
 Sebastian: Señorita Hastings, ¿Me permite el primer baile?
 
 @CHOICE
-amor | ¿El príncipe me ha invitado a bailar? | amor+2
-reputacion | Con esto definitivamente dare de que hablar | reputacion+2
-dinero | Hoy estoy de suerte | dinero+2
+amor | Hay algo que me atrae del principe, deberia aceptar | amor+3 sebastianpoints+7 
+reputacion | No puedo rechazar al principe  | reputacion+2 sebastianpoints+4
+dinero | Es una oportunidad que no puedo rechazar | dinero+2 sebastianpoints+3
 @END
 
 Sophie: Encantada su alteza.
@@ -300,13 +323,76 @@ Sebastian: Me alegra escuchar eso.
 Sebastian: La temporada suele ser abrumadora para algunas personas
 Sebastian: ¿No lo cree señorita Hastings?
 
+@CHOICE
+amor | Dar respuesta reflexiva y emotiva | amor+3 sebastianpoints+3 | amor_resp_1
+reputacion | Dar respuesta diplomática | reputacion+2 sebastianpoints+2 | rep_resp_1
+dinero | Dar respuesta estratégica | dinero+2  ambicion+2 sebastianpoints+1 | dinero_resp_1
+@END
+
+//SI ESCOGE AMOR
+@LABEL amor_resp_1
 Sophie: Supongo que depende de las expectativas…
 Sophie: Las expectativas que ponemos sobre nosotros…
 Sophie: y las expectativas que los demás nos adjudican.
 
-Sebastian: Tiene usted razón
+Sebastian: Y usted ¿Cómo se siente?
 
-Sophie: …
+
+@CHOICE
+amor | Ser completamente sincera | amor+3 sebastianpoints+4 | amor_resp_2
+reputacion | Ser sincera | reputacion+2 sebastianpoints+2 | rep_resp_2
+dinero | No dar muchos detalles | dinero+2 sebastianpoints+1 | dinero_resp_2
+@END
+
+@LABEL amor_resp_2
+Sophie: Las personas esperan mucho de mi...
+Sophie: Solo espero no decepcionarlos
+
+Sebastian: Y no lo hara, estoy seguro.
+Sophie: Usted también tiene altas expectativas sobre mi su alteza
+Sebastian: Estoy siendo sincero señorita Hastings
+Sebastian: Soy una persona observadora
+Sophie:...
+@GOTO despues_1
+
+@LABEL rep_resp_2
+Sophie: Las personas hablan desde el debut, supongo ya han creado sus propias expectativas
+Sophie: Espero cumplirlas. 
+Sebastian: Y lo hara señorita Hastings
+Sophie: Es agradable que piense eso de mi su alteza, gracias.
+Sebastian: Solo digo lo que veo.
+Sophie: ...
+@GOTO despues_1
+
+@LABEL dinero_resp_2
+Sophie: No creo que sea un factor importante
+Sebastian: Entiendo
+
+@GOTO despues_1
+//FIN AMOR
+
+//SI ESCOGE REPUTACION
+@LABEL rep_resp_1
+Sophie: Es cierto, la temporada puede ser exigente.
+Sophie: Pero también es una oportunidad para demostrar carácter y educación.
+Sophie: Supongo que todo depende de cómo se enfrente.
+Sebastian: Tiene usted razón.
+Sohie: Solo soy sensata...
+@GOTO despues_1
+//FIN REPUTACION
+
+//SI ESCOGE DINERO
+@LABEL rep_resp_1
+Sophie: La temporada puede ser abrumadora…
+Sophie: pero también es el momento donde se definen alianzas importantes.
+Sophie: Relaciones, acuerdos, oportunidades…
+Sophie: Después de todo, en estos eventos se decide el futuro de muchas familias.
+Sebastian: Tiene usted razón.
+Sohie: Solo soy sensata...
+@GOTO despues_1
+//FIN DINERO
+
+@LABEL despues_1
 
 Sebastian: La he visto hablando con el duque…
 Sebastian: Parece disfrutar particularmente su compañia.
@@ -320,9 +406,9 @@ Sebastian: El duque no suele ser considerado sin un motivo.
 Sebastian: ¿Confía usted en él?
 
 @CHOICE
-amor | Creo que es una buena persona | amor+2
-reputacion | Es un caballero respetable | reputacion+2
-dinero | Es un aliado importante | dinero+2
+amor | Creo que es una buena persona. | amor+2 theopoints+1 sebastianpoints-1
+reputacion | No lo conozco lo suficiente | reputacion+2 theopoints-1 
+dinero | Es un caballero influyente | dinero+2
 @END
 
 Sebastian: Entiendo.
@@ -331,12 +417,12 @@ Sophie: Su alteza…
 Sophie: Si no es mucha indiscreción… 
 Sophie: Puedo preguntarle porque ha mencionado lo anterior
 
-Sebastian: ¿Por qué? ¿Estás interesada en él? 
+Sebastian: ¿Por qué? ¿Está interesada en él? 
 
 @CHOICE
-amor | … | amor+2
-reputacion | Es importante conocerlo antes de tomar una decisión | reputacion+2
-dinero | Es simple curiosidad | dinero+2
+amor | Es muy pronto para contestar una pregunta asi | amor+3 theopoints+1 sebastianpoints+1
+reputacion | Es importante conocerlo antes de tomar una decisión | reputacion+2 theopoints+1 sebastianpoints+1
+dinero | Es simple curiosidad | dinero+2 amor+2 sebastianpoints+2
 @END
 
 Sebastian: Ya veo…
@@ -400,7 +486,6 @@ Sebastian: ¿No?
 Sebastian: El duque no ha apartado la mirada desde que comenzó el baile.
 
 Sophie: Ha dicho que me visitará…
-Sophie: supongo…
 
 Sebastian: Yo tambien lo hare
 
@@ -408,7 +493,11 @@ Sophie: ¿Disculpe?
 
 Sebastian: Yo tambien la visitare
 
-Sophie: Oh… Su alteza… Sera todo un honor
+@CHOICE
+amor | Me encantaria su alteza, sera un honor | amor+3 sebastianpoints+2 theopoints-2
+reputacion | Sera todo un honor | reputacion+2 theopoints-1 sebastianpoints+1
+dinero | Oh… Su alteza…Sera todo un honor | dinero+2 theopoints-1 sebastianpoints+1
+@END
 
 Sebastian: Ha sido un baile placentero
 Sebastian: La vere luego Señorita Hastings…
@@ -436,9 +525,9 @@ Sophie: Sin embargo, es el principe, es evidente que su compañia me ayudaria
 @IF amor > dinero
 
 @CHOICE
-duque | Recordar la forma en que el duque la miraba | 
-principe | Intentar descifrar al príncipe | 
-neutral | Creer que ambos pueden ser una oportunidad | 
+duque | Recordar la forma en que el duque la miraba | theopointsp+2 amor+3
+principe | Intentar descifrar al príncipe | sebastianpoints+2 amor+3
+neutral | Creer que ambos pueden ser una oportunidad | amor+2
 @END
 
 @ENDIF
@@ -448,9 +537,9 @@ neutral | Creer que ambos pueden ser una oportunidad |
 @IF reputacion > dinero
 
 @CHOICE
-duque | Pensar como la duquesa reaccionaria ante el duque | 
-principe | Pensar como reaccionaria la corte ante el príncipe | 
-neutral | Mantenerse prudente | dinero+0
+duque | Pensar como la duquesa reaccionaria ante el duque | theopoints+2 reputacion+3
+principe | Pensar como reaccionaria la corte ante el príncipe | sebastianpoints+2 reputacion+3
+neutral | Mantenerse prudente | reputacion+2
 @END
 
 @ENDIF
@@ -460,9 +549,9 @@ neutral | Mantenerse prudente | dinero+0
 @IF dinero > reputacion
 
 @CHOICE
-duque | El duque podría asegurar la estabilidad de su familia | 
-principe | El príncipe podría abrir nuevas oportunidades | 
-neutral | Evaluar ambas opciones | 
+duque | El duque podría asegurar la estabilidad de su familia | dinero+3 theopoints+2
+principe | El príncipe podría abrir nuevas oportunidades | dinero+3 sebastianpoints+2
+neutral | Evaluar ambas opciones | dinero+2
 @END
 
 @ENDIF

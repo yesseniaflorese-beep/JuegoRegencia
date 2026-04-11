@@ -7,45 +7,43 @@ public class StatsManager : MonoBehaviour
     public Image reputacionBar;
     public Image dineroBar;
 
-    [Range(0f, 1f)]
-    public float amor = 0.5f;
+    void OnEnable()
+    {
+        GameManager.onStatChanged += UpdateStatUI;
+    }
 
-    [Range(0f, 1f)]
-    public float reputacion = 0.8f;
-
-    [Range(0f, 1f)]
-    public float dinero = 0.7f;
+    void OnDisable()
+    {
+        GameManager.onStatChanged -= UpdateStatUI;
+    }
 
     void Start()
     {
         ActualizarBarras();
     }
 
-    public void CambiarAmor(float cantidad)
+    void UpdateStatUI(string statName)
     {
-        amor += cantidad;
-        amor = Mathf.Clamp01(amor);
-        amorBar.fillAmount = amor;
-    }
+        switch (statName)
+        {
+            case "amor":
+                amorBar.fillAmount = GameManager.instance.amor / 100f;
+                break;
 
-    public void CambiarReputacion(float cantidad)
-    {
-        reputacion += cantidad;
-        reputacion = Mathf.Clamp01(reputacion);
-        reputacionBar.fillAmount = reputacion;
-    }
+            case "reputacion":
+                reputacionBar.fillAmount = GameManager.instance.reputacion / 100f;
+                break;
 
-    public void CambiarDinero(float cantidad)
-    {
-        dinero += cantidad;
-        dinero = Mathf.Clamp01(dinero);
-        dineroBar.fillAmount = dinero;
+            case "dinero":
+                dineroBar.fillAmount = GameManager.instance.dinero / 100f;
+                break;
+        }
     }
 
     void ActualizarBarras()
     {
-        amorBar.fillAmount = amor;
-        reputacionBar.fillAmount = reputacion;
-        dineroBar.fillAmount = dinero;
+        amorBar.fillAmount = GameManager.instance.amor / 100f;
+        reputacionBar.fillAmount = GameManager.instance.reputacion / 100f;
+        dineroBar.fillAmount = GameManager.instance.dinero / 100f;
     }
 }

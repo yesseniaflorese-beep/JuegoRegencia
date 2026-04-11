@@ -102,28 +102,42 @@ public class DialogueRunner : MonoBehaviour
     }
 
     // 🔎 PROCESA NOMBRE + TEXTO
-    void ProcessLine(string line)
+void ProcessLine(string line)
+{
+    if (line.Contains(":"))
     {
-        if (line.Contains(":"))
+        string[] split = line.Split(new char[] { ':' }, 2);
+
+        string speaker = split[0].Trim();
+        string dialogue = split[1].Trim();
+
+        if (nameText != null)
+            nameText.text = speaker;
+
+        architect.Build(dialogue);
+
+        // 🟢 GUARDAR EN HISTORIAL
+        if (DialogueHistoryManager.instance != null)
         {
-            string[] split = line.Split(new char[] { ':' }, 2);
-
-            string speaker = split[0].Trim();
-            string dialogue = split[1].Trim();
-
-            if (nameText != null)
-                nameText.text = speaker;
-
-            architect.Build(dialogue);
-        }
-        else
-        {
-            if (nameText != null)
-                nameText.text = "";
-
-            architect.Build(line);
+            DialogueHistoryManager.instance.AddDialogue(speaker, dialogue);
+            Debug.Log("Guardando en historial: " + speaker + " " + dialogue);
         }
     }
+    else
+    {
+        if (nameText != null)
+            nameText.text = "";
+
+        architect.Build(line);
+
+        // 🟢 GUARDAR NARRADOR
+        if (DialogueHistoryManager.instance != null)
+        {
+            DialogueHistoryManager.instance.AddDialogue("Narrador", line);
+            Debug.Log("Guardando en historial: Narrador " + line);
+        }
+    }
+}
 
     void ShowChoices()
     {

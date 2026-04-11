@@ -1,3 +1,75 @@
+@BG HabitacionSophie
+@SFX TocToc
+@SPRITE Sophie noArete protagonista
+
+Nathaniel: El carruaje está listo, Sophie. Es hora de irnos.
+
+Sophie: ¡En un momento bajo!
+
+Sophie: Hoy es mi gran oportunidad… el baile de la duquesa de Cavendish.
+
+Sophie: Si todo sale bien, los problemas de esta familia podrían resolverse más pronto de lo que imagino.
+
+Sophie: Solo tengo que encontrar…
+
+@MINIGAME buscar_objetos
+
+@SFX TocToc
+
+Nathaniel: ¡Sophie! ¡Llegaremos tarde!
+
+Sophie: ¡Voy!
+
+@BG SalonBaile
+@MUSIC vals_temporada
+@SPRITE Sophie neutral protagonista
+@SPRITE Lottie neutral izquierda
+
+Lady Charlotte Wentworth: Qué placer verte, Sophie.
+
+Lady Charlotte Wentworth: Escuché que el duque Ellington está buscando esposa esta temporada.
+
+Lady Charlotte Wentworth: Sin duda será el caballero más codiciado.
+
+@SPRITE Ruby neutral derecha
+
+Lady Rosamund Ashbourne: Yo escuché algo aún más interesante.
+
+Lady Rosamund Ashbourne: Parece que el príncipe Sebastian honrará el baile con su presencia esta noche.
+
+Sophie: ¿El príncipe?
+
+Lady Rosamund Ashbourne: Eso dijo mi padre. Lo vieron llegar al palacio esta mañana.
+
+Lady Charlotte Wentworth: ¿Y qué te hace pensar que vendrá aquí?
+
+Lady Rosamund Ashbourne: La duquesa de Cavendish suele conseguir lo que quiere.
+
+Lady Rosamund Ashbourne: Y este es uno de los bailes más importantes de la temporada.
+
+Lady Rosamund Ashbourne: Sería extraño que alguien de importancia decidiera perdérselo.
+
+Sophie: ¿Por qué tanto revuelo?
+
+Lady Rosamund Ashbourne: ¿Será el príncipe?
+
+Lady Charlotte Wentworth: ¿O el duque?
+
+@SPRITE Nathaniel neutral derecha
+
+Nathaniel: Buenas noches, señoritas.
+
+Sophie: Oh, Nathaniel… ¿Sabes qué sucede?
+
+@SPRITE Nathaniel neutral derecha
+Nathaniel: De hecho… hay alguien a quien quiero que conozcas.
+
+Nathaniel: Ven conmigo.
+
+Nathaniel: Una disculpa, señoritas.
+
+Lady Charlotte Wentworth: Hasta luego, Sophie.
+
 @BG SalonBaile
 @SPRITE Sophie neutral protagonista
 @SPRITE Nathaniel neutral derecha
@@ -36,7 +108,7 @@ Theo: Tarde o temprano… el deber siempre alcanza a uno.
 
 @CHOICE
 amor | Nadie debería cargar con todo eso solo… | amor+7 theopoints+5| amor_resp_1
-reputacion | Cuando el deber llega antes que el deseo… uno no tiene mucha elección. | reputacion+5 amor+1 theopoints+3| rep_resp_1
+reputacion | Cuando el deber llega sin avisar… no se tiene mucha elección. | reputacion+5 amor+1 theopoints+3| rep_resp_1
 dinero | El deber también es poder… | dinero+5 ambicion+2 theopoints+3 | dinero_resp_1
 @END
 
@@ -60,7 +132,7 @@ Theo: ¿Me concedería este baile?
 @CHOICE
 amor | El duque ha sido tan amable, no puedo rechazarlo | amor+5
 reputacion | Esta es una oportunidad que no puedo ignorar. | reputacion+4 dinero+2
-dinero | Ravenshire es un título poderoso… | dinero+3 amor-3
+dinero | Ravenshire es un título poderoso… | dinero+3 amor-1
 @END
 
 Sophie: Será un honor, su gracia.
@@ -200,9 +272,9 @@ Theo: Señorita Hastings…
 Theo: ¿Me concedería este baile?
 
 @CHOICE
-amor | Tal vez no seamos tan distintos después de todo. | amor+5
+amor | Me encantaria | amor+5 theopoints+2
 reputacion | Esta es una oportunidad que no puedo ignorar. | reputacion+4 dinero+2
-dinero | Ravenshire es un título poderoso…| dinero+3 amor-3
+dinero | Ravenshire es un título poderoso… | dinero+3 amor-1
 @END
 
 Sophie: Será un honor, su gracia.
@@ -242,9 +314,9 @@ Theo: ¿Qué busca esta noche, señorita Hastings?
 
 @LABEL despues_5
 @CHOICE
-amor | Puede que yo también esté buscando algo | amor+5 | amor_resp
+amor | Puede que yo también esté buscando algo | amor+5 theopoints+2 | amor_resp
 reputacion | Cumplir con lo que se espera de mí. | reputacion+3 | rep_resp
-dinero | Asegurar el futuro de mi familia. | dinero+3 | dinero_resp
+dinero | Asegurar el futuro de mi familia. | dinero+3 ambicion+1 | dinero_resp
 @END
 
 @LABEL amor_resp
@@ -263,25 +335,31 @@ Theo: Una motivación bastante sensata.
 @GOTO despues
 
 @LABEL despues
-Theo: Debo admitir que no esperaba una conversación tan interesante esta noche.
-Sophie: Igualmente...
-Sophie: si me disculpa iré a tomar un poco de aire
+//MUSICA BAJA
+Theo: Ha sido un placer conocerla señorita Hastings
+Sophie: Igualmente su gracia.
+
 @BG ExteriorJardin
 @SPRITE Sophie neutral protagonista
 
-Sophie: ¿Qué acaba de pasar?…
-Sophie: ¡No puede ser!
-Sophie: Acabo de dejar al duque en medio del salón de baile.
-Sophie: ¿Me despedí?
-Sophie: Oh, por Dios.
-Sophie: ¿Qué te pasa, Sophie? Es solo el duque…
-Sophie: No hay por qué ponerse así… Agh.
+Sophie: La conversación con el duque ha sido...
+
+@CHOICE
+amor | Agradable | amor+3 theopoints+1 
+reputacion | Interesante | reputacion+3 
+dinero | Conveniente | dinero+3 ambicion+1 
+@END
+
+Sophie: Sin duda tengo muchas cosas que pensar
+Sophie: Puede que Lottie tuviera razón después de todo y el duque si está buscando a alguien.
+Sophie: Solo espero...
 
 @SFX ramas
 @SPRITE Sophie asustada protagonista
 @SPRITE Sebastian neutral derecha
 
 Desconocido: La mayoría de los invitados suelen estar en el salón.
+
 Sophie: Lo siento, no sabía que había alguien más aquí.
 Desconocido: No tiene por qué disculparse.
 Desconocido: El baile puede ser un poco…
@@ -303,9 +381,43 @@ Sophie: Como dije, solo salí a tomar aire.
 
 Desconocido: ¿Acaso pasó algo dentro que la tiene tan preocupada?
 
-Sophie: Nada de su interés.
-Sophie: Tiene razón, debería regresar. Buenas noches.
+@CHOICE
+amor | Para nada... | amor+3 sebastianpoints+2 
+reputacion | En lo absoluto | reputacion+3 
+dinero | No estoy preocupada | dinero+3
+@END
 
+Desconocido: Ya veo...
+Desconocido: Me quedare con usted entonces, es peligroso que este sola
+
+@CHOICE
+amor | Pensarlo | amor+5  reputacion-5 sebastianpoints+5 | amor_resp_5
+reputacion | Regresar al baile de inmediato | reputacion+3 sebastianpoints+2 | rep_resp_5
+dinero | Despedirse | dinero+3 sebastianpoints+1 | dinero_resp_5
+@END
+
+@LABEL amor_resp_5
+
+Sophie: ...
+Sophie: Es muy amable...
+Sophie: Pero creo deberia regresar, mi hermano debe estar buscandome
+Sophie: Lo veo a dentro.
+Desconocido: Buenas noches señorita.
+@GOTO despues_6
+
+@LABEL rep_resp_5
+
+Sophie: Sera mejor que me vaya
+Sophie: Buenas noches caballero.
+@GOTO despues_6
+
+@LABEL dinero_resp_5
+
+Sophie: Tiene razón, deberia regresar
+Sophie: Buenas noches.
+@GOTO despues_6
+
+@LABEL despues_6
 @BG SalonBaileCav
 @SPRITE Sophie neutral protagonista
 @MUSIC vals_temporada
@@ -378,3 +490,20 @@ Sebastian: Espero que esta vez permanezca dentro del salón.
 Sophie: Sí, su alteza.
 
 Sebastian: Buenas noches.
+
+@BG HabitacionSophie
+@MUSIC piano_suave
+@SPRITE Sophie neutral protagonista
+
+@SFX Suspiro
+
+Sophie: Sabía que este día seria importante
+Sophie: Sin embargo no pensé que mi camino se fuera a cruzar con el duque o el principe
+
+@CHOICE
+amor | Parecen ser buenas personas | amor+6
+reputacion | Su presencia puede distraer a la duquesa | reputacion+5
+dinero | Sin duda resolverian mis problemas | dinero+5
+@END
+
+Sophie: Debería descansar, ha sido un día largo. 

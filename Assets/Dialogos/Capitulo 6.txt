@@ -1,0 +1,171 @@
+@BG HabitacionSophie
+@SFX MurmulloSuave
+@SPRITE Sophie neutral protagonista
+
+Sophie: Algo no está bien…
+Sophie: Desde esta mañana todos susurran a mi alrededor.
+Sophie: Las miradas… los silencios… incluso los sirvientes se comportan distinto.
+
+@SPRITE Nathaniel preocupado derecha
+Nathaniel: Buenos días Sophie.
+Sophie: Nathaniel, ¿Sabes qué ocurre?
+Nathaniel: Ha comenzado a circular un rumor…
+Sophie: ¿Un rumor?
+Nathaniel: Sobre nuestra situación económica.
+Sophie: No puede ser.
+Nathaniel: Creo que empezó con la servidumbre.
+Nathaniel: Les hemos dado largas para pagarles…
+Nathaniel: Supongo que han decidido actuar.
+Sophie: ¡Estoy a punto de arreglarlo!
+
+@IF routetheo == 1
+Sophie: Necesito hablar con el duque.
+Sophie: ¿Puedes ayudarme?
+Nathaniel: No será necesario, el duque ya está aquí.
+@ENDIF
+
+@IF routesebastian == 1
+Sophie: Necesito hablar con el príncipe.
+Sophie: ¿Puedes ayudarme?
+Nathaniel: No será necesario, el príncipe ya está aquí.
+@ENDIF
+
+
+@BG SalaHastings
+@SPRITE Sebastian neutral derecha
+@SPRITE Sophie neutral protagonista
+
+Sophie: Su alteza, es un honor. ¿A qué debo su visita?
+Sebastian: Buenos días señorita Hastings.
+Sebastian: Quería verla. Desde su carta no he podido estar más entusiasmado por su respuesta.
+Sebastian: Me alegra que me haya tomado en cuenta.
+Sophie: Oh su alteza, me alegra escuchar eso.
+Sebastian: Además… he escuchado algunas cosas algo inquietantes.
+Sophie: Ya veo.
+Sebastian: Supongo que sabrá de qué se trata.
+Sebastian: Valoro mucho la honestidad.
+Sebastian: ¿Es verdad lo que se dice?
+
+@CHOICE
+honesty | Decir la verdad sobre los problemas de su familia | honesty+1
+lie | Mentir y decir que todo está bajo control | lie+1
+@END
+
+
+@IF honesty == 1
+
+Sophie: Su alteza…
+Sophie: Mi familia está atravesando un momento difícil.
+Sophie: Mi padre ha apostado todo lo que teníamos… incluso mi dote.
+
+@IF amor > dinero
+@IF amor > reputacion
+
+Sebastian: No me importa.
+Sophie: ¿Qué?
+Sebastian: No me importa su dote ni su riqueza.
+Sebastian: Me importa usted.
+Sebastian: Y si su familia está en problemas, la ayudaré.
+
+@SPRITE Sophie sorprendida
+Sophie: ¿De verdad?
+Sebastian: La sinceridad vale más que cualquier fortuna.
+
+@BG BLACK
+Narrador: El príncipe decidió apoyar a Sophie.
+Narrador: Su relación se fortaleció con el tiempo.
+Narrador: Y juntos enfrentaron las dificultades.
+
+@ENDIF
+@ENDIF
+
+
+@IF dinero > amor
+@IF dinero > reputacion
+
+Sebastian: Entonces todo este tiempo buscaba algo.
+Sophie: Su alteza…
+Sebastian: Me dejé guiar por mis emociones.
+Sebastian: La reputación y el dinero son lo que realmente importa.
+
+Sophie: Puedo explicarlo…
+Sebastian: No es necesario.
+
+@BG BLACK
+Narrador: El príncipe se alejó de Sophie.
+Narrador: La sinceridad llegó demasiado tarde.
+Narrador: Y la oportunidad desapareció.
+
+@ENDIF
+@ENDIF
+
+
+@IF reputacion > amor
+@IF reputacion > dinero
+
+Sebastian: Aprecio su honestidad.
+Sebastian: Puedo ayudarla.
+Sebastian: Pero no puedo seguir cortejándola.
+
+Sophie: Lo entiendo su alteza.
+
+@BG BLACK
+Narrador: Sophie recibió ayuda.
+Narrador: Su nombre permaneció limpio.
+Narrador: Pero perdió el amor.
+
+@ENDIF
+@ENDIF
+
+@ENDIF
+
+
+
+@IF lie == 1
+
+Sophie: Su alteza…
+Sophie: No hay nada de qué preocuparse.
+Sophie: Solo es un rumor.
+
+@IF dinero > amor
+@IF dinero > reputacion
+
+Sebastian: Me alegro de escuchar eso.
+
+@BG BLACK
+Narrador: Sophie se casó con el príncipe.
+Narrador: Vivió rodeada de lujos.
+Narrador: Pero nunca conoció el amor verdadero.
+
+@ENDIF
+@ENDIF
+
+
+@IF amor > dinero
+@IF amor > reputacion
+
+Sebastian: Confiaré en usted.
+
+@BG BLACK
+Narrador: La verdad salió a la luz con el tiempo.
+Narrador: El príncipe se sintió herido.
+Narrador: Pero el amor fue más fuerte.
+
+@ENDIF
+@ENDIF
+
+
+@IF reputacion > dinero
+@IF reputacion > amor
+
+Sebastian: Confío en su palabra.
+
+@BG BLACK
+Narrador: Sophie se volvió una figura respetable.
+Narrador: Nadie descubrió la mentira.
+Narrador: Pero el amor nunca llegó.
+
+@ENDIF
+@ENDIF
+
+@ENDIF

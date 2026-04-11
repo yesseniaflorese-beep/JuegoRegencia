@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     public int sebastianPoints = 0;
     public int routeTheo = 0;
     public int routeSebastian = 0;
+
+    public int honesty = 0;
+    public int lie = 0;
     
 
     private void Awake()
@@ -75,12 +78,20 @@ public class GameManager : MonoBehaviour
                 sebastianPoints = Mathf.Clamp(sebastianPoints + value, 0, 100);
                 break;
 
-            case "routetheo":
-                routeTheo += value;
+           case "routetheo":
+                routeTheo = Mathf.Clamp(routeTheo + value, 0, 1);
                 break;
 
             case "routesebastian":
-                routeSebastian += value;
+                routeSebastian = Mathf.Clamp(routeSebastian + value, 0, 1);
+                break;
+
+            case "honesty":
+                honesty += value;
+                break;
+
+            case "lie":
+                lie += value;
                 break;
 
             default:
@@ -107,6 +118,8 @@ public class GameManager : MonoBehaviour
             case "ambicion": return ambicion;
             case "theopoints": return theoPoints;
             case "sebastianpoints": return sebastianPoints;
+            case "honesty": return honesty;
+            case "lie": return lie;
 
 
             case "routetheo": return routeTheo;
