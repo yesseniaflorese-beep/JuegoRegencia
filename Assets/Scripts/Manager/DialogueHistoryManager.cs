@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class DialogueHistoryManager : MonoBehaviour
 {
     public static DialogueHistoryManager instance;
 
+    [Header("UI")]
     public GameObject historyPanel;
     public Transform contentParent;
     public GameObject historyTextPrefab;
+    public ScrollRect scrollRect;
 
-    private List<string> history = new List<string>();
+    // ✅ Guardado correcto (NO string)
+    private List<DialogueEntry> history = new List<DialogueEntry>();
 
     void Awake()
     {
@@ -18,12 +21,24 @@ public class DialogueHistoryManager : MonoBehaviour
         historyPanel.SetActive(false);
     }
 
+    // ============================
+    // AGREGAR DIÁLOGO
+    // ============================
     public void AddDialogue(string speaker, string dialogue)
     {
-        string line = speaker + ": " + dialogue;
-        history.Add(line);
+        history.Add(new DialogueEntry(speaker, dialogue));
+
+        // 🔥 Si el panel está abierto → agregar en tiempo real
+        if (historyPanel.activeSelf)
+        {
+            CreateItem(speaker, dialogue);
+            UpdateScroll();
+        }
     }
 
+    // ============================
+    // ABRIR HISTORIAL
+    // ============================
     public void OpenHistory()
     {
         historyPanel.SetActive(true);
@@ -35,6 +50,9 @@ public class DialogueHistoryManager : MonoBehaviour
         historyPanel.SetActive(false);
     }
 
+    // ============================
+    // MOSTRAR TODO
+    // ============================
     void ShowHistory()
     {
         foreach (Transform child in contentParent)
@@ -42,10 +60,55 @@ public class DialogueHistoryManager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (string line in history)
+        foreach (DialogueEntry entry in history)
         {
-            GameObject text = Instantiate(historyTextPrefab, contentParent);
-            text.GetComponent<TextMeshProUGUI>().text = line;
+            CreateItem(entry.speaker, entry.dialogue);
         }
+
+        UpdateScroll();
+    }
+
+    // ============================
+    // CREAR ITEM VISUAL
+    // ============================
+    void CreateItem(string speaker, string dialogue)
+    {
+        GameObject item = Instantiate(historyTextPrefab, contentParent);
+
+        DialogueHistoryItem historyItem = item.GetComponent<DialogueHistoryItem>();
+
+        if (historyItem != null)
+        {
+            historyItem.Setup(speaker, dialogue);
+        }
+        else
+        {
+            Debug.LogError("❌ El prefab no tiene DialogueHistoryItem");
+        }
+    }
+
+    // ============================
+    // SCROLL AUTOMÁTICO
+    // ============================
+    void UpdateScroll()
+    {
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 0f;
+    }
+}
+
+// ============================
+// DATA STRUCT
+// ============================
+[System.Serializable]
+public class DialogueEntry
+{
+    public string speaker;
+    public string dialogue;
+
+    public DialogueEntry(string s, string d)
+    {
+        speaker = s;
+        dialogue = d;
     }
 }
