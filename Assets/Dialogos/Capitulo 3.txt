@@ -1,6 +1,6 @@
 @BG HabitacionSophie
-@MUSIC piano_suave
-@SPRITE Sophie neutral protagonista
+@MUSIC monologo
+@SPRITE Sophie camisonN protagonista
 
 Sophie: No he podido dormir bien desde el baile de la duquesa.
 
@@ -71,7 +71,7 @@ dinero | Esta es una oportunidad importante | dinero+2 sebastianpoints+1 theopoi
 @END
 
 @BG SalaCav
-@MUSIC piano_suave
+@MUSIC vals1
 @SPRITE Sophie neutral protagonista
 @SPRITE Lottie neutral derecha
 
@@ -133,7 +133,7 @@ Ruby: ¿Crees que ya hayan encontrado a quien cortejar?
 
 Sophie: Disculpenme, regreso en un momento.
 
-@BG SalaCav
+@BG ExteriorJardin
 @MUSIC piano_suave
 @SPRITE Sophie neutral protagonista
 
@@ -141,8 +141,6 @@ Sophie: La duquesa no puede enterarse sobre lo de mi padre
 
 Sophie: Si es asi, estare arruinada… y mi familia también
 
-Sophie: Si sospecha... estare arruinada
- 
 @SPRITE Theo neutral derecha
 
 Theo: Señorita Hastings
@@ -245,7 +243,7 @@ Theo: Tal vez luego, cuando sea más… apropiado
 Sophie: Adios su gracia
 
 @BG SalaCav
-@MUSIC piano_suave
+@MUSIC vals1
 @SPRITE Sophie neutral protagonista
 
 Sophie: Una visita del duque…
@@ -296,7 +294,7 @@ Ruby: Igualmente. ¿No es una velada encantadora su alteza?
 
 Sebastian: Claro
 
-//MUSICA COMIENZA A SUBIR
+@MUSIC valsprincipe
 
 Sebastian: Creo que podria ser aun más interesante…
 
@@ -506,8 +504,8 @@ Sophie: Lo haré su alteza
 Sebastian: Nos vemos pronto señorita Hastings 
 
 @BG HabitacionSophie
-@MUSIC piano_suave
-@SPRITE Sophie neutral protagonista
+@MUSIC monologo
+@SPRITE Sophie camisonN protagonista
 
 Sophie: No esperaba que la noche terminara de esta manera.
 Sophie: Dos visitas en tan poco tiempo…

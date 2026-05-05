@@ -1,6 +1,7 @@
 @BG HabitacionSophie
 @SFX TocToc
-@SPRITE Sophie noArete protagonista
+@MUSIC monologo
+@SPRITE Sophie camisonN protagonista
 
 Nathaniel: El carruaje está listo, Sophie. Es hora de irnos.
 
@@ -21,7 +22,7 @@ Nathaniel: ¡Sophie! ¡Llegaremos tarde!
 Sophie: ¡Voy!
 
 @BG SalonBaile
-@MUSIC vals_temporada
+@MUSIC vals1
 @SPRITE Sophie neutral protagonista
 @SPRITE Lottie neutral izquierda
 
@@ -279,6 +280,11 @@ dinero | Ravenshire es un título poderoso… | dinero+3 amor-1
 
 Sophie: Será un honor, su gracia.
 
+@BG SalonBaile
+@SPRITE Sophie neutral protagonista
+@MUSIC valscoqueto
+
+
 Theo: Escuché que tu debut fue todo un éxito.
 
 Sophie: Supongo... Aunque no he tenido suerte
@@ -341,7 +347,7 @@ Sophie: Igualmente su gracia.
 
 @BG ExteriorJardin
 @SPRITE Sophie neutral protagonista
-
+@MUSIC noche
 Sophie: La conversación con el duque ha sido...
 
 @CHOICE
@@ -356,7 +362,7 @@ Sophie: Solo espero...
 
 @SFX ramas
 @SPRITE Sophie asustada protagonista
-@SPRITE Sebastian neutral derecha
+@SPRITE Sebastian neutral izquierda
 
 Desconocido: La mayoría de los invitados suelen estar en el salón.
 
@@ -418,7 +424,7 @@ Sophie: Buenas noches.
 @GOTO despues_6
 
 @LABEL despues_6
-@BG SalonBaileCav
+@BG SalonBaile
 @SPRITE Sophie neutral protagonista
 @MUSIC vals_temporada
 @SPRITE Lottie neutral izquierda
@@ -492,8 +498,8 @@ Sophie: Sí, su alteza.
 Sebastian: Buenas noches.
 
 @BG HabitacionSophie
-@MUSIC piano_suave
-@SPRITE Sophie neutral protagonista
+@MUSIC monologo
+@SPRITE Sophie camisonN protagonista
 
 @SFX Suspiro
 

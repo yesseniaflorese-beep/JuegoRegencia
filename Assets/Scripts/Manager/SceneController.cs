@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour
     [Header("Capítulos en orden")]
     public List<string> capitulos;
 
-    private int currentChapter = 0;
+    public int currentChapter = 0;
 
     [Header("Escenas fijas")]
     public string menuScene = "MenuInicial";
@@ -54,6 +54,9 @@ public class SceneController : MonoBehaviour
     {
         currentChapter = 0;
 
+        PlayerPrefs.SetInt("CurrentChapter", currentChapter);
+        PlayerPrefs.Save();
+
         if (capitulos.Count > 0)
         {
             LoadSceneSafe(capitulos[currentChapter]);
@@ -70,6 +73,9 @@ public class SceneController : MonoBehaviour
     public void LoadNextChapter()
     {
         currentChapter++;
+
+        PlayerPrefs.SetInt("CurrentChapter", currentChapter);
+        PlayerPrefs.Save();
 
         if (currentChapter < capitulos.Count)
         {

@@ -828,7 +828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: 'capitulos.Array.data[3]'
@@ -837,6 +837,14 @@ PrefabInstance:
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: 'capitulos.Array.data[4]'
       value: Capitulo 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: 'capitulos.Array.data[5]'
+      value: Capitulo 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: 'capitulos.Array.data[6]'
+      value: Capitulo 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

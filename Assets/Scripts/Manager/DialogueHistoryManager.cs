@@ -12,13 +12,25 @@ public class DialogueHistoryManager : MonoBehaviour
     public GameObject historyTextPrefab;
     public ScrollRect scrollRect;
 
-    // ✅ Guardado correcto (NO string)
+    // Guardado del historial
     private List<DialogueEntry> history = new List<DialogueEntry>();
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         historyPanel.SetActive(false);
+
+        // Cargar historial automáticamente
+        LoadHistory();
     }
 
     // ============================
@@ -28,7 +40,10 @@ public class DialogueHistoryManager : MonoBehaviour
     {
         history.Add(new DialogueEntry(speaker, dialogue));
 
-        // 🔥 Si el panel está abierto → agregar en tiempo real
+        // Guardar inmediatamente
+        SaveHistory();
+
+        // Si el panel está abierto → agregar en tiempo real
         if (historyPanel.activeSelf)
         {
             CreateItem(speaker, dialogue);
@@ -75,7 +90,8 @@ public class DialogueHistoryManager : MonoBehaviour
     {
         GameObject item = Instantiate(historyTextPrefab, contentParent);
 
-        DialogueHistoryItem historyItem = item.GetComponent<DialogueHistoryItem>();
+        DialogueHistoryItem historyItem =
+            item.GetComponent<DialogueHistoryItem>();
 
         if (historyItem != null)
         {
@@ -94,6 +110,87 @@ public class DialogueHistoryManager : MonoBehaviour
     {
         Canvas.ForceUpdateCanvases();
         scrollRect.verticalNormalizedPosition = 0f;
+    }
+
+    // ============================
+    // GUARDAR HISTORIAL
+    // ============================
+    private void SaveHistory()
+    {
+        List<string> saveLines = new List<string>();
+
+        foreach (DialogueEntry entry in history)
+        {
+            string line = entry.speaker + "||" + entry.dialogue;
+            saveLines.Add(line);
+        }
+
+        string finalSave = string.Join("##", saveLines);
+
+        PlayerPrefs.SetString("DialogueHistory", finalSave);
+        PlayerPrefs.Save();
+
+        Debug.Log("✅ Historial guardado");
+    }
+
+    // ============================
+    // CARGAR HISTORIAL
+    // ============================
+    public void LoadHistory()
+    {
+        history.Clear();
+
+        if (!PlayerPrefs.HasKey("DialogueHistory"))
+            return;
+
+        string saved = PlayerPrefs.GetString("DialogueHistory");
+
+        if (string.IsNullOrEmpty(saved))
+            return;
+
+        string[] entries = saved.Split(
+            new string[] { "##" },
+            System.StringSplitOptions.None
+        );
+
+        foreach (string entry in entries)
+        {
+            if (string.IsNullOrWhiteSpace(entry))
+                continue;
+
+            string[] parts = entry.Split(
+                new string[] { "||" },
+                System.StringSplitOptions.None
+            );
+
+            if (parts.Length < 2)
+                continue;
+
+            string speaker = parts[0];
+            string dialogue = parts[1];
+
+            history.Add(new DialogueEntry(speaker, dialogue));
+        }
+
+        Debug.Log("✅ Historial cargado");
+    }
+
+    // ============================
+    // BORRAR HISTORIAL
+    // ============================
+    public void ClearHistory()
+    {
+        history.Clear();
+
+        foreach (Transform child in contentParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        PlayerPrefs.DeleteKey("DialogueHistory");
+        PlayerPrefs.Save();
+
+        Debug.Log("🗑 Historial eliminado");
     }
 }
 

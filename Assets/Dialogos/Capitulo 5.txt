@@ -170,8 +170,8 @@ Sebastian: Nos vemos luego señorita Hastings.
 Sophie: Adiós su alteza.
 
 @BG HabitacionSophie
-@MUSIC piano_suave
-@SPRITE Sophie neutral protagonista
+@MUSIC monologo
+@SPRITE Sophie camisonN protagonista
 
 Sophie: Ha sido un dia tan agotador…
 
@@ -183,11 +183,15 @@ Sophie: Ambos mostraron interés y yo…
 
 Sophie: ¡No se que hacer!
 
-Sophie: El duque se ha portado como todo un caballero conmigo, disfruto nuestras charlas, es amable, encantador….
+Sophie: El duque se ha portado como todo un caballero conmigo
+
+Sophie: disfruto nuestras charlas, es amable, encantador….
 
 Sophie: Pero el príncipe…
 
-Sophie: Parece un hombre determinado, es amable y apesar de hablar con acertijos me siento atraída a descifrarlos, por no mencionar que su compañía me parece de lo más agradable
+Sophie: Parece un hombre determinado, es amable y apesar de hablar con acertijos me siento atraída a descifrarlos
+
+Sophie: por no mencionar que su compañía me parece de lo más agradable
 
 Sophie: Sin embargo, tengo que tomar una decision.
 
@@ -206,11 +210,11 @@ Sophie: Si sigo dudando, terminaré perdiendo a ambos.
 Sophie: Y eso sería peor.
 
 @CHOICE
-duque | Elegir al duque | routeTheo+1 
-principe | Elegir al principe | routeSebastian+1 
+duque | Elegir al duque | routetheo+1 
+principe | Elegir al principe | routesebastian+1 
 @END
 
-@IF routeTheo == 1
+@IF routetheo == 1
 
 Sophie: El duque ha sido sincero conmigo desde el inicio.
 
@@ -222,8 +226,8 @@ Sophie: Tal vez… él es la persona correcta.
 
 Sophie: Debo hablar con él en la próxima velada.
 
-@end
-@IF routeSebastian == 1
+@ENDIF
+@IF routesebastian == 1
 
 Sophie: El príncipe entiende mis pensamientos.
 
@@ -235,4 +239,6 @@ Sophie: Tal vez… él es la persona correcta.
 
 Sophie: Debo hablar con él en la próxima velada.
 
-@end
+@ENDIF
+
+

@@ -12,7 +12,7 @@ public class DialogueSystem : MonoBehaviour
 
     private List<string> lines;
     private Dictionary<string, int> labels = new Dictionary<string, int>();
-    private int index = 0;
+    public int index = 0;
 
     public bool dialogueFinished => lines != null && index >= lines.Count;
 
@@ -318,4 +318,60 @@ public class DialogueSystem : MonoBehaviour
             index++;
         }
     }
+    public void RestoreDialoguePosition()
+    {
+        if (lines == null || lines.Count == 0)
+            return;
+
+        index = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
+
+        Debug.Log("✅ Diálogo restaurado en línea: " + index);
+    }
+
+    public void RestoreVisualState()
+{
+    if (lines == null || lines.Count == 0)
+        return;
+
+    int savedIndex = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
+
+    for (int i = 0; i < savedIndex; i++)
+    {
+        string line = lines[i].Trim();
+
+        if (line.StartsWith("@BG"))
+        {
+            string bgName = line.Replace("@BG", "").Trim();
+            BackgroundManager.instance.ChangeBackground(bgName);
+        }
+
+        else if (line.StartsWith("@SPRITE"))
+        {
+            string[] parts = line.Split(' ');
+
+            if (parts.Length >= 4)
+            {
+                SpriteManager.instance.ShowSprite(
+                    parts[1],
+                    parts[2],
+                    parts[3]
+                );
+            }
+        }
+
+        else if (line.StartsWith("@MUSIC"))
+        {
+            string musicName = line.Replace("@MUSIC", "").Trim();
+            AudioManager.instance.PlayMusic(musicName);
+        }
+
+        else if (line.StartsWith("@SFX"))
+        {
+            string sfxName = line.Replace("@SFX", "").Trim();
+            AudioManager.instance.PlaySFX(sfxName);
+        }
+    }
+
+    Debug.Log("✅ Estado visual restaurado");
+}
 }

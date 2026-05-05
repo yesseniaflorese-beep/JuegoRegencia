@@ -683,7 +683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -730.99994, y: -351}
+  m_AnchoredPosition: {x: -751, y: -351}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &813076212300054492
@@ -2861,7 +2861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: e7478c8ce53821f4bbe65ad574207ae8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3318,6 +3318,7 @@ MonoBehaviour:
   dialogueFile: {fileID: 4900000, guid: 31cb390dfb0e56c47ad477e48ca1ad5c, type: 3}
   waitingForChoice: 0
   currentChoices: []
+  index: 0
 --- !u!1 &6741262401223846771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,6 +3619,9 @@ MonoBehaviour:
   musicClips: []
   sfxNames: []
   sfxClips: []
+  iconoSonido: {fileID: 0}
+  iconoActivo: {fileID: 0}
+  iconoMute: {fileID: 0}
 --- !u!1 &7254872507815467827
 GameObject:
   m_ObjectHideFlags: 0
@@ -4398,8 +4402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e14150382b9744bb95dff2067c0eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
-  leftImage: {fileID: 2119760605779242430}
-  rightImage: {fileID: 2788007595061796150}
+  sceneSlots: []
   characters:
   - characterName: Sophie
     expressions:

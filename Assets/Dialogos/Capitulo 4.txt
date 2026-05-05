@@ -1,6 +1,6 @@
 @BG HabitacionSophie
-@MUSIC piano_suave
-@SPRITE Sophie neutral protagonista
+@MUSIC monologo
+@SPRITE Sophie camisonN protagonista
 
 Sophie: La visita de el duque es hoy
 Sophie: Debo mantener la calma
@@ -20,8 +20,6 @@ Sophie: Nathaniel, ¿ocurre algo?
 Nathaniel: El duque ha llegado.
 
 Sophie: ¿Tan pronto? En un momento bajo.
-
-MINIJUEGO
 
 @BG SalaHastings
 @SPRITE Theo neutral derecha

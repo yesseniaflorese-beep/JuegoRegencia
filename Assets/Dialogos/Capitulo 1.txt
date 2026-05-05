@@ -1,5 +1,5 @@
 @BG ExteriorNoche
-@MUSIC vals1
+@MUSIC tranquilo
 
 @SPRITE Sophie neutral protagonista
 @SPRITE Nathaniel neutral derecha
@@ -12,7 +12,6 @@ Nathaniel: Y aun así fuiste una de las favoritas en la ceremonia de debut esta 
 @SPRITE Sophie enojada protagonista
 Sophie: Ni me lo menciones.
 
-@SFX grito
 Nathaniel: Tal vez, en el fondo, esto es lo que deseas.
 Nathaniel: ¿No es lo que hacen todas las chicas de tu edad?
 
@@ -23,6 +22,9 @@ Nathaniel: Vamos, no querrás perderte ningún baile.
 @BG SalonBaile
 @SPRITE Sophie neutral protagonista
 @SPRITE Ruby neutral izquierda
+@SFX transicion
+
+@MUSIC vals1
 Rosamund Ashbourne: ¡Estuviste fabulosa hoy, Sophie!
 
 @SPRITE Lottie neutral derecha
@@ -60,6 +62,7 @@ Lady Georgiana Sinclair: Interesante respuesta…
 Rosamund Ashbourne: Veremos qué trae esta temporada.
 
 @BG SalaHastings
+@SFX transicion
 @SPRITE Nathaniel neutral derecha
 Nathaniel: ¿Cómo estuvo el baile, Sophie? Varios hombres parecían interesados en ti.
 
@@ -70,13 +73,13 @@ Nathaniel: ¿Qué ocurre?
 
 Sophie: Es solo que…
 
+@SFX quejido
 @SPRITE Sophie alarmada protagonista
 Sophie: ¿Escucharon eso?
 
-@SFX grito
-
 Desconocido: ¡Ahhg!
 
+@SFX gasp
 @SPRITE Nathaniel preocupado derecha
 Nathaniel: ¡Padre!
 
@@ -141,7 +144,7 @@ Barón Hastings: Hasta el final de la temporada.
 Sophie: Cinco meses…
 
 @BG HabitacionSophie
-@SPRITE Sophie pensativa protagonista
+@SPRITE Sophie camisonN protagonista
 Sophie: Cinco meses…
 Sophie: Cinco meses para salvar el apellido Hastings.
 Sophie: Mi dote…
@@ -154,12 +157,13 @@ Sophie: Pero si actúo…
 Sophie: Puedo elegir.
 Sophie: Podría casarme… Buscar al mejor postor y saldar las deudas
 
-@SPRITE Sophie confudida protagonista
+@SPRITE Sophie camisonN protagonista
 Sophie: Aunque eso esté en contra de todo lo que he buscado 
 Sophie: Un matrimonio sin amor…
 Sophie: Una vida cómoda… pero vacía.
 Sophie: O quizá…
-@SPRITE Sophie pensativa protagonista
+
+@SPRITE Sophie camisonN protagonista
 Sophie: Si voy a casarme… podría hacerlo por algo más que dinero.
 Sophie: Tal vez aún exista alguien que vea en mí algo más que una dote perdida.
 Sophie: Pero también existe otra opción.
@@ -172,7 +176,7 @@ Sophie: Podría dejar de jugar con reglas que nunca escribí.
 Sophie: Mi padre jugó mal sus cartas.
 Sophie: Yo no lo haré.
 
-@SPRITE Sophie neutral protagonista
+@SPRITE Sophie camisonN protagonista
 
 @CHOICE
 amor | Si he de casarme…buscare algo auténtico. | amor+5 dinero-3
