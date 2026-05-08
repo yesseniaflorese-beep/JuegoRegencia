@@ -92,15 +92,21 @@ public class AudioManager : MonoBehaviour
     }
 
     // 🔁 Toggle desde botón
-    public void ToggleSonido()
+public void ToggleSonido()
+{
+    sonidoActivo = !sonidoActivo;
+
+    if (sonidoActivo)
     {
-        sonidoActivo = !sonidoActivo;
-
-        musicSource.mute = !sonidoActivo;
-        sfxSource.mute = !sonidoActivo;
-
-        ActualizarIcono();
+        AudioListener.volume = 1f;
     }
+    else
+    {
+        AudioListener.volume = 0f;
+    }
+
+    ActualizarIcono();
+}
 
     // 🔄 Cambiar icono
     void ActualizarIcono()

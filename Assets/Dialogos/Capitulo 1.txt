@@ -30,6 +30,8 @@ Rosamund Ashbourne: ¡Estuviste fabulosa hoy, Sophie!
 @SPRITE Lottie neutral derecha
 Lady Charlotte Wentworth: A este punto serás la primera de la temporada en conseguir esposo.
 
+@SPRITE Sophie sonrojada protagonista
+
 Sophie: Tampoco es que sea tan especial.
 
 Rosamund Ashbourned: Sí que lo es. No todas logran cautivar sin esfuerzo.
@@ -40,6 +42,8 @@ Sophie: Mi padre solo quiere que todo salga bien.
 
 Rosamund Ashbourne: Y saldrá, querida.
 Rosamund Ashbourne: Eres joven, bonita y… muy conveniente.
+
+@SPRITE Sophie neutral protagonista
 
 Sophie: …
 
@@ -74,7 +78,7 @@ Nathaniel: ¿Qué ocurre?
 Sophie: Es solo que…
 
 @SFX quejido
-@SPRITE Sophie alarmada protagonista
+@SPRITE Sophie sorpresa protagonista
 Sophie: ¿Escucharon eso?
 
 Desconocido: ¡Ahhg!
@@ -83,7 +87,7 @@ Desconocido: ¡Ahhg!
 @SPRITE Nathaniel preocupado derecha
 Nathaniel: ¡Padre!
 
-@SPRITE Sophie preocupada protagonista
+@SPRITE Sophie triste protagonista
 Sophie: ¡Oh, padre! ¿Qué ha sucedido?
 
 @SPRITE BaronHastings dolor izquierda
@@ -106,14 +110,14 @@ Barón Hastings: Lo hemos perdido todo.
 
 Nathaniel: Pero… habías dicho que estaba bajo control…
 
-@SPRITE Sophie confudida protagonista
+@SPRITE Sophie neutral protagonista
 Sophie: ¿De qué están hablando?
 Sophie: ¿Tú sabías algo, Nathaniel?
 
 @SPRITE Nathaniel neutral derecha
 Nathaniel: …
 
-@SPRITE Sophie enfadada protagonista
+@SPRITE Sophie enojada protagonista
 Sophie: ¡Digan algo! ¿Qué me están ocultando?
 
 Nathaniel: No te preocupes, Sophie. Lo resolveremos.
@@ -126,7 +130,7 @@ Sophie: Y esta vez… quiero toda la verdad.
 Barón Hastings: Aposté todo lo que nos quedaba.
 Barón Hastings: Tu dote… la casa… todo.
 
-@SPRITE Sophie preocupada protagonista
+@SPRITE Sophie sorpresa protagonista
 Sophie: …¿Mi dote?
 Sophie: ¿Apostaste… mi dote?
 
@@ -140,11 +144,11 @@ Nathaniel: ¿Cuánto tiempo?
 
 Barón Hastings: Hasta el final de la temporada.
 
-@SPRITE Sophie pensativa protagonista
+@SPRITE Sophie triste protagonista
 Sophie: Cinco meses…
 
 @BG HabitacionSophie
-@SPRITE Sophie camisonN protagonista
+@SPRITE Sophie camisonT protagonista
 Sophie: Cinco meses…
 Sophie: Cinco meses para salvar el apellido Hastings.
 Sophie: Mi dote…

@@ -9,6 +9,8 @@ Sophie: ¡En un momento bajo!
 
 Sophie: Hoy es mi gran oportunidad… el baile de la duquesa de Cavendish.
 
+@SPRITE Sophie camisonF protagonista
+
 Sophie: Si todo sale bien, los problemas de esta familia podrían resolverse más pronto de lo que imagino.
 
 Sophie: Solo tengo que encontrar…
@@ -38,17 +40,23 @@ Lady Rosamund Ashbourne: Yo escuché algo aún más interesante.
 
 Lady Rosamund Ashbourne: Parece que el príncipe Sebastian honrará el baile con su presencia esta noche.
 
+@SPRITE Sophie sorpresa protagonista
+
 Sophie: ¿El príncipe?
 
 Lady Rosamund Ashbourne: Eso dijo mi padre. Lo vieron llegar al palacio esta mañana.
 
 Lady Charlotte Wentworth: ¿Y qué te hace pensar que vendrá aquí?
 
+@SPRITE Sophie neutral protagonista
+
 Lady Rosamund Ashbourne: La duquesa de Cavendish suele conseguir lo que quiere.
 
 Lady Rosamund Ashbourne: Y este es uno de los bailes más importantes de la temporada.
 
 Lady Rosamund Ashbourne: Sería extraño que alguien de importancia decidiera perdérselo.
+
+@SPRITE Sophie sorpresa protagonista
 
 Sophie: ¿Por qué tanto revuelo?
 
@@ -59,6 +67,8 @@ Lady Charlotte Wentworth: ¿O el duque?
 @SPRITE Nathaniel neutral derecha
 
 Nathaniel: Buenas noches, señoritas.
+
+@SPRITE Sophie sorpresa protagonista
 
 Sophie: Oh, Nathaniel… ¿Sabes qué sucede?
 
@@ -93,6 +103,8 @@ Nathaniel: Sophie… Su Gracia, Theodore Ellington.
 
 Nathaniel: Duque de Ravenshire.
 
+@SPRITE Sophie feliz protagonista
+
 Sophie: Es un honor conocerlo, su gracia.
 
 Theo: Señorita Hastings…
@@ -101,11 +113,15 @@ Theo: Su hermano y yo compartimos estudios durante un tiempo.
 
 Nathaniel: Theo heredó su título antes de lo previsto.
 
+@SPRITE Sophie triste protagonista
+
 Sophie: Lo siento mucho.
 
 Theo: No es necesario.
 
 Theo: Tarde o temprano… el deber siempre alcanza a uno.
+
+@SPRITE Sophie neutral protagonista
 
 @CHOICE
 amor | Nadie debería cargar con todo eso solo… | amor+7 theopoints+5| amor_resp_1
@@ -119,10 +135,16 @@ Theo: Agradezco que lo vea de esa forma, señorita Hastings.
 Sophie: Si necesita algo, lo que sea mi hermano y yo estaremos para usted
 Sophie: ¿verdad Nathaniel?
 Nathaniel: Claro, su gracia me ayudo bastante cuando madre fallecio
+
+@SPRITE Sophie sorpresa protagonista
+
 Sophie: ¿De verdad?
 Theo: No fue nada.
 Nathaniel: Esta siendo modesto.
 Sophie: Aveces es bueno recibir el credito de nuestras acciones su gracia.
+
+@SPRITE Sophie feliz protagonista
+
 Sophie: Valoro mucho lo que hizo por mi hermano
 Theo: No hay de que.
 
@@ -138,7 +160,14 @@ dinero | Ravenshire es un título poderoso… | dinero+3 amor-1
 
 Sophie: Será un honor, su gracia.
 
+@BG SalonBaile
+@SPRITE Sophie neutral protagonista
+@SPRITE Theo neutral izquierda
+@MUSIC valscoqueto
+
 Theo: Escuché que tu debut fue todo un éxito.
+
+@SPRITE Sophie triste protagonista
 
 Sophie: Supongo... Aunque no he tenido suerte
 
@@ -151,6 +180,8 @@ Sophie: Hubo un caballero bastante mayor…
 Sophie: Y otro cuya reputación sugiere que aprecia más las fortunas que a las esposas.
 
 Theo: Entonces eres selectiva.
+
+@SPRITE Sophie neutral protagonista
 
 Sophie: Prefiero pensar que soy prudente.
 
@@ -202,6 +233,7 @@ Theo: Una respuesta prudente.
 
 
 @LABEL dinero_resp_3
+
 Sophie: Ver las necesidades como condena es extremista
 Sophie: Entiendo que hay necesidades que pueden limitarnos, pero siempre podemos decidir ¿No?
 Theo: Hay necesidades que no podemos ignorar
@@ -211,6 +243,10 @@ Theo: ¿Terca?
 Nathaniel: Si
 Nathaniel: Ya veo 
 
+@SPRITE Sophie enojada protagonista
+
+
+
 @CHOICE
 amor | Disculparse de manera sincera | reputacion+2 theopoints+2 | amor_resp_4
 reputacion | Disculparse | reputacion+2 theopoints+1 | rep_resp_4
@@ -218,16 +254,19 @@ dinero | Mantener postura | dinero-2 reputacion-1 theopoints-1 | dinero_resp_4
 @END
 
 @LABEL amor_resp_4
+@SPRITE Sophie sonrojada protagonista
 Sophie: Le ofrezco una sincera disculpa su gracia... me deje llevar por la emoción del momento
 Theo: No se preocupe, a todos nos pasa, me alegro que sea capaz de reconocerlo, eso habla muy bien de usted
 @GOTO despues_1
 
 @LABEL rep_resp_4
+@SPRITE Sophie sonrojada protagonista
 Sophie: Lo siento su gracia.
 Theo: No se preocupe.
 @GOTO despues_1
 
 @LABEL dinero_resp_4
+@SPRITE Sophie sonrojada protagonista
 Sophie: ...
 Theo: Aun asi...
 
@@ -268,6 +307,7 @@ Theo: Interesante punto de vista.
 //FIN DINERO
 
 @LABEL despues_1
+@SPRITE Sophie neutral protagonista
 Theo: Señorita Hastings…
 
 Theo: ¿Me concedería este baile?
@@ -278,10 +318,13 @@ reputacion | Esta es una oportunidad que no puedo ignorar. | reputacion+4 dinero
 dinero | Ravenshire es un título poderoso… | dinero+3 amor-1
 @END
 
+@SPRITE Sophie feliz protagonista
+
 Sophie: Será un honor, su gracia.
 
 @BG SalonBaile
 @SPRITE Sophie neutral protagonista
+@SPRITE Theo neutral izquierda
 @MUSIC valscoqueto
 
 
@@ -316,6 +359,9 @@ Theo: Tal vez.
 Theo: ¿Y usted?
 
 Theo: ¿Qué busca esta noche, señorita Hastings?
+
+@SPRITE Sophie sorpresa protagonista
+
 @GOTO despues_5
 
 @LABEL despues_5
@@ -326,22 +372,26 @@ dinero | Asegurar el futuro de mi familia. | dinero+3 ambicion+1 | dinero_resp
 @END
 
 @LABEL amor_resp
+@SPRITE Sophie sonrojada protagonista
 Sophie: Puede que yo también esté buscando algo en específico.
 Theo: Entonces espero ser parte de aquello que busca.
 @GOTO despues
 
 @LABEL rep_resp
+@SPRITE Sophie neutral protagonista
 Sophie: A cumplir con mi deber, supongo.
 Theo: El deber suele ser una razón poderosa.
 @GOTO despues
 
 @LABEL dinero_resp
+@SPRITE Sophie neutral protagonista
 Sophie: A asegurar el futuro de mi familia.
 Theo: Una motivación bastante sensata.
 @GOTO despues
 
 @LABEL despues
 //MUSICA BAJA
+@SPRITE Sophie neutral protagonista
 Theo: Ha sido un placer conocerla señorita Hastings
 Sophie: Igualmente su gracia.
 
@@ -361,10 +411,12 @@ Sophie: Puede que Lottie tuviera razón después de todo y el duque si está bus
 Sophie: Solo espero...
 
 @SFX ramas
-@SPRITE Sophie asustada protagonista
+@SPRITE Sophie sorpresa protagonista
 @SPRITE Sebastian neutral izquierda
 
 Desconocido: La mayoría de los invitados suelen estar en el salón.
+
+@SPRITE Sophie sonrojada protagonista
 
 Sophie: Lo siento, no sabía que había alguien más aquí.
 Desconocido: No tiene por qué disculparse.
@@ -426,11 +478,14 @@ Sophie: Buenas noches.
 @LABEL despues_6
 @BG SalonBaile
 @SPRITE Sophie neutral protagonista
-@MUSIC vals_temporada
+@MUSIC vals1
 @SPRITE Lottie neutral izquierda
 
 Lady Charlotte Wentworth: ¡Sophie! ¿Dónde estabas?
 Lady Charlotte Wentworth: ¡Todos están hablando de tu baile con el duque!
+
+@SPRITE Sophie preocupada protagonista
+
 Lady Charlotte Wentworth: ¿De qué hablaron?
 Sophie: Nosotros…
 
@@ -440,6 +495,9 @@ Sophie: Nosotros…
 Lady Charlotte Wentworth: ¡Mira! ¡El príncipe ha llegado!
 Sophie: ¿De verdad?
 Lady Charlotte Wentworth: ¡Viene hacia acá!
+
+@SPRITE Sophie sorpresa protagonista
+
 Sophie: Ese es…
 
 @SPRITE Sebastian neutral derecha
@@ -461,6 +519,8 @@ Lady Charlotte Wentworth: ¿Ya se conocían?
 Sophie: Nosotros…
 
 Sebastian: Coincidimos brevemente en el jardín.
+
+@SPRITE Sophie neutral protagonista
 Sophie: …
 
 Sebastian: Fue una conversación breve.
@@ -472,15 +532,11 @@ Lady Charlotte Wentworth: Su alteza es muy considerado.
 
 Sebastian: Es mi deber.
 
-Sophie: …
-
 Lady Charlotte Wentworth: ¿Su alteza ha disfrutado del baile?
 
 Sebastian: Sí.
 
 Sebastian: Debo admitir que la temporada promete ser… interesante.
-
-Sophie: …
 
 Lady Charlotte Wentworth: ¡Oh! Su alteza debería conocer al duque de Ravenshire.
 
@@ -499,7 +555,7 @@ Sebastian: Buenas noches.
 
 @BG HabitacionSophie
 @MUSIC monologo
-@SPRITE Sophie camisonN protagonista
+@SPRITE Sophie camisonSor protagonista
 
 @SFX Suspiro
 
@@ -512,4 +568,7 @@ reputacion | Su presencia puede distraer a la duquesa | reputacion+5
 dinero | Sin duda resolverian mis problemas | dinero+5
 @END
 
+@SPRITE Sophie camisonN protagonista
+
 Sophie: Debería descansar, ha sido un día largo. 
+
