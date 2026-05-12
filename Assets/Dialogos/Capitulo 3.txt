@@ -82,11 +82,15 @@ Lottie: La verdad... ¿Puedo ser sincera contigo, Sophie?
 Sophie: ¡Claro!
 Lottie: Hay una... una persona a la que he estado viendo.
 Lottie: Creo que estoy enamorada.
+
+@SPRITE Sophie feliz protagonista
+
 Sophie: ¡Qué felicidad escuchar eso, Lottie!
 Sophie: Entonces, ¿por qué estás preocupada?
 Lottie: Es un buen hombre, de familia decente, pero no lo suficiente para que mis padres lo aprueben.
 Lottie: ¿Qué debería hacer?
 
+@SPRITE Sophie neutral protagonista
 @CHOICE
 amor | Si realmente se aman, superarán cualquier obstáculo | amor+5 dinero-3
 reputacion | Deberías ser cautelosa y pensar antes de actuar por impulso | reputacion+5 amor-1
@@ -107,6 +111,8 @@ Sophie: ¿Tan influyente es?
 
 Lottie: Mucho más de lo que imaginas.
 
+@SPRITE Sophie sorpresa protagonista
+
 Lottie: Si la duquesa decide que alguien no es adecuado para la temporada…
 
 Lottie: Esa persona prácticamente desaparece de la sociedad.
@@ -122,6 +128,8 @@ Lottie: Es una evaluación.
 @SPRITE Ruby emocionada derecha
 
 Ruby: Creo que ya llegaron.
+
+@SPRITE Sophie neutral protagonista
 
 Sophie: ¿Quién?
 
@@ -141,16 +149,18 @@ Sophie: La duquesa no puede enterarse sobre lo de mi padre
 
 Sophie: Si es asi, estare arruinada… y mi familia también
 
-@SPRITE Theo neutral derecha
+@SPRITE Theo sonriente derecha
 
 Theo: Señorita Hastings
 
 Sophie: ¡Theo!
 
+@SPRITE Theo neutral derecha
 Theo: Lamento interrumpirle
 
 Sophie: Descuide su gracia, no estaba haciendo nada importante
 
+@SPRITE Theo sonriente derecha
 Theo: ¿Segura?
 
 @CHOICE
@@ -165,6 +175,7 @@ Theo: He querido hablar con usted desde desde el baile
 
 Sophie: ¿En serio?
 
+@SPRITE Theo neutral derecha
 Theo: Si, pero los deberes de mi apresurado título me lo han impedido.
 
 Theo: Una disculpa 
@@ -191,6 +202,7 @@ Sophie: Entiendo, no tiene por qué disculparse
 @ENDIF
 
 @IF theopoints >= 5
+@SPRITE Theo sonrojado derecha
 Theo: Quería decirle que aquella noche…
 Theo: la pase bastante bien
 @ENDIF
@@ -211,11 +223,13 @@ dinero | Una visita del duque sería muy útil | dinero+2 ambicion+2 theopoints-
 
 Sophie: Sería un honor su gracia.
 
+@SPRITE Theo sonriente derecha
 Theo: Espléndido, hablaré con su hermano, hasta entonces
 Theo: Disfrute la velada señorita Hastings. 
 @ENDIF
 
 @IF theopoints < 5
+@SPRITE Theo neutral derecha
 Theo: Su hermano me ha propuesto visitarla...
 Sohie: ¿En serio? 
 Sophie: No tiene que hacerlo si no quiere su gracia... Mi hermano tambien es terco
@@ -236,6 +250,8 @@ Theo: Disfrute la velada señorita Hastings.
 @IF amor > reputacion
 @IF amor > dinero
 Sophie: Puedes llamarme Sophie.
+
+@SPRITE Theo sonriente derecha
 Theo: Tal vez luego, cuando sea más… apropiado
 @ENDIF
 @ENDIF
@@ -250,6 +266,7 @@ Sophie: Una visita del duque…
 
 @IF amor > reputacion
 @IF amor > dinero
+@SPRITE Sophie feliz protagonista
 Sophie: Que emocionante
 Sophie: Si todo sale bien… puede que mis problemas estén resueltos antes de lo esperado
 @ENDIF
@@ -257,12 +274,14 @@ Sophie: Si todo sale bien… puede que mis problemas estén resueltos antes de l
 
 @IF reputacion > amor
 @IF reputacion > dinero
+@SPRITE Sophie feliz protagonista
 Sophie: Esto si que impresionara a la duquesa de Cavendish
 @ENDIF
 @ENDIF
 
 @IF dinero > amor
 @IF dinero > reputacion
+@SPRITE Sophie feliz protagonista
 Sophie: Esto podría ayudar mucho a la situación de mi familia
 @ENDIF
 @ENDIF
@@ -271,6 +290,8 @@ Sophie: Esto podría ayudar mucho a la situación de mi familia
 @SPRITE Sebastian neutral derecha
 
 Sebastian: Señorita Hastings
+
+@SPRITE Sophie sorpresa protagonista
 
 Sophie: Su alteza, que honor
 
@@ -288,6 +309,9 @@ Sebastian: ¿Es amiga de la señorita Hastings?
 
 Ruby: ¡Claro!
 
+@SPRITE Sophie neutral protagonista
+
+@SPRITE Sebastian feliz derecha
 Sebastian: Encantado de conocerla entonces.
 
 Ruby: Igualmente. ¿No es una velada encantadora su alteza?
@@ -296,6 +320,7 @@ Sebastian: Claro
 
 @MUSIC valsprincipe
 
+@SPRITE Sebastian neutral derecha
 Sebastian: Creo que podria ser aun más interesante…
 
 Sebastian: Señorita Hastings, ¿Me permite el primer baile?
@@ -306,6 +331,7 @@ reputacion | No puedo rechazar al principe  | reputacion+2 sebastianpoints+4
 dinero | Es una oportunidad que no puedo rechazar | dinero+2 sebastianpoints+3
 @END
 
+@SPRITE Sophie feliz protagonista
 Sophie: Encantada su alteza.
 
 @BG SalonBaileCav
@@ -317,7 +343,11 @@ Sebastian: ¿Cómo ha estado señorita Hastings?
 
 Sophie: Bien, su alteza. 
 
+@SPRITE Sebastian feliz derecha
 Sebastian: Me alegra escuchar eso.
+
+@SPRITE Sebastian neutral derecha
+
 Sebastian: La temporada suele ser abrumadora para algunas personas
 Sebastian: ¿No lo cree señorita Hastings?
 
@@ -343,13 +373,18 @@ dinero | No dar muchos detalles | dinero+2 sebastianpoints+1 | dinero_resp_2
 @END
 
 @LABEL amor_resp_2
+@SPRITE Sophie triste protagonista
 Sophie: Las personas esperan mucho de mi...
+@SPRITE Sophie neutral protagonista
 Sophie: Solo espero no decepcionarlos
 
 Sebastian: Y no lo hara, estoy seguro.
+
+@SPRITE Sophie sonrojada protagonista
 Sophie: Usted también tiene altas expectativas sobre mi su alteza
 Sebastian: Estoy siendo sincero señorita Hastings
 Sebastian: Soy una persona observadora
+
 Sophie:...
 @GOTO despues_1
 
@@ -392,7 +427,12 @@ Sohie: Solo soy sensata...
 
 @LABEL despues_1
 
+@SPRITE Sophie neutral protagonista
+@SPRITE Sebastian enojado derecha
+
 Sebastian: La he visto hablando con el duque…
+
+@SPRITE Sebastian neutral derecha
 Sebastian: Parece disfrutar particularmente su compañia.
 
 Sophie: Solo está siendo amable… eso es todo
@@ -453,40 +493,51 @@ Sophie: ¿Prudente para usted o para mí?
 
 Sebastian: Para ambos.
 
+@SPRITE Sophie sonrojada protagonista
+
 Sophie: …
 
 Sophie: Su alteza tiene una forma bastante inquietante de hablar.
 
 Sebastian: Me lo han dicho antes.
 
+@SPRITE Sophie neutral protagonista
 Sophie: ¿Siempre habla en acertijos?
 
 Sebastian: Solo cuando la respuesta es demasiado obvia.
 
+@SPRITE Sophie sonrojada protagonista
 Sophie: …
 
 Sebastian: El duque parece bastante interesado en usted.
 
+@SPRITE Sophie neutral protagonista
 Sophie: Ya ha mencionado eso antes.
 
 Sebastian: Porque es evidente.
 
+@SPRITE Sophie feliz protagonista
 Sophie: ¿Le molesta, su alteza?
 
 Sebastian: No.
 
 Sebastian: Puede que este haciendo la pregunta a la persona incorrecta
 
+@SPRITE Sophie neutral protagonista
 Sophie: No entiendo a qué se refiere, su alteza.
 
 Sebastian: ¿No?
 
 Sebastian: El duque no ha apartado la mirada desde que comenzó el baile.
 
+@SPRITE Sophie sorpresa protagonista
+
 Sophie: Ha dicho que me visitará…
+@SPRITE Sophie sonrojada protagonista
 
 Sebastian: Yo tambien lo hare
 
+@SPRITE Sophie sorpresa protagonista
 Sophie: ¿Disculpe?
 
 Sebastian: Yo tambien la visitare

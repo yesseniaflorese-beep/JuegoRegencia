@@ -64,7 +64,7 @@ Lady Rosamund Ashbourne: ¿Será el príncipe?
 
 Lady Charlotte Wentworth: ¿O el duque?
 
-@SPRITE Nathaniel neutral derecha
+@SPRITE Nathaniel feliz derecha
 
 Nathaniel: Buenas noches, señoritas.
 
@@ -90,6 +90,8 @@ Nathaniel: Ya lo verás.
 
 Sophie: ¿Por qué tanto misterio?
 
+@SPRITE Nathaniel feliz derecha
+
 Nathaniel: ¡Theo! Creí que no asistirías esta temporada.
 
 @SPRITE Theo neutral izquierda
@@ -111,11 +113,15 @@ Theo: Señorita Hastings…
 
 Theo: Su hermano y yo compartimos estudios durante un tiempo.
 
+@SPRITE Nathaniel neutral derecha
+
 Nathaniel: Theo heredó su título antes de lo previsto.
 
 @SPRITE Sophie triste protagonista
 
 Sophie: Lo siento mucho.
+
+@SPRITE Theo neutral izquierda
 
 Theo: No es necesario.
 
@@ -131,6 +137,7 @@ dinero | El deber también es poder… | dinero+5 ambicion+2 theopoints+3 | dine
 
 //SI ESCOGE AMOR
 @LABEL amor_resp_1
+@SPRITE Theo sonriente izquierda
 Theo: Agradezco que lo vea de esa forma, señorita Hastings.
 Sophie: Si necesita algo, lo que sea mi hermano y yo estaremos para usted
 Sophie: ¿verdad Nathaniel?
@@ -139,6 +146,7 @@ Nathaniel: Claro, su gracia me ayudo bastante cuando madre fallecio
 @SPRITE Sophie sorpresa protagonista
 
 Sophie: ¿De verdad?
+@SPRITE Theo sonrojado izquierda
 Theo: No fue nada.
 Nathaniel: Esta siendo modesto.
 Sophie: Aveces es bueno recibir el credito de nuestras acciones su gracia.
@@ -146,10 +154,13 @@ Sophie: Aveces es bueno recibir el credito de nuestras acciones su gracia.
 @SPRITE Sophie feliz protagonista
 
 Sophie: Valoro mucho lo que hizo por mi hermano
+
+@SPRITE Theo sonriente izquierda
 Theo: No hay de que.
 
 Theo: Señorita Hastings…
 
+@SPRITE Theo neutral izquierda
 Theo: ¿Me concedería este baile?
 
 @CHOICE
@@ -165,12 +176,14 @@ Sophie: Será un honor, su gracia.
 @SPRITE Theo neutral izquierda
 @MUSIC valscoqueto
 
+@SPRITE Theo neutral izquierda
 Theo: Escuché que tu debut fue todo un éxito.
 
 @SPRITE Sophie triste protagonista
 
 Sophie: Supongo... Aunque no he tenido suerte
 
+@SPRITE Theo sorprendido izquierda
 Theo: ¿De verdad?
 
 Sophie: Digamos que algunas propuestas… no eran las más convenientes.
@@ -178,6 +191,8 @@ Sophie: Digamos que algunas propuestas… no eran las más convenientes.
 Sophie: Hubo un caballero bastante mayor…
 
 Sophie: Y otro cuya reputación sugiere que aprecia más las fortunas que a las esposas.
+
+@SPRITE Theo neutral izquierda
 
 Theo: Entonces eres selectiva.
 
@@ -195,10 +210,13 @@ Theo: Digamos que… estoy buscando algo específico.
 
 Sophie: ¿Una esposa?
 
+@SPRITE Theo sonrojado izquierda
+
 Theo: Tal vez.
 
 Theo: ¿Y usted?
 
+@SPRITE Theo neutral izquierda
 Theo: ¿Qué busca esta noche, señorita Hastings?
 
 @GOTO despues_5
@@ -206,6 +224,7 @@ Theo: ¿Qué busca esta noche, señorita Hastings?
 
 //SI ESCOGE REP
 @LABEL rep_resp_1
+@SPRITE Theo neutral izquierda
 Theo: Entonces comprende que algunas decisiones no se toman por gusto…
 Theo: …sino por necesidad.
 Sophie: Por su puesto su gracia
@@ -222,11 +241,13 @@ dinero | Negar | dinero-2 reputacion-5 theopoints-2 | dinero_resp_3
 
 @LABEL amor_resp_3
 Sophie: Por supuesto 
+@SPRITE Theo sonriente izquierda
 Theo: Me alegra que lo entienda.
 @GOTO despues_1
 
 
 @LABEL rep_resp_3
+@SPRITE Theo neutral izquierda
 Sophie: Depende de cómo se maneje.
 Theo: Una respuesta prudente.
 @GOTO despues_1
@@ -236,16 +257,22 @@ Theo: Una respuesta prudente.
 
 Sophie: Ver las necesidades como condena es extremista
 Sophie: Entiendo que hay necesidades que pueden limitarnos, pero siempre podemos decidir ¿No?
+
+@SPRITE Theo enojado izquierda
+
 Theo: Hay necesidades que no podemos ignorar
 Sophie: Tiene razón, sin embargo...
+
+@SPRITE Nathaniel enojado derecha
+
 Nathaniel: Lo siento su gracia mi hermana suele ser un poco
+
+@SPRITE Theo sonrprendido izquierda
 Theo: ¿Terca?
 Nathaniel: Si
 Nathaniel: Ya veo 
 
 @SPRITE Sophie enojada protagonista
-
-
 
 @CHOICE
 amor | Disculparse de manera sincera | reputacion+2 theopoints+2 | amor_resp_4
@@ -256,18 +283,24 @@ dinero | Mantener postura | dinero-2 reputacion-1 theopoints-1 | dinero_resp_4
 @LABEL amor_resp_4
 @SPRITE Sophie sonrojada protagonista
 Sophie: Le ofrezco una sincera disculpa su gracia... me deje llevar por la emoción del momento
+
+@SPRITE Theo neutral izquierda
 Theo: No se preocupe, a todos nos pasa, me alegro que sea capaz de reconocerlo, eso habla muy bien de usted
 @GOTO despues_1
 
 @LABEL rep_resp_4
 @SPRITE Sophie sonrojada protagonista
 Sophie: Lo siento su gracia.
+
+@SPRITE Theo neutral izquierda
 Theo: No se preocupe.
 @GOTO despues_1
 
 @LABEL dinero_resp_4
 @SPRITE Sophie sonrojada protagonista
 Sophie: ...
+
+@SPRITE Theo neutral izquierda
 Theo: Aun asi...
 
 @GOTO despues_1
@@ -276,6 +309,7 @@ Theo: Aun asi...
 
 //SI ESCOGE DINERO
 @LABEL dinero_resp_1
+@SPRITE Theo neutral izquierda
 Theo: El poder puede llegar a ser una carga…
 Theo: Pero también puede ser una herramienta.
 Theo: ¿No lo cree?
@@ -289,18 +323,21 @@ dinero | Negar | dinero-3 ambicion-3 theopoints-2| dinero_resp_2
 
 @LABEL amor_resp_2
 Sophie: Por supuesto su gracia, el poder puede facilitar el camino.
+@SPRITE Theo sonriente izquierda
 Theo: Me alegra que lo entienda.
 @GOTO despues_1
 
 
 @LABEL rep_resp_2
 Sophie: Depende de cómo se maneje.
+@SPRITE Theo sonriente izquierda
 Theo: Una respuesta prudente.
 @GOTO despues_1
 
 
 @LABEL dinero_resp_2
 Sophie: No lo creo su gracia, el poder puede llegar a ser malo en las manos equivocadas.
+@SPRITE Theo sonriente izquierda
 Theo: Interesante punto de vista.
         
 @GOTO despues_1
@@ -310,6 +347,7 @@ Theo: Interesante punto de vista.
 @SPRITE Sophie neutral protagonista
 Theo: Señorita Hastings…
 
+@SPRITE Theo sonriente izquierda
 Theo: ¿Me concedería este baile?
 
 @CHOICE
@@ -354,8 +392,11 @@ Theo: Digamos que… estoy buscando algo específico.
 
 Sophie: ¿Una esposa?
 
+@SPRITE Theo sonrojado izquierda
+
 Theo: Tal vez.
 
+@SPRITE Theo neutral izquierda
 Theo: ¿Y usted?
 
 Theo: ¿Qué busca esta noche, señorita Hastings?
@@ -374,24 +415,28 @@ dinero | Asegurar el futuro de mi familia. | dinero+3 ambicion+1 | dinero_resp
 @LABEL amor_resp
 @SPRITE Sophie sonrojada protagonista
 Sophie: Puede que yo también esté buscando algo en específico.
+@SPRITE Theo sonriente izquierda
 Theo: Entonces espero ser parte de aquello que busca.
 @GOTO despues
 
 @LABEL rep_resp
 @SPRITE Sophie neutral protagonista
 Sophie: A cumplir con mi deber, supongo.
+@SPRITE Theo neutral izquierda
 Theo: El deber suele ser una razón poderosa.
 @GOTO despues
 
 @LABEL dinero_resp
 @SPRITE Sophie neutral protagonista
 Sophie: A asegurar el futuro de mi familia.
+@SPRITE Theo neutral izquierda
 Theo: Una motivación bastante sensata.
 @GOTO despues
 
 @LABEL despues
 //MUSICA BAJA
 @SPRITE Sophie neutral protagonista
+@SPRITE Theo sonriente izquierda
 Theo: Ha sido un placer conocerla señorita Hastings
 Sophie: Igualmente su gracia.
 

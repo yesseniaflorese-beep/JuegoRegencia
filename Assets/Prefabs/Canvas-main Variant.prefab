@@ -2615,7 +2615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[2].textures.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[3].textures.Array.size
@@ -2699,7 +2699,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: b5dcbc69e26c84e4080aa599a1395a09, type: 3}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[2].expressions.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[2].textures.Array.data[0]'
@@ -2708,11 +2708,11 @@ PrefabInstance:
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[2].textures.Array.data[1]'
       value: 
-      objectReference: {fileID: 2800000, guid: c2f8f809cb1b59d4c89c8fcbdaefe153, type: 3}
+      objectReference: {fileID: 2800000, guid: 6c19805b89eca4145b977cf8a1a20027, type: 3}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[2].textures.Array.data[2]'
       value: 
-      objectReference: {fileID: 2800000, guid: c2f8f809cb1b59d4c89c8fcbdaefe153, type: 3}
+      objectReference: {fileID: 2800000, guid: 450dcee4d9ed24a498c0f3732671171b, type: 3}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[2].textures.Array.data[3]'
       value: 
@@ -2903,11 +2903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[2].expressions.Array.data[1]'
-      value: preocupado
+      value: enojado
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[2].expressions.Array.data[2]'
-      value: enojado
+      value: feliz
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[2].expressions.Array.data[3]'

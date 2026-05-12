@@ -17,6 +17,7 @@ Nathaniel: ¿No es lo que hacen todas las chicas de tu edad?
 
 Sophie: …
 
+@SPRITE Nathaniel feliz derecha
 Nathaniel: Vamos, no querrás perderte ningún baile.
 
 @BG SalonBaile
@@ -84,7 +85,7 @@ Sophie: ¿Escucharon eso?
 Desconocido: ¡Ahhg!
 
 @SFX gasp
-@SPRITE Nathaniel preocupado derecha
+@SPRITE Nathaniel enojado derecha
 Nathaniel: ¡Padre!
 
 @SPRITE Sophie triste protagonista
@@ -134,6 +135,8 @@ Barón Hastings: Tu dote… la casa… todo.
 Sophie: …¿Mi dote?
 Sophie: ¿Apostaste… mi dote?
 
+
+@SPRITE Nathaniel enojado derecha
 Nathaniel: Padre, dime que eso no es cierto.
 
 Barón Hastings: Intenté recuperarlo. Solo era una partida más.
