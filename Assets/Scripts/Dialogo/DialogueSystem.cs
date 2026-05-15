@@ -318,16 +318,15 @@ public class DialogueSystem : MonoBehaviour
             index++;
         }
     }
-    public void RestoreDialoguePosition()
-    {
-        if (lines == null || lines.Count == 0)
-            return;
+public void RestoreDialoguePosition()
+{
+    if (lines == null || lines.Count == 0)
+        return;
 
-        index = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
+    index = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
 
-        Debug.Log("✅ Diálogo restaurado en línea: " + index);
-    }
-
+    Debug.Log("INDEX CARGADO: " + index);
+}
     public void RestoreVisualState()
 {
     if (lines == null || lines.Count == 0)

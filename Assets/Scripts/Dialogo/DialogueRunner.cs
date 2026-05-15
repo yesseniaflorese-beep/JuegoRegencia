@@ -17,6 +17,42 @@ public class DialogueRunner : MonoBehaviour
         ds = DialogueSystem.instance;
         architect = new TextArchitect(dialogueText, this);
     }
+    public void RestoreDialogueUI()
+{
+    if (ds == null)
+        ds = DialogueSystem.instance;
+
+    if (ds == null)
+        return;
+
+    int savedIndex = ds.index;
+
+    if (savedIndex < 0)
+        return;
+
+    // Evitar overflow
+    if (savedIndex >= ds.dialogueFile.text.Split('\n').Length)
+        return;
+
+    string line = ds.dialogueFile.text.Split('\n')[savedIndex].Trim();
+
+    // Saltar comandos
+    while (
+        line.StartsWith("@") ||
+        string.IsNullOrWhiteSpace(line)
+    )
+    {
+        savedIndex++;
+
+        if (savedIndex >= ds.dialogueFile.text.Split('\n').Length)
+            return;
+
+        line = ds.dialogueFile.text.Split('\n')[savedIndex].Trim();
+    }
+
+    ProcessLine(line);
+    ds.index++;
+}
 
     void Update()
     {

@@ -16,19 +16,17 @@ public class SceneController : MonoBehaviour
     public string instruccionesScene = "Instrucciones";
     public string seleccionScene = "SeleccionPersonaje";
 
-    void Awake()
+ void Awake()
+{
+    if (instance != null && instance != this)
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
+        return;
     }
 
+    instance = this;
+    DontDestroyOnLoad(gameObject);
+}
     // ================================
     // ESCENAS FIJAS
     // ================================

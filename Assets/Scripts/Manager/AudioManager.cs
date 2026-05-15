@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -19,46 +17,61 @@ public class AudioManager : MonoBehaviour
     public List<string> sfxNames;
     public List<AudioClip> sfxClips;
 
-    [Header("UI Sonido")]
-    public Image iconoSonido;   // Imagen del botón
-    public Sprite iconoActivo;  // 🔊
-    public Sprite iconoMute;    // 🔇
-
     bool sonidoActivo = true;
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        // Singleton
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
-        ActualizarIcono(); // asegura que el icono esté bien al iniciar
+        // Cargar estado guardado del sonido
+        sonidoActivo = PlayerPrefs.GetInt("Muted", 1) == 1;
+
+        AudioListener.volume = sonidoActivo ? 1f : 0f;
     }
 
-    // 🎵 Reproducir música
-    public void PlayMusic(string name)
+    // =========================
+    // 🎵 REPRODUCIR MÚSICA
+    // =========================
+public void PlayMusic(string name)
+{
+    for (int i = 0; i < musicNames.Count; i++)
     {
-        for (int i = 0; i < musicNames.Count; i++)
+        if (musicNames[i].ToLower() == name.ToLower())
         {
-            if (musicNames[i].ToLower() == name.ToLower())
-            {
-                musicSource.clip = musicClips[i];
-                musicSource.Play();
+            // Evita reiniciar misma canción
+            if (musicSource.clip == musicClips[i] && musicSource.isPlaying)
                 return;
-            }
+
+            // Detener música actual
+            musicSource.Stop();
+
+            // Cambiar clip
+            musicSource.clip = musicClips[i];
+
+            // Reproducir nueva música
+            musicSource.Play();
+
+            return;
         }
     }
 
-    // 🔊 Reproducir SFX
+    Debug.LogWarning("❌ Música no encontrada: " + name);
+}
+
+    // =========================
+    // 🔊 REPRODUCIR SFX
+    // =========================
     public void PlaySFX(string name)
     {
         for (int i = 0; i < sfxNames.Count; i++)
@@ -69,67 +82,43 @@ public class AudioManager : MonoBehaviour
                 return;
             }
         }
+
+        Debug.LogWarning("❌ SFX no encontrado: " + name);
     }
 
-    // 🔇 Mutear todo
-    public void MutearTodo()
+    // =========================
+    // 🔁 TOGGLE SONIDO
+    // =========================
+    public void ToggleSonido()
     {
-        sonidoActivo = false;
-        musicSource.mute = true;
-        sfxSource.mute = true;
+        sonidoActivo = !sonidoActivo;
 
-        ActualizarIcono();
+        AudioListener.volume = sonidoActivo ? 1f : 0f;
+
+        // Guardar estado
+        PlayerPrefs.SetInt("Muted", sonidoActivo ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
-    // 🔊 Activar sonido
-    public void ActivarSonido()
+    // =========================
+    // 🔍 ESTADO SONIDO
+    // =========================
+    public bool SonidoActivo()
     {
-        sonidoActivo = true;
-        musicSource.mute = false;
-        sfxSource.mute = false;
-
-        ActualizarIcono();
+        return sonidoActivo;
     }
 
-    // 🔁 Toggle desde botón
-public void ToggleSonido()
-{
-    sonidoActivo = !sonidoActivo;
-
-    if (sonidoActivo)
-    {
-        AudioListener.volume = 1f;
-    }
-    else
-    {
-        AudioListener.volume = 0f;
-    }
-
-    ActualizarIcono();
-}
-
-    // 🔄 Cambiar icono
-    void ActualizarIcono()
-    {
-        if (iconoSonido == null) return;
-
-        if (sonidoActivo)
-        {
-            iconoSonido.sprite = iconoActivo;
-        }
-        else
-        {
-            iconoSonido.sprite = iconoMute;
-        }
-    }
-
-    // 🎚 Volumen
+    // =========================
+    // 🎚 VOLUMEN MÚSICA
+    // =========================
     public void SetVolumenMusica(float valor)
     {
-        Debug.Log("Cambiando volumen a: " + valor);
         musicSource.volume = valor;
     }
 
+    // =========================
+    // 🎚 VOLUMEN SFX
+    // =========================
     public void SetVolumenSFX(float valor)
     {
         sfxSource.volume = valor;

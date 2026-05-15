@@ -8,15 +8,15 @@ public class SaveSystem : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // =========================
@@ -42,85 +42,41 @@ public class SaveSystem : MonoBehaviour
             return;
         }
 
-        // =========================
-        // Guardar escena actual
-        // =========================
+        // Escena actual
         PlayerPrefs.SetString(
             "SavedScene",
             SceneManager.GetActiveScene().name
         );
 
-        // =========================
-        // Guardar progreso narrativo
-        // =========================
+        // Capítulo actual
         PlayerPrefs.SetInt(
             "CurrentChapter",
             SceneController.instance.currentChapter
         );
 
+        // Índice diálogo
         PlayerPrefs.SetInt(
             "CurrentDialogueIndex",
-            DialogueSystem.instance.index
+            Mathf.Max(DialogueSystem.instance.index - 1, 0)
         );
+        Debug.Log("GUARDANDO INDEX: " + DialogueSystem.instance.index);
 
-        // =========================
-        // Guardar stats principales
-        // =========================
-        PlayerPrefs.SetInt(
-            "amor",
-            GameManager.instance.amor
-        );
+        // Stats
+        PlayerPrefs.SetInt("amor", GameManager.instance.amor);
+        PlayerPrefs.SetInt("reputacion", GameManager.instance.reputacion);
+        PlayerPrefs.SetInt("dinero", GameManager.instance.dinero);
+        PlayerPrefs.SetInt("ambicion", GameManager.instance.ambicion);
 
-        PlayerPrefs.SetInt(
-            "reputacion",
-            GameManager.instance.reputacion
-        );
+        // Routes
+        PlayerPrefs.SetInt("theoPoints", GameManager.instance.theoPoints);
+        PlayerPrefs.SetInt("sebastianPoints", GameManager.instance.sebastianPoints);
 
-        PlayerPrefs.SetInt(
-            "dinero",
-            GameManager.instance.dinero
-        );
+        PlayerPrefs.SetInt("routeTheo", GameManager.instance.routeTheo);
+        PlayerPrefs.SetInt("routeSebastian", GameManager.instance.routeSebastian);
 
-        PlayerPrefs.SetInt(
-            "ambicion",
-            GameManager.instance.ambicion
-        );
-
-        // =========================
-        // Guardar rutas románticas
-        // =========================
-        PlayerPrefs.SetInt(
-            "theoPoints",
-            GameManager.instance.theoPoints
-        );
-
-        PlayerPrefs.SetInt(
-            "sebastianPoints",
-            GameManager.instance.sebastianPoints
-        );
-
-        PlayerPrefs.SetInt(
-            "routeTheo",
-            GameManager.instance.routeTheo
-        );
-
-        PlayerPrefs.SetInt(
-            "routeSebastian",
-            GameManager.instance.routeSebastian
-        );
-
-        // =========================
-        // Guardar decisiones
-        // =========================
-        PlayerPrefs.SetInt(
-            "honesty",
-            GameManager.instance.honesty
-        );
-
-        PlayerPrefs.SetInt(
-            "lie",
-            GameManager.instance.lie
-        );
+        // Decisiones
+        PlayerPrefs.SetInt("honesty", GameManager.instance.honesty);
+        PlayerPrefs.SetInt("lie", GameManager.instance.lie);
 
         PlayerPrefs.Save();
 
@@ -138,27 +94,11 @@ public class SaveSystem : MonoBehaviour
             return;
         }
 
-        if (GameManager.instance == null)
-        {
-            Debug.LogError("❌ No se encontró GameManager");
-            return;
-        }
-
-        if (SceneController.instance == null)
-        {
-            Debug.LogError("❌ No se encontró SceneController");
-            return;
-        }
-
-        // =========================
-        // Restaurar capítulo actual
-        // =========================
+        // Restaurar capítulo
         SceneController.instance.currentChapter =
             PlayerPrefs.GetInt("CurrentChapter", 0);
 
-        // =========================
-        // Restaurar stats principales
-        // =========================
+        // Restaurar stats
         GameManager.instance.amor =
             PlayerPrefs.GetInt("amor", 0);
 
@@ -171,9 +111,7 @@ public class SaveSystem : MonoBehaviour
         GameManager.instance.ambicion =
             PlayerPrefs.GetInt("ambicion", 0);
 
-        // =========================
-        // Restaurar rutas románticas
-        // =========================
+        // Restaurar rutas
         GameManager.instance.theoPoints =
             PlayerPrefs.GetInt("theoPoints", 0);
 
@@ -186,32 +124,66 @@ public class SaveSystem : MonoBehaviour
         GameManager.instance.routeSebastian =
             PlayerPrefs.GetInt("routeSebastian", 0);
 
-        // =========================
         // Restaurar decisiones
-        // =========================
         GameManager.instance.honesty =
             PlayerPrefs.GetInt("honesty", 0);
 
         GameManager.instance.lie =
             PlayerPrefs.GetInt("lie", 0);
 
-        // =========================
-        // Cargar escena guardada
-        // =========================
+        // Escuchar carga de escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Cargar escena
         string savedScene =
             PlayerPrefs.GetString("SavedScene");
 
         SceneManager.LoadScene(savedScene);
 
-        // Esperar 1 frame para restaurar UI,
-        // fondos, personajes, música y diálogo
-        StartCoroutine(RestoreAfterLoad());
-
         Debug.Log("✅ Partida cargada correctamente");
     }
 
     // =========================
-    // BORRAR PARTIDA
+    // ESCENA CARGADA
+    // =========================
+private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    StartCoroutine(RestoreEverything());
+
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+
+private IEnumerator RestoreEverything()
+{
+    // Esperar un frame
+    yield return null;
+
+    // Restaurar diálogo
+    if (DialogueSystem.instance != null)
+    {
+        DialogueSystem.instance.RestoreVisualState();
+        DialogueSystem.instance.RestoreDialoguePosition();
+    }
+
+    // Restaurar historial
+    if (DialogueHistoryManager.instance != null)
+    {
+        DialogueHistoryManager.instance.LoadHistory();
+    }
+
+    // Restaurar UI del diálogo
+    DialogueRunner runner =
+        FindFirstObjectByType<DialogueRunner>();
+
+    if (runner != null)
+    {
+        runner.RestoreDialogueUI();
+    }
+
+    Debug.Log("✅ Progreso completo restaurado");
+}
+    // =========================
+    // BORRAR SAVE
     // =========================
     public void DeleteSave()
     {
@@ -219,30 +191,5 @@ public class SaveSystem : MonoBehaviour
         PlayerPrefs.Save();
 
         Debug.Log("🗑 Partida eliminada");
-    }
-
-    // =========================
-    // RESTAURAR DESPUÉS DE CARGAR
-    // =========================
-    private IEnumerator RestoreAfterLoad()
-    {
-        yield return null;
-
-        // Restaurar fondos, sprites y música
-        if (DialogueSystem.instance != null)
-        {
-            DialogueSystem.instance.RestoreVisualState();
-
-            // Luego restaurar posición exacta
-            DialogueSystem.instance.RestoreDialoguePosition();
-        }
-
-        // Restaurar historial
-        if (DialogueHistoryManager.instance != null)
-        {
-            DialogueHistoryManager.instance.LoadHistory();
-        }
-
-        Debug.Log("✅ Progreso completo restaurado");
     }
 }

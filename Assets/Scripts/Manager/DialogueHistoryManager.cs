@@ -15,23 +15,22 @@ public class DialogueHistoryManager : MonoBehaviour
     // Guardado del historial
     private List<DialogueEntry> history = new List<DialogueEntry>();
 
-    void Awake()
+ void Awake()
+{
+    if (instance != null && instance != this)
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        historyPanel.SetActive(false);
-
-        // Cargar historial automáticamente
-        LoadHistory();
+        Destroy(gameObject);
+        return;
     }
+
+    instance = this;
+
+    DontDestroyOnLoad(gameObject);
+
+    historyPanel.SetActive(false);
+
+    LoadHistory();
+}
 
     // ============================
     // AGREGAR DIÁLOGO
