@@ -12,6 +12,8 @@ public class DialogueHistoryManager : MonoBehaviour
     public GameObject historyTextPrefab;
     public ScrollRect scrollRect;
 
+    public bool isRestoring = false;
+
     // Guardado del historial
     private List<DialogueEntry> history = new List<DialogueEntry>();
 
@@ -36,19 +38,20 @@ public class DialogueHistoryManager : MonoBehaviour
     // AGREGAR DIÁLOGO
     // ============================
     public void AddDialogue(string speaker, string dialogue)
+{
+    history.Add(new DialogueEntry(speaker, dialogue));
+
+    if (!isRestoring)
     {
-        history.Add(new DialogueEntry(speaker, dialogue));
-
-        // Guardar inmediatamente
         SaveHistory();
-
-        // Si el panel está abierto → agregar en tiempo real
-        if (historyPanel.activeSelf)
-        {
-            CreateItem(speaker, dialogue);
-            UpdateScroll();
-        }
     }
+
+    if (historyPanel.activeSelf)
+    {
+        CreateItem(speaker, dialogue);
+        UpdateScroll();
+    }
+}
 
     // ============================
     // ABRIR HISTORIAL
@@ -136,43 +139,50 @@ public class DialogueHistoryManager : MonoBehaviour
     // CARGAR HISTORIAL
     // ============================
     public void LoadHistory()
+{
+    isRestoring = true;
+
+    history.Clear();
+
+    if (!PlayerPrefs.HasKey("DialogueHistory"))
     {
-        history.Clear();
+        isRestoring = false;
+        return;
+    }
 
-        if (!PlayerPrefs.HasKey("DialogueHistory"))
-            return;
+    string saved = PlayerPrefs.GetString("DialogueHistory");
 
-        string saved = PlayerPrefs.GetString("DialogueHistory");
+    if (string.IsNullOrEmpty(saved))
+    {
+        isRestoring = false;
+        return;
+    }
 
-        if (string.IsNullOrEmpty(saved))
-            return;
+    string[] entries = saved.Split(
+        new string[] { "##" },
+        System.StringSplitOptions.None
+    );
 
-        string[] entries = saved.Split(
-            new string[] { "##" },
+    foreach (string entry in entries)
+    {
+        if (string.IsNullOrWhiteSpace(entry))
+            continue;
+
+        string[] parts = entry.Split(
+            new string[] { "||" },
             System.StringSplitOptions.None
         );
 
-        foreach (string entry in entries)
-        {
-            if (string.IsNullOrWhiteSpace(entry))
-                continue;
+        if (parts.Length < 2)
+            continue;
 
-            string[] parts = entry.Split(
-                new string[] { "||" },
-                System.StringSplitOptions.None
-            );
-
-            if (parts.Length < 2)
-                continue;
-
-            string speaker = parts[0];
-            string dialogue = parts[1];
-
-            history.Add(new DialogueEntry(speaker, dialogue));
-        }
-
-        Debug.Log("✅ Historial cargado");
+        history.Add(new DialogueEntry(parts[0], parts[1]));
     }
+
+    isRestoring = false;
+
+    Debug.Log("✅ Historial cargado");
+}
 
     // ============================
     // BORRAR HISTORIAL

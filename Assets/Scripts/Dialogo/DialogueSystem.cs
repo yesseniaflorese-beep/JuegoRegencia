@@ -12,9 +12,17 @@ public class DialogueSystem : MonoBehaviour
 
     private List<string> lines;
     private Dictionary<string, int> labels = new Dictionary<string, int>();
+
     public int index = 0;
 
+    public bool isRestoring = false;
+
     public bool dialogueFinished => lines != null && index >= lines.Count;
+
+    // 🔥 BLOQUEO GLOBAL (minijuego, cutscene, etc.)
+    public bool isBlocked =>
+        MinigameManager.instance != null &&
+        MinigameManager.instance.isMinigameActive;
 
     void Awake()
     {
@@ -23,6 +31,7 @@ public class DialogueSystem : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    
 
     void Start()
     {
@@ -34,7 +43,6 @@ public class DialogueSystem : MonoBehaviour
 
         lines = new List<string>(dialogueFile.text.Split('\n'));
 
-        // Registrar labels
         for (int i = 0; i < lines.Count; i++)
         {
             if (lines[i].StartsWith("@LABEL"))
@@ -45,20 +53,30 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (isRestoring) return;
+        if (isBlocked) return;
+        if (waitingForChoice) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GetNextLine();
+        }
+    }
+
     // =============================
-    // ▶ SIGUIENTE LÍNEA
+    // NEXT LINE
     // =============================
     public string GetNextLine()
     {
-        if (lines == null || index >= lines.Count)
-            return null;
+        if (isRestoring) return null;
 
         if (lines == null || index >= lines.Count)
             return null;
 
         string line = lines[index].Trim();
 
-        // ignorar comentarios y líneas vacías
         while (
             string.IsNullOrEmpty(line) ||
             line.StartsWith("//") ||
@@ -80,19 +98,12 @@ public class DialogueSystem : MonoBehaviour
         if (string.IsNullOrWhiteSpace(line))
             return "";
 
-        // LABEL
         if (line.StartsWith("@LABEL"))
-        {
             return GetNextLine();
-        }
 
-        // ENDIF
         if (line.StartsWith("@ENDIF"))
-        {
             return GetNextLine();
-        }
 
-        // SPRITE
         if (line.StartsWith("@SPRITE"))
         {
             string[] parts = line.Split(' ');
@@ -102,39 +113,30 @@ public class DialogueSystem : MonoBehaviour
             return GetNextLine();
         }
 
-        // BACKGROUND
         if (line.StartsWith("@BG"))
         {
-            string bgName = line.Replace("@BG", "").Trim();
-            BackgroundManager.instance.ChangeBackground(bgName);
+            BackgroundManager.instance.ChangeBackground(line.Replace("@BG", "").Trim());
             return GetNextLine();
         }
 
-        // MUSIC
         if (line.StartsWith("@MUSIC"))
         {
-            string musicName = line.Replace("@MUSIC", "").Trim();
-            AudioManager.instance.PlayMusic(musicName);
+            AudioManager.instance.PlayMusic(line.Replace("@MUSIC", "").Trim());
             return GetNextLine();
         }
 
-        // SFX
         if (line.StartsWith("@SFX"))
         {
-            string sfxName = line.Replace("@SFX", "").Trim();
-            AudioManager.instance.PlaySFX(sfxName);
+            AudioManager.instance.PlaySFX(line.Replace("@SFX", "").Trim());
             return GetNextLine();
         }
 
-        // MINIGAME
         if (line.StartsWith("@MINIGAME"))
         {
-            string minigameName = line.Replace("@MINIGAME", "").Trim();
-            MinigameManager.instance.StartMinigame(minigameName);
+            MinigameManager.instance.StartMinigame(line.Replace("@MINIGAME", "").Trim());
             return null;
         }
 
-        // GOTO
         if (line.StartsWith("@GOTO"))
         {
             string label = line.Replace("@GOTO", "").Trim();
@@ -145,18 +147,14 @@ public class DialogueSystem : MonoBehaviour
             return GetNextLine();
         }
 
-        // IF
         if (line.StartsWith("@IF"))
         {
             if (!EvaluateCondition(line.Replace("@IF", "").Trim()))
-            {
                 SkipUntilEndIf();
-            }
 
             return GetNextLine();
         }
 
-        // CHOICE
         if (line == "@CHOICE")
         {
             ParseChoices();
@@ -168,26 +166,56 @@ public class DialogueSystem : MonoBehaviour
     }
 
     // =============================
-    // ◀ RETROCEDER
+    // RESTORE POSITION
     // =============================
-    public string GetPreviousLine()
+    public void RestoreDialoguePosition()
     {
         if (lines == null || lines.Count == 0)
-            return null;
+            return;
 
-        index = Mathf.Clamp(index - 2, 0, lines.Count - 1);
+        isRestoring = true;
 
-        string line = lines[index].Trim();
-        index++;
+        index = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
+        index = Mathf.Clamp(index, 0, lines.Count - 1);
 
-        if (string.IsNullOrWhiteSpace(line))
-            return "";
-
-        return line;
+        isRestoring = false;
     }
 
     // =============================
-    // PARSEAR DECISIONES
+    // RESTORE VISUAL STATE
+    // =============================
+    public void RestoreVisualState()
+    {
+        if (lines == null || lines.Count == 0)
+            return;
+
+        int savedIndex = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
+        savedIndex = Mathf.Clamp(savedIndex, 0, lines.Count);
+
+        for (int i = 0; i < savedIndex; i++)
+        {
+            string line = lines[i].Trim();
+
+            if (line.StartsWith("@BG"))
+                BackgroundManager.instance.ChangeBackground(line.Replace("@BG", "").Trim());
+
+            else if (line.StartsWith("@SPRITE"))
+            {
+                string[] parts = line.Split(' ');
+                if (parts.Length >= 4)
+                    SpriteManager.instance.ShowSprite(parts[1], parts[2], parts[3]);
+            }
+
+            else if (line.StartsWith("@MUSIC"))
+                AudioManager.instance.PlayMusic(line.Replace("@MUSIC", "").Trim());
+
+            else if (line.StartsWith("@SFX"))
+                AudioManager.instance.PlaySFX(line.Replace("@SFX", "").Trim());
+        }
+    }
+
+    // =============================
+    // CHOICES
     // =============================
     void ParseChoices()
     {
@@ -211,9 +239,6 @@ public class DialogueSystem : MonoBehaviour
             choice.id = parts[0].Trim();
             choice.text = parts[1].Trim();
 
-            // =============================
-            // MULTIPLES STATS
-            // =============================
             string statBlock = parts[2].Trim();
             string[] stats = statBlock.Split(' ');
 
@@ -222,18 +247,12 @@ public class DialogueSystem : MonoBehaviour
                 if (s.Contains("+"))
                 {
                     string[] statParts = s.Split('+');
-                    string name = statParts[0];
-                    int value = int.Parse(statParts[1]);
-
-                    choice.stats[name] = value;
+                    choice.stats[statParts[0]] = int.Parse(statParts[1]);
                 }
                 else if (s.Contains("-"))
                 {
                     string[] statParts = s.Split('-');
-                    string name = statParts[0];
-                    int value = -int.Parse(statParts[1]);
-
-                    choice.stats[name] = value;
+                    choice.stats[statParts[0]] = -int.Parse(statParts[1]);
                 }
             }
 
@@ -244,9 +263,6 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    // =============================
-    // CUANDO EL JUGADOR ELIGE
-    // =============================
     public void SelectChoice(ChoiceData choice)
     {
         foreach (var stat in choice.stats)
@@ -254,19 +270,17 @@ public class DialogueSystem : MonoBehaviour
             GameManager.instance.AddStat(stat.Key, stat.Value);
         }
 
-        if (!string.IsNullOrEmpty(choice.gotoLabel))
+        if (!string.IsNullOrEmpty(choice.gotoLabel) &&
+            labels.ContainsKey(choice.gotoLabel))
         {
-            if (labels.ContainsKey(choice.gotoLabel))
-            {
-                index = labels[choice.gotoLabel] + 1;
-            }
+            index = labels[choice.gotoLabel] + 1;
         }
 
         waitingForChoice = false;
     }
 
     // =============================
-    // EVALUAR CONDICIONES
+    // CONDITIONS
     // =============================
     bool EvaluateCondition(string condition)
     {
@@ -280,16 +294,9 @@ public class DialogueSystem : MonoBehaviour
         string rightValue = parts[2];
 
         int left = GameManager.instance.GetStat(leftStat);
-        int right;
-
-        if (int.TryParse(rightValue, out int number))
-        {
-            right = number;
-        }
-        else
-        {
-            right = GameManager.instance.GetStat(rightValue);
-        }
+        int right = int.TryParse(rightValue, out int n)
+            ? n
+            : GameManager.instance.GetStat(rightValue);
 
         switch (op)
         {
@@ -302,10 +309,24 @@ public class DialogueSystem : MonoBehaviour
 
         return false;
     }
+public string GetPreviousLine()
+{
+    if (lines == null || lines.Count == 0)
+        return null;
 
-    // =============================
-    // SALTAR IF
-    // =============================
+    if (isRestoring) return null;
+
+    index = Mathf.Clamp(index - 2, 0, lines.Count - 1);
+
+    string line = lines[index].Trim();
+    index++;
+
+    if (string.IsNullOrWhiteSpace(line))
+        return "";
+
+    return line;
+}
+
     void SkipUntilEndIf()
     {
         while (index < lines.Count)
@@ -318,59 +339,4 @@ public class DialogueSystem : MonoBehaviour
             index++;
         }
     }
-public void RestoreDialoguePosition()
-{
-    if (lines == null || lines.Count == 0)
-        return;
-
-    index = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
-
-    Debug.Log("INDEX CARGADO: " + index);
-}
-    public void RestoreVisualState()
-{
-    if (lines == null || lines.Count == 0)
-        return;
-
-    int savedIndex = PlayerPrefs.GetInt("CurrentDialogueIndex", 0);
-
-    for (int i = 0; i < savedIndex; i++)
-    {
-        string line = lines[i].Trim();
-
-        if (line.StartsWith("@BG"))
-        {
-            string bgName = line.Replace("@BG", "").Trim();
-            BackgroundManager.instance.ChangeBackground(bgName);
-        }
-
-        else if (line.StartsWith("@SPRITE"))
-        {
-            string[] parts = line.Split(' ');
-
-            if (parts.Length >= 4)
-            {
-                SpriteManager.instance.ShowSprite(
-                    parts[1],
-                    parts[2],
-                    parts[3]
-                );
-            }
-        }
-
-        else if (line.StartsWith("@MUSIC"))
-        {
-            string musicName = line.Replace("@MUSIC", "").Trim();
-            AudioManager.instance.PlayMusic(musicName);
-        }
-
-        else if (line.StartsWith("@SFX"))
-        {
-            string sfxName = line.Replace("@SFX", "").Trim();
-            AudioManager.instance.PlaySFX(sfxName);
-        }
-    }
-
-    Debug.Log("✅ Estado visual restaurado");
-}
 }

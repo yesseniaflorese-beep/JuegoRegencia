@@ -15,7 +15,6 @@ public class SaveSystem : MonoBehaviour
         }
 
         instance = this;
-
         DontDestroyOnLoad(gameObject);
     }
 
@@ -24,41 +23,30 @@ public class SaveSystem : MonoBehaviour
     // =========================
     public void SaveGame()
     {
-        if (GameManager.instance == null)
+        if (GameManager.instance == null ||
+            SceneController.instance == null ||
+            DialogueSystem.instance == null)
         {
-            Debug.LogError("❌ No se encontró GameManager");
+            Debug.LogError("❌ Faltan managers para guardar");
             return;
         }
 
-        if (SceneController.instance == null)
-        {
-            Debug.LogError("❌ No se encontró SceneController");
-            return;
-        }
-
-        if (DialogueSystem.instance == null)
-        {
-            Debug.LogError("❌ No se encontró DialogueSystem");
-            return;
-        }
-
-        // Escena actual
         PlayerPrefs.SetString(
             "SavedScene",
             SceneManager.GetActiveScene().name
         );
 
-        // Capítulo actual
         PlayerPrefs.SetInt(
             "CurrentChapter",
             SceneController.instance.currentChapter
         );
 
-        // Índice diálogo
+        // 🔥 IMPORTANTE: guardamos índice EXACTO sin restar 1
         PlayerPrefs.SetInt(
             "CurrentDialogueIndex",
-            Mathf.Max(DialogueSystem.instance.index - 1, 0)
+            DialogueSystem.instance.index
         );
+
         Debug.Log("GUARDANDO INDEX: " + DialogueSystem.instance.index);
 
         // Stats
@@ -74,7 +62,7 @@ public class SaveSystem : MonoBehaviour
         PlayerPrefs.SetInt("routeTheo", GameManager.instance.routeTheo);
         PlayerPrefs.SetInt("routeSebastian", GameManager.instance.routeSebastian);
 
-        // Decisiones
+        // Decisions
         PlayerPrefs.SetInt("honesty", GameManager.instance.honesty);
         PlayerPrefs.SetInt("lie", GameManager.instance.lie);
 
@@ -94,50 +82,31 @@ public class SaveSystem : MonoBehaviour
             return;
         }
 
-        // Restaurar capítulo
+        // 🔥 BLOQUEO ANTI-SKIP (CLAVE)
+        if (SceneController.instance != null)
+            SceneController.instance.isLoadingGame = true;
+
+        // Stats
+        GameManager.instance.amor = PlayerPrefs.GetInt("amor", 0);
+        GameManager.instance.reputacion = PlayerPrefs.GetInt("reputacion", 0);
+        GameManager.instance.dinero = PlayerPrefs.GetInt("dinero", 0);
+        GameManager.instance.ambicion = PlayerPrefs.GetInt("ambicion", 0);
+
+        GameManager.instance.theoPoints = PlayerPrefs.GetInt("theoPoints", 0);
+        GameManager.instance.sebastianPoints = PlayerPrefs.GetInt("sebastianPoints", 0);
+
+        GameManager.instance.routeTheo = PlayerPrefs.GetInt("routeTheo", 0);
+        GameManager.instance.routeSebastian = PlayerPrefs.GetInt("routeSebastian", 0);
+
+        GameManager.instance.honesty = PlayerPrefs.GetInt("honesty", 0);
+        GameManager.instance.lie = PlayerPrefs.GetInt("lie", 0);
+
         SceneController.instance.currentChapter =
             PlayerPrefs.GetInt("CurrentChapter", 0);
 
-        // Restaurar stats
-        GameManager.instance.amor =
-            PlayerPrefs.GetInt("amor", 0);
-
-        GameManager.instance.reputacion =
-            PlayerPrefs.GetInt("reputacion", 0);
-
-        GameManager.instance.dinero =
-            PlayerPrefs.GetInt("dinero", 0);
-
-        GameManager.instance.ambicion =
-            PlayerPrefs.GetInt("ambicion", 0);
-
-        // Restaurar rutas
-        GameManager.instance.theoPoints =
-            PlayerPrefs.GetInt("theoPoints", 0);
-
-        GameManager.instance.sebastianPoints =
-            PlayerPrefs.GetInt("sebastianPoints", 0);
-
-        GameManager.instance.routeTheo =
-            PlayerPrefs.GetInt("routeTheo", 0);
-
-        GameManager.instance.routeSebastian =
-            PlayerPrefs.GetInt("routeSebastian", 0);
-
-        // Restaurar decisiones
-        GameManager.instance.honesty =
-            PlayerPrefs.GetInt("honesty", 0);
-
-        GameManager.instance.lie =
-            PlayerPrefs.GetInt("lie", 0);
-
-        // Escuchar carga de escena
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // Cargar escena
-        string savedScene =
-            PlayerPrefs.GetString("SavedScene");
-
+        string savedScene = PlayerPrefs.GetString("SavedScene");
         SceneManager.LoadScene(savedScene);
 
         Debug.Log("✅ Partida cargada correctamente");
@@ -146,42 +115,49 @@ public class SaveSystem : MonoBehaviour
     // =========================
     // ESCENA CARGADA
     // =========================
-private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-{
-    StartCoroutine(RestoreEverything());
-
-    SceneManager.sceneLoaded -= OnSceneLoaded;
-}
-
-private IEnumerator RestoreEverything()
-{
-    // Esperar un frame
-    yield return null;
-
-    // Restaurar diálogo
-    if (DialogueSystem.instance != null)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        DialogueSystem.instance.RestoreVisualState();
-        DialogueSystem.instance.RestoreDialoguePosition();
+        StartCoroutine(RestoreEverything());
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // Restaurar historial
-    if (DialogueHistoryManager.instance != null)
+    // =========================
+    // RESTORE SEGURO
+    // =========================
+    private IEnumerator RestoreEverything()
     {
-        DialogueHistoryManager.instance.LoadHistory();
+        // 🔥 esperar a que todo Awake/Start termine
+        yield return new WaitForEndOfFrame();
+
+        if (DialogueSystem.instance != null)
+        {
+            DialogueSystem.instance.RestoreVisualState();
+            DialogueSystem.instance.RestoreDialoguePosition();
+
+            // 🔥 desbloquear restauración
+            DialogueSystem.instance.isRestoring = false;
+        }
+
+        if (DialogueHistoryManager.instance != null)
+        {
+            DialogueHistoryManager.instance.LoadHistory();
+        }
+
+        DialogueRunner runner =
+            FindFirstObjectByType<DialogueRunner>();
+
+        if (runner != null)
+        {
+            runner.RestoreDialogueUI();
+        }
+
+        // 🔥 liberar bloqueo de escena
+        if (SceneController.instance != null)
+            SceneController.instance.isLoadingGame = false;
+
+        Debug.Log("✅ Progreso completo restaurado");
     }
 
-    // Restaurar UI del diálogo
-    DialogueRunner runner =
-        FindFirstObjectByType<DialogueRunner>();
-
-    if (runner != null)
-    {
-        runner.RestoreDialogueUI();
-    }
-
-    Debug.Log("✅ Progreso completo restaurado");
-}
     // =========================
     // BORRAR SAVE
     // =========================

@@ -1,25 +1,32 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class ChapterTransition : MonoBehaviour
 {
-    public TMP_Text texto;
+    public TMP_Text chapterTitle;
+    public TMP_Text chapterSubtitle;
 
-    [TextArea]
-    public string mensaje;
-
-    public float tiempoEspera = 4f;
+    public float transitionTime = 2f;
 
     void Start()
     {
-        texto.text = mensaje;
+        // Mostrar título del capítulo
+        chapterTitle.text =
+            SceneController.instance.GetCurrentChapterTitle();
 
-        Invoke(nameof(LoadNextChapter), tiempoEspera);
+        // Mostrar subtítulo
+        chapterSubtitle.text =
+            SceneController.instance.GetCurrentChapterSubtitle();
+
+        // Esperar 2 segundos y cambiar de capítulo
+        StartCoroutine(NextChapterAfterDelay());
     }
 
-    void LoadNextChapter()
+    IEnumerator NextChapterAfterDelay()
     {
+        yield return new WaitForSeconds(transitionTime);
+
         SceneController.instance.LoadRealNextChapter();
     }
 }

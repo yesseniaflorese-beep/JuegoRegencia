@@ -7,6 +7,8 @@ public class MinigameManager : MonoBehaviour
 
     public GameObject buscarObjetosUI;
 
+    public bool isMinigameActive = false;
+
     void Awake()
     {
         instance = this;
@@ -16,21 +18,24 @@ public class MinigameManager : MonoBehaviour
     {
         if (name == "buscar_objetos")
         {
+            isMinigameActive = true;
             buscarObjetosUI.SetActive(true);
         }
     }
 
     public void EndMinigame()
-{
-    StartCoroutine(EndMinigameDelay());
-}
+    {
+        StartCoroutine(EndMinigameDelay());
+    }
 
-IEnumerator EndMinigameDelay()
-{
-    yield return new WaitForSeconds(2f);
+    IEnumerator EndMinigameDelay()
+    {
+        yield return new WaitForSeconds(1f);
 
-    buscarObjetosUI.SetActive(false);
+        buscarObjetosUI.SetActive(false);
 
-    DialogueSystem.instance.waitingForChoice = false;
-}
+        isMinigameActive = false;
+
+        DialogueSystem.instance.waitingForChoice = false;
+    }
 }

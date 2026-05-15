@@ -17,112 +17,136 @@ public class DialogueRunner : MonoBehaviour
         ds = DialogueSystem.instance;
         architect = new TextArchitect(dialogueText, this);
     }
-    public void RestoreDialogueUI()
+    void Awake()
 {
-    if (ds == null)
-        ds = DialogueSystem.instance;
-
-    if (ds == null)
-        return;
-
-    int savedIndex = ds.index;
-
-    if (savedIndex < 0)
-        return;
-
-    // Evitar overflow
-    if (savedIndex >= ds.dialogueFile.text.Split('\n').Length)
-        return;
-
-    string line = ds.dialogueFile.text.Split('\n')[savedIndex].Trim();
-
-    // Saltar comandos
-    while (
-        line.StartsWith("@") ||
-        string.IsNullOrWhiteSpace(line)
-    )
+    if (FindObjectsByType<DialogueRunner>(FindObjectsSortMode.None).Length > 1)
     {
-        savedIndex++;
-
-        if (savedIndex >= ds.dialogueFile.text.Split('\n').Length)
-            return;
-
-        line = ds.dialogueFile.text.Split('\n')[savedIndex].Trim();
+        Destroy(gameObject);
+        return;
     }
-
-    ProcessLine(line);
-    ds.index++;
 }
 
-    void Update()
+    public void RestoreDialogueUI()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (ds == null)
+            ds = DialogueSystem.instance;
+
+        if (ds == null || ds.dialogueFile == null)
+            return;
+
+        string[] lines = ds.dialogueFile.text.Split('\n');
+
+        int savedIndex = ds.index;
+
+        if (savedIndex < 0 || savedIndex >= lines.Length)
+            return;
+
+        string line = lines[savedIndex].Trim();
+
+        // Saltar comandos inválidos
+        while (savedIndex < lines.Length &&
+               (string.IsNullOrWhiteSpace(line) || line.StartsWith("@")))
         {
-            AdvanceDialogue();
+            savedIndex++;
+
+            if (savedIndex >= lines.Length)
+                return;
+
+            line = lines[savedIndex].Trim();
         }
+
+        ProcessLine(line);
+
+        // 🔥 IMPORTANTE: sincronización correcta
+        ds.index = savedIndex + 1;
     }
 
-    // ▶ AVANZAR (ESPACIO Y BOTÓN)
-   public void AdvanceDialogue()
+    void Update()
 {
-    // ⏩ Si está escribiendo
-    if (architect.isBuilding)
-    {
-        if (!architect.rapido)
-            architect.rapido = true;
-        else
-            architect.ForceComplete();
-
+    if (SceneController.instance != null &&
+        SceneController.instance.isLoadingGame)
         return;
-    }
 
-    // 🟡 SI HAY DECISIÓN PENDIENTE → mostrar opciones
-    if (ds.waitingForChoice)
-    {
-        ShowChoices();
+    if (Keyboard.current == null)
         return;
-    }
 
-    // 📖 Pedir siguiente línea
-    string line = ds.GetNextLine();
-
-
-    if (line == null)
+    if (Keyboard.current.spaceKey.wasPressedThisFrame)
     {
-            // 🟡 si es una decisión, NO terminar capítulo
+        AdvanceDialogue();
+    }
+}
+    
+
+    // ▶ AVANZAR
+    public void AdvanceDialogue()
+    {
+        // 🔥 BLOQUEO DURANTE RESTORE
+        if (SceneController.instance != null &&
+            SceneController.instance.isLoadingGame)
+            return;
+
+        // ⏩ texto en construcción
+        if (architect.isBuilding)
+        {
+            if (!architect.rapido)
+                architect.rapido = true;
+            else
+                architect.ForceComplete();
+
+            return;
+        }
+
+        // 🟡 choices
         if (ds.waitingForChoice)
         {
             ShowChoices();
             return;
         }
 
-        // 🏁 ahora sí, fin real del capítulo
-        if (ds.dialogueFinished)
-        {
-            Debug.Log("📕 Fin del capítulo");
-            enabled = false;
+        string line = ds.GetNextLine();
 
-            SceneController sc = FindFirstObjectByType<SceneController>();
-            if (sc != null)
-                sc.LoadNextChapter();
+        if (line == null)
+        {
+            // 🟡 si hay choice pendiente, no terminar
+            if (ds.waitingForChoice)
+            {
+                ShowChoices();
+                return;
+            }
+
+            // 🏁 FIN DE CAPÍTULO (CONTROLADO)
+            if (ds.dialogueFinished &&
+                SceneController.instance != null &&
+                !SceneController.instance.isLoadingGame &&
+                !ds.isRestoring)
+            {
+                Debug.Log("📕 Fin del capítulo");
+
+                enabled = false;
+
+                SceneController sc =
+                    FindFirstObjectByType<SceneController>();
+
+                if (sc != null)
+                    sc.LoadNextChapter();
+            }
+
+            return;
         }
 
-        return;
+        if (line == "")
+            return;
+
+        ProcessLine(line);
     }
 
-    if (line == "")
-    {
-        // pausa narrativa
-        return;
-    }
-
-    ProcessLine(line);
-}
-
-
-    // ◀ RETROCEDER (BOTÓN)
+    // ◀ RETROCEDER
     public void BackDialogue()
     {
+        if (SceneController.instance != null &&
+            SceneController.instance.isLoadingGame)
+            return;
+
         if (architect.isBuilding)
         {
             architect.ForceComplete();
@@ -131,53 +155,46 @@ public class DialogueRunner : MonoBehaviour
 
         string line = ds.GetPreviousLine();
 
-        if (line == null || line == "")
+        if (string.IsNullOrEmpty(line))
             return;
 
         ProcessLine(line);
     }
 
-    // 🔎 PROCESA NOMBRE + TEXTO
-void ProcessLine(string line)
-{
-    if (line.Contains(":"))
+    // 🔎 PROCESA TEXTO
+    void ProcessLine(string line)
     {
-        string[] split = line.Split(new char[] { ':' }, 2);
-
-        string speaker = split[0].Trim();
-        string dialogue = split[1].Trim();
-
-        if (nameText != null)
-            nameText.text = speaker;
-
-        architect.Build(dialogue);
-
-        // 🟢 GUARDAR EN HISTORIAL
-        if (DialogueHistoryManager.instance != null)
+        if (line.Contains(":"))
         {
-            DialogueHistoryManager.instance.AddDialogue(speaker, dialogue);
-            Debug.Log("Guardando en historial: " + speaker + " " + dialogue);
+            string[] split = line.Split(new char[] { ':' }, 2);
+
+            string speaker = split[0].Trim();
+            string dialogue = split[1].Trim();
+
+            if (nameText != null)
+                nameText.text = speaker;
+
+            architect.Build(dialogue);
+
+            if (DialogueHistoryManager.instance != null)
+                DialogueHistoryManager.instance.AddDialogue(speaker, dialogue);
+        }
+        else
+        {
+            if (nameText != null)
+                nameText.text = "";
+
+            architect.Build(line);
+
+            if (DialogueHistoryManager.instance != null)
+                DialogueHistoryManager.instance.AddDialogue("Narrador", line);
         }
     }
-    else
-    {
-        if (nameText != null)
-            nameText.text = "";
 
-        architect.Build(line);
-
-        // 🟢 GUARDAR NARRADOR
-        if (DialogueHistoryManager.instance != null)
-        {
-            DialogueHistoryManager.instance.AddDialogue("Narrador", line);
-            Debug.Log("Guardando en historial: Narrador " + line);
-        }
-    }
-}
-
+    // 🎯 CHOICES
     void ShowChoices()
     {
-        architect.ForceComplete(); // 👈 importante
+        architect.ForceComplete();
         choicesPanel.SetActive(true);
 
         for (int i = 0; i < choiceButtons.Length; i++)
@@ -193,7 +210,4 @@ void ProcessLine(string line)
             }
         }
     }
-
 }
-
-
