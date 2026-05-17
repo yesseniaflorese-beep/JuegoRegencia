@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class DialogueRunner : MonoBehaviour
@@ -67,6 +68,10 @@ public class DialogueRunner : MonoBehaviour
         SceneController.instance.isLoadingGame)
         return;
 
+    // 🔥 BLOQUEO: minijuego activo
+    if (ds != null && ds.isBlocked)
+        return;
+
     if (Keyboard.current == null)
         return;
 
@@ -83,6 +88,10 @@ public class DialogueRunner : MonoBehaviour
         // 🔥 BLOQUEO DURANTE RESTORE
         if (SceneController.instance != null &&
             SceneController.instance.isLoadingGame)
+            return;
+
+        // 🔥 BLOQUEO: minijuego activo
+        if (ds != null && ds.isBlocked)
             return;
 
         // ⏩ texto en construcción
@@ -209,5 +218,10 @@ public class DialogueRunner : MonoBehaviour
                 choiceButtons[i].gameObject.SetActive(false);
             }
         }
+
+        // 🔥 Deseleccionar cualquier botón del EventSystem para que
+        // Enter/Space no disparen el choice sin que el jugador haga click
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
     }
 }

@@ -6,7 +6,7 @@ Sophie: Algo no está bien…
 Sophie: Desde esta mañana todos susurran a mi alrededor.
 Sophie: Las miradas… los silencios… incluso los sirvientes se comportan distinto.
 
-@SPRITE Nathaniel preocupado derecha
+@SPRITE Nathaniel neutral derecha
 Nathaniel: Buenos días Sophie.
 Sophie: Nathaniel, ¿Sabes qué ocurre?
 Nathaniel: Ha comenzado a circular un rumor…

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -27,6 +28,7 @@ public class SceneController : MonoBehaviour
     public string menuScene = "MenuInicial";
     public string instruccionesScene = "Instrucciones";
     public string seleccionScene = "SeleccionPersonaje";
+    public string creditsScene = "CreditsScene";
 
     [Header("Escena transición")]
     public string transitionScene = "TransitionScene";
@@ -53,6 +55,11 @@ public class SceneController : MonoBehaviour
     // ==================================================
     // ESCENAS FIJAS
     // ==================================================
+    public void LoadCredits()
+    {
+        LoadSceneSafe(creditsScene);
+    }
+
     public void LoadMenu()
     {
         LoadSceneSafe(menuScene);
@@ -75,8 +82,7 @@ public class SceneController : MonoBehaviour
     {
         currentChapter = 0;
 
-        PlayerPrefs.SetInt("CurrentChapter", currentChapter);
-        PlayerPrefs.Save();
+        // ⚠ No persistimos CurrentChapter aquí; solo SaveGame() lo hace.
 
         if (capitulos.Count > 0)
         {
@@ -90,6 +96,9 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    [Header("Transición")]
+    public float transitionDelay = 0.5f;
+
     // ==================================================
     // SIGUIENTE CAPÍTULO
     // ==================================================
@@ -100,19 +109,31 @@ public class SceneController : MonoBehaviour
 
     currentChapter++;
 
-    PlayerPrefs.SetInt("CurrentChapter", currentChapter);
-    PlayerPrefs.Save();
+    // ⚠ NO guardamos CurrentChapter aquí — solo SaveGame() lo persiste.
+    // Guardar aquí causaba que avanzar sin guardar corrompiera el save.
 
     if (currentChapter < capitulos.Count)
     {
         pendingChapter = capitulos[currentChapter].sceneName;
-        SceneManager.LoadScene(transitionScene);
+        StartCoroutine(LoadNextChapterDelayed());
     }
     else
     {
-        LoadMenu();
+        StartCoroutine(LoadMenuDelayed());
     }
 }
+
+    IEnumerator LoadNextChapterDelayed()
+    {
+        yield return new WaitForSeconds(transitionDelay);
+        SceneManager.LoadScene(transitionScene);
+    }
+
+    IEnumerator LoadMenuDelayed()
+    {
+        yield return new WaitForSeconds(transitionDelay);
+        LoadSceneSafe(creditsScene);
+    }
 
     // ==================================================
     // CARGAR CAPÍTULO REAL

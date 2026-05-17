@@ -329,13 +329,24 @@ public string GetPreviousLine()
 
     void SkipUntilEndIf()
     {
+        int depth = 1; // ya estamos dentro de un @IF que falló
+
         while (index < lines.Count)
         {
-            if (lines[index].Trim() == "@ENDIF")
+            string l = lines[index].Trim();
+
+            if (l.StartsWith("@IF"))
+                depth++;           // @IF anidado: sube un nivel
+            else if (l == "@ENDIF")
             {
-                index++;
-                break;
+                depth--;           // cerramos un nivel
+                if (depth == 0)
+                {
+                    index++;       // consumir el @ENDIF y salir
+                    break;
+                }
             }
+
             index++;
         }
     }

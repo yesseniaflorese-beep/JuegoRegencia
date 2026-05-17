@@ -630,15 +630,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.data[1].titulo
-      value: Capitulo 1
+      value: "Cap\xEDtulo 1"
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.data[2].titulo
-      value: Capitulo 2
+      value: "Cap\xEDtulo 2"
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.data[3].titulo
-      value: 'Capitulo 3 '
+      value: "Cap\xEDtulo 3 "
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.data[4].titulo
@@ -646,11 +646,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.data[5].titulo
-      value: Capitulo 5
+      value: "Cap\xEDtulo 5"
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.data[6].titulo
-      value: Capitulo 6
+      value: "Cap\xEDtulo 6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
+      propertyPath: capitulos.Array.data[0].sceneName
+      value: CapituloInicio
       objectReference: {fileID: 0}
     - target: {fileID: 6341825972001749728, guid: b241f876b605eba4f9a54104b8073832, type: 3}
       propertyPath: capitulos.Array.data[1].sceneName

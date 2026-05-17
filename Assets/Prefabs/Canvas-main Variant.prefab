@@ -291,9 +291,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402923728262503265}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.8988765, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1142498227377130975}
@@ -302,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.6488, y: -49.4469}
+  m_AnchoredPosition: {x: 2.6488037, y: -44.44664}
   m_SizeDelta: {x: 773.9376, y: 553.1923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4362550356443837964
@@ -548,7 +548,7 @@ RectTransform:
   m_GameObject: {fileID: 2368995390663352820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41204742, y: 2.1057887, z: 1.086465}
+  m_LocalScale: {x: 0.41204745, y: 1.892844, z: 1.086465}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9136712448680206371}
@@ -556,7 +556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 381.32413, y: 288.44455}
+  m_AnchoredPosition: {x: 381.32397, y: 259.27603}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8464526644510018616
@@ -1427,7 +1427,7 @@ RectTransform:
   m_GameObject: {fileID: 4249360220428913818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.1125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3287186289467609568}
@@ -1800,6 +1800,7 @@ MonoBehaviour:
   contentParent: {fileID: 7004962158708815765}
   historyTextPrefab: {fileID: 2759637397571068358, guid: 7133241f641a6c940ad28bcb6d0b2aaa, type: 3}
   scrollRect: {fileID: 3057311601004131620}
+  isRestoring: 0
 --- !u!1 &6180186753441651399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,14 +2096,14 @@ RectTransform:
   m_GameObject: {fileID: 7868075956689711033}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54996294, y: 0.8264886, z: 0}
+  m_LocalScale: {x: 0.54996294, y: 0.7429112, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5991942059768737180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: 0.000061035156}
+  m_AnchoredPosition: {x: -2.0002441, y: 0.000091552734}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8304484197353633881
@@ -3674,6 +3675,12 @@ PrefabInstance:
       propertyPath: dialogueFile
       value: 
       objectReference: {fileID: 4900000, guid: 868cc373aed9fc141a28b3fded067c53, type: 3}
+    - target: {fileID: 7803405371994662275, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: m_text
+      value: 'Pulsa Espacio o la flecha para iniciar
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 8116992382699637511, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: backgroundImage
       value: 
@@ -3907,6 +3914,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2299355487557240212, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4911453501293908672}
+    - targetCorrespondingSourceObject: {fileID: 7563907913811521101, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8627250718639505027}
   m_SourcePrefab: {fileID: 100100000, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
 --- !u!1 &66121407181729848 stripped
 GameObject:
@@ -4035,6 +4045,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8004841402577995345, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
   m_PrefabInstance: {fileID: 4420709697459059270}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6170461593028760587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7563907913811521101, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+  m_PrefabInstance: {fileID: 4420709697459059270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8627250718639505027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170461593028760587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a6dd832aefe9a4688a6ab8baed934e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoKeyboardSubmit
 --- !u!224 &6575709315930032026 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7356657224725790172, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
