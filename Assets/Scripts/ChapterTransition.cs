@@ -9,11 +9,10 @@ public class ChapterTransition : MonoBehaviour
     public TMP_Text chapterTitle;
     public TMP_Text chapterSubtitle;
 
-    [Header("Telón")]
-    public RectTransform curtainLeft;
-    public RectTransform curtainRight;
-    public float curtainOpenDuration = 1.2f;
-    public float curtainCloseDuration = 0.8f;
+    [Header("Telón (Sprite Sheet)")]
+    public Image curtainImage;
+    public Sprite[] curtainFrames;
+    public float fps = 12f;
 
     [Header("Tiempos")]
     public float transitionTime = 2f;
@@ -23,56 +22,52 @@ public class ChapterTransition : MonoBehaviour
         chapterTitle.text = SceneController.instance.GetCurrentChapterTitle();
         chapterSubtitle.text = SceneController.instance.GetCurrentChapterSubtitle();
 
+        // Debug para verificar configuración
+        Debug.Log($"[Telón] curtainImage: {(curtainImage != null ? "✅" : "❌ NULL")}");
+        Debug.Log($"[Telón] curtainFrames: {(curtainFrames != null ? curtainFrames.Length.ToString() : "❌ NULL")} sprites");
+        if (curtainFrames != null && curtainFrames.Length > 0)
+            Debug.Log($"[Telón] frame 0: {(curtainFrames[0] != null ? curtainFrames[0].name : "❌ NULL")}");
+
         SetTextAlpha(0f);
         StartCoroutine(NextChapterAfterDelay());
     }
 
     IEnumerator NextChapterAfterDelay()
     {
-        // 1 — Abrir telón
-        yield return StartCoroutine(AnimateCurtain(opening: true));
-
-        // 2 — Fade in texto
+        yield return StartCoroutine(PlayFrames(forward: true));
         yield return StartCoroutine(FadeText(0f, 1f, 0.4f));
-
-        // 3 — Esperar
         yield return new WaitForSeconds(transitionTime);
-
-        // 4 — Fade out texto
         yield return StartCoroutine(FadeText(1f, 0f, 0.3f));
-
-        // 5 — Cerrar telón
-        yield return StartCoroutine(AnimateCurtain(opening: false));
-
+        yield return StartCoroutine(PlayFrames(forward: false));
         SceneController.instance.LoadRealNextChapter();
     }
 
-    IEnumerator AnimateCurtain(bool opening)
+    IEnumerator PlayFrames(bool forward)
     {
-        float duration = opening ? curtainOpenDuration : curtainCloseDuration;
-        float screenHalf = Screen.width / 2f;
-
-        // Al abrir: van de centro hacia afuera. Al cerrar: de afuera al centro.
-        Vector2 leftFrom  = opening ? Vector2.zero : new Vector2(-screenHalf, 0f);
-        Vector2 leftTo    = opening ? new Vector2(-screenHalf, 0f) : Vector2.zero;
-        Vector2 rightFrom = opening ? Vector2.zero : new Vector2(screenHalf, 0f);
-        Vector2 rightTo   = opening ? new Vector2(screenHalf, 0f) : Vector2.zero;
-
-        curtainLeft.anchoredPosition  = leftFrom;
-        curtainRight.anchoredPosition = rightFrom;
-
-        float elapsed = 0f;
-        while (elapsed < duration)
+        if (curtainFrames == null || curtainFrames.Length == 0)
         {
-            elapsed += Time.deltaTime;
-            float t = EaseInOut(Mathf.Clamp01(elapsed / duration));
-            curtainLeft.anchoredPosition  = Vector2.Lerp(leftFrom, leftTo, t);
-            curtainRight.anchoredPosition = Vector2.Lerp(rightFrom, rightTo, t);
-            yield return null;
+            Debug.LogError("[Telón] ❌ curtainFrames está vacío");
+            yield break;
         }
 
-        curtainLeft.anchoredPosition  = leftTo;
-        curtainRight.anchoredPosition = rightTo;
+        float delay = 1f / fps;
+        int start = forward ? 0 : curtainFrames.Length - 1;
+        int end   = forward ? curtainFrames.Length - 1 : 0;
+        int step  = forward ? 1 : -1;
+
+        for (int i = start; forward ? i <= end : i >= end; i += step)
+        {
+            if (curtainFrames[i] != null)
+            {
+                curtainImage.sprite = curtainFrames[i];
+                curtainImage.color = Color.white; // asegura que sea visible
+            }
+            else
+            {
+                Debug.LogWarning($"[Telón] frame {i} es null");
+            }
+            yield return new WaitForSeconds(delay);
+        }
     }
 
     IEnumerator FadeText(float from, float to, float duration)
@@ -92,6 +87,4 @@ public class ChapterTransition : MonoBehaviour
         var c1 = chapterTitle.color;    c1.a = alpha; chapterTitle.color = c1;
         var c2 = chapterSubtitle.color; c2.a = alpha; chapterSubtitle.color = c2;
     }
-
-    float EaseInOut(float t) => t * t * (3f - 2f * t);
 }
