@@ -1,5 +1,5 @@
 @BG SalaHastings
-@MUSIC piano_suave
+@MUSIC monologo
 @SPRITE Sophie neutral protagonista
 
 Sophie: El duque está interesado en mi…

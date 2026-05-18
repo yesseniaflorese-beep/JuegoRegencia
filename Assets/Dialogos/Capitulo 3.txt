@@ -71,7 +71,7 @@ dinero | Esta es una oportunidad importante | dinero+2 sebastianpoints+1 theopoi
 @END
 
 @BG SalaCav
-@MUSIC vals1
+@MUSIC tranquilo
 @SPRITE Sophie neutral protagonista
 @SPRITE Lottie neutral derecha
 
@@ -142,7 +142,7 @@ Ruby: ¿Crees que ya hayan encontrado a quien cortejar?
 Sophie: Disculpenme, regreso en un momento.
 
 @BG ExteriorJardin
-@MUSIC piano_suave
+@MUSIC noche
 @SPRITE Sophie neutral protagonista
 
 Sophie: La duquesa no puede enterarse sobre lo de mi padre

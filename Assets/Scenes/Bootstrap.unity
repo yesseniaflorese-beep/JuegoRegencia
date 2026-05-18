@@ -343,11 +343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
       propertyPath: musicClips.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
       propertyPath: musicNames.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
       propertyPath: 'sfxClips.Array.data[0]'
@@ -438,6 +438,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
+      propertyPath: 'musicClips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0dfc4e9b529dba34f9b12d93435e0d35, type: 3}
+    - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
       propertyPath: 'musicNames.Array.data[0]'
       value: tranquilo
       objectReference: {fileID: 0}
@@ -460,6 +464,14 @@ PrefabInstance:
     - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
       propertyPath: 'musicNames.Array.data[5]'
       value: silencio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
+      propertyPath: 'musicNames.Array.data[6]'
+      value: valsprincipe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777240304806381493, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
+      propertyPath: 'musicNames.Array.data[7]'
+      value: valsprincipe
       objectReference: {fileID: 0}
     - target: {fileID: 4240263937411555711, guid: 206cbe931ad839d42962b9e33b2c829f, type: 3}
       propertyPath: m_LocalPosition.x
