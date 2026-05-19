@@ -19,11 +19,13 @@ Sophie: Nathaniel, ¿ocurre algo?
 
 Nathaniel: El duque ha llegado.
 
+@SPRITE Sophie camisonSor protagonista
 Sophie: ¿Tan pronto? En un momento bajo.
 
+
 @BG SalaHastings
-@SPRITE Theo neutral derecha
-@SPRITE Sophie neutral protagonista
+@SPRITE Theo sonriente derecha
+@SPRITE Sophie sorpresa protagonista
 
 Sophie: Su gracia bienvenido, espero no haberlo hecho esperar mucho. 
 
@@ -34,9 +36,12 @@ reputacion | Las visitas siempre son bien recibidas | reputacion+2
 dinero | Es un honor recibir al duque en nuestra casa | dinero+2
 @END
 
+@SPRITE Theo neutral derecha
 Theo: Señorita Hastings…¿Puedo hacerle una pregunta?
 
 Sophie: Claro.
+
+@SPRITE Sophie neutral protagonista
 
 Theo: ¿Está disfrutando la temporada?
 
@@ -62,18 +67,22 @@ Theo: He pensado en nuestras conversaciones…
 
 Theo: Fue una de las pocas conversaciones sinceras que tuve en toda la temporada.
 
+@SPRITE Sophie sorpresa protagonista
+
 Sophie: ¿En serio?
 
+@SPRITE Theo sonrojado derecha
 Theo: Sí.
 
 Theo: La mayoría de las personas intenta impresionar.
 
+@SPRITE Theo neutral derecha
 Theo: Usted solo habló conmigo.
 
+@SPRITE Sophie sonrojada protagonista
 Sophie: No pensé que fuera algo especial.
 
 Theo: Lo fue.
-
 
 @CHOICE
 amor | ¿Por eso quiso verme de nuevo? | amor+2 
@@ -90,6 +99,8 @@ Theo: ¿Algún hombre llamado su atención?
 Sophie: …
 
 Theo: Disculpe el atrevimiento señorita Hastings 
+
+@SPRITE Sophie neutral protagonista
 
 @CHOICE
 amor | Responder de manera sincera | amor+2 | amor_resp
@@ -154,6 +165,7 @@ Theo: Porque eso significa que aún tiene tiempo para decidir.
 
 Sophie: …
 
+@SPRITE Theo sonriente derecha
 Theo: Y me gustaría ser parte de ese proceso.
 
 @CHOICE
@@ -166,6 +178,7 @@ dinero | ¿Planea formar una alianza esta temporada? | dinero+2
 @IF amor > reputacion
 @IF amor > dinero
 
+@SPRITE Theo neutral derecha
 Theo: Si…
 Theo: Espero que mis intenciones hayan quedado claras…
 
@@ -195,8 +208,11 @@ Sophie: …
 
 Theo: Si me lo permite, me gustaría seguir visitándola.
 
+@SPRITE Theo sonriente derecha
+
 Theo: Y continuar nuestras conversaciones.
 
+@SPRITE Theo neutral derecha
 Sophie: Entiendo.
 
 @ENDIF
@@ -232,10 +248,12 @@ Theo: Solo conocerla mejor.
 
 Sophie: …
 
+@SPRITE Theo sonriente derecha
 Theo: Si me lo permite, me gustaría seguir visitándola.
 
 Theo: Y continuar nuestras conversaciones.
 
+@SPRITE Theo neutral derecha
 Sophie: Entiendo.
 
 @ENDIF
@@ -271,6 +289,7 @@ Theo: Y aun así, no deja de lado la importancia de los sentimientos…
 
 Theo: Debo admitir que eso me resulta particularmente interesante.
 
+@SPRITE Theo sonriente derecha
 Theo: Si me lo permite, me gustaría seguir visitándola.
 @ENDIF
 @ENDIF
@@ -282,6 +301,7 @@ reputacion | Será un honor recibir sus visitas | reputacion+2
 dinero | Las visitas siempre son importantes para una familia como la mía | dinero+2 
 @END
 
+@SPRITE Theo sonriente derecha
 Theo: Me alegra escuchar eso.
 
 Theo: Ha sido una visita muy agradable señorita Hastings.

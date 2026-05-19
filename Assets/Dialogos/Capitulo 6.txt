@@ -1,6 +1,6 @@
 @BG HabitacionSophie
-@SFX MurmulloSuave
-@SPRITE Sophie neutral protagonista
+@MUSIC monologo
+@SPRITE Sophie camisonT protagonista
 
 Sophie: Algo no está bien…
 Sophie: Desde esta mañana todos susurran a mi alrededor.
@@ -10,30 +10,40 @@ Sophie: Las miradas… los silencios… incluso los sirvientes se comportan dist
 Nathaniel: Buenos días Sophie.
 Sophie: Nathaniel, ¿Sabes qué ocurre?
 Nathaniel: Ha comenzado a circular un rumor…
+
+@SPRITE Sophie camisonE protagonista
 Sophie: ¿Un rumor?
 Nathaniel: Sobre nuestra situación económica.
 Sophie: No puede ser.
 Nathaniel: Creo que empezó con la servidumbre.
 Nathaniel: Les hemos dado largas para pagarles…
 Nathaniel: Supongo que han decidido actuar.
+
+@SPRITE Sophie camisonT protagonista
 Sophie: ¡Estoy a punto de arreglarlo!
 
 @IF routetheo == 1
+@SPRITE Sophie camisonN protagonista
 Sophie: Necesito hablar con el duque.
 Sophie: ¿Puedes ayudarme?
 Nathaniel: No será necesario, el duque ya está aquí.
 
 @BG SalaHastings
 @SPRITE Theo neutral derecha
-@SPRITE Sophie neutral protagonista
+@SPRITE Sophie feliz protagonista
 
 Sophie: Su excelencia, es un honor. ¿A qué debo su visita?
 Theo: Buenos días señorita Hastings.
 Theo: Quería verla. Desde su carta no he podido estar más interesado en su respuesta.
 Theo: Me alegra que me haya tomado en cuenta.
 Sophie: Oh su excelencia, me alegra escuchar eso.
+
+@SPRITE Theo sorprendido derecha
 Theo: Además… he escuchado algunas cosas algo inquietantes.
+
+@SPRITE Sophie neutral protagonista
 Sophie: Ya veo.
+@SPRITE Theo neutral derecha
 Theo: Supongo que sabrá de qué se trata.
 Theo: Valoro mucho la honestidad.
 Theo: ¿Es verdad lo que se dice?
@@ -48,18 +58,20 @@ lie | Mentir y decir que todo está bajo control | lie+1
 
 Sophie: Su excelencia…
 Sophie: Mi familia está atravesando un momento difícil.
+@SPRITE Sophie triste protagonista
 Sophie: Mi padre ha apostado todo lo que teníamos… incluso mi dote.
 
 @IF amor >= dinero
 @IF amor >= reputacion
 
 Theo: No me importa.
+@SPRITE Sophie sorpresa protagonista
 Sophie: ¿Qué?
 Theo: No me importa su dote ni su riqueza.
 Theo: Me importa usted.
 Theo: Y si su familia está en problemas, la ayudaré.
 
-@SPRITE Sophie sorprendida
+@SPRITE Sophie feliz protagonista
 Sophie: ¿De verdad?
 Theo: La sinceridad vale más que cualquier fortuna.
 
@@ -76,6 +88,7 @@ Narrador: Y juntos enfrentaron las dificultades.
 @IF dinero >= reputacion
 
 Theo: Entonces todo este tiempo buscaba algo.
+@SPRITE Sophie triste protagonista
 Sophie: Su excelencia…
 Theo: Me dejé guiar por mis emociones.
 Theo: La reputación y el dinero son lo que realmente importa.
@@ -99,6 +112,7 @@ Theo: Aprecio su honestidad.
 Theo: Puedo ayudarla.
 Theo: Pero no puedo seguir cortejándola.
 
+@SPRITE Sophie neutral protagonista
 Sophie: Lo entiendo su excelencia.
 
 @BG BLACK
@@ -112,9 +126,8 @@ Narrador: Pero perdió el amor.
 @ENDIF
 
 
-
 @IF lie == 1
-
+@SPRITE Sophie neutral protagonista
 Sophie: Su excelencia…
 Sophie: No hay nada de qué preocuparse.
 Sophie: Solo es un rumor.
@@ -163,25 +176,27 @@ Narrador: Pero el amor nunca llegó.
 @ENDIF
 @ENDIF
 
-
 @ENDIF
 
-
-
 @IF routesebastian == 1
+@SPRITE Sophie camisonN protagonista
 Sophie: Necesito hablar con el príncipe.
 Sophie: ¿Puedes ayudarme?
 Nathaniel: No será necesario, el príncipe ya está aquí.
 
 @BG SalaHastings
 @SPRITE Sebastian neutral derecha
-@SPRITE Sophie neutral protagonista
+@SPRITE Sophie feliz protagonista
 
 Sophie: Su alteza, es un honor. ¿A qué debo su visita?
 Sebastian: Buenos días señorita Hastings.
 Sebastian: Quería verla. Desde su carta no he podido estar más entusiasmado por su respuesta.
 Sebastian: Me alegra que me haya tomado en cuenta.
 Sophie: Oh su alteza, me alegra escuchar eso.
+
+@SPRITE Sophie neutral protagonista
+@SPRITE Sebastian ceja derecha
+
 Sebastian: Además… he escuchado algunas cosas algo inquietantes.
 Sophie: Ya veo.
 Sebastian: Supongo que sabrá de qué se trata.
@@ -195,7 +210,7 @@ lie | Mentir y decir que todo está bajo control | lie+1
 
 
 @IF honesty == 1
-
+@SPRITE Sophie triste protagonista
 Sophie: Su alteza…
 Sophie: Mi familia está atravesando un momento difícil.
 Sophie: Mi padre ha apostado todo lo que teníamos… incluso mi dote.
@@ -203,13 +218,15 @@ Sophie: Mi padre ha apostado todo lo que teníamos… incluso mi dote.
 @IF amor >= dinero
 @IF amor >= reputacion
 
+@SPRITE Sophie sorpresa protagonista
 Sebastian: No me importa.
+@SPRITE Sophie sorpresa protagonista
 Sophie: ¿Qué?
 Sebastian: No me importa su dote ni su riqueza.
 Sebastian: Me importa usted.
 Sebastian: Y si su familia está en problemas, la ayudaré.
 
-@SPRITE Sophie sorprendida
+@SPRITE Sophie feliz protagonista
 Sophie: ¿De verdad?
 Sebastian: La sinceridad vale más que cualquier fortuna.
 
@@ -226,6 +243,7 @@ Narrador: Y juntos enfrentaron las dificultades.
 @IF dinero >= reputacion
 
 Sebastian: Entonces todo este tiempo buscaba algo.
+@SPRITE Sophie triste protagonista
 Sophie: Su alteza…
 Sebastian: Me dejé guiar por mis emociones.
 Sebastian: La reputación y el dinero son lo que realmente importa.
@@ -249,6 +267,7 @@ Sebastian: Aprecio su honestidad.
 Sebastian: Puedo ayudarla.
 Sebastian: Pero no puedo seguir cortejándola.
 
+@SPRITE Sophie neutral protagonista
 Sophie: Lo entiendo su alteza.
 
 @BG BLACK
@@ -262,9 +281,8 @@ Narrador: Pero perdió el amor.
 @ENDIF
 
 
-
 @IF lie == 1
-
+@SPRITE Sophie neutral protagonista
 Sophie: Su alteza…
 Sophie: No hay nada de qué preocuparse.
 Sophie: Solo es un rumor.

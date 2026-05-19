@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
@@ -17,16 +18,14 @@ public class ChapterTransition : MonoBehaviour
     [Header("Tiempos")]
     public float transitionTime = 2f;
 
+    [Header("Frame de corte")]
+    [Tooltip("En este frame el telón cubre todo — aquí se activa la nueva escena")]
+    public int sceneChangeFrame = 12;
+
     void Start()
     {
         chapterTitle.text = SceneController.instance.GetCurrentChapterTitle();
         chapterSubtitle.text = SceneController.instance.GetCurrentChapterSubtitle();
-
-        // Debug para verificar configuración
-        Debug.Log($"[Telón] curtainImage: {(curtainImage != null ? "✅" : "❌ NULL")}");
-        Debug.Log($"[Telón] curtainFrames: {(curtainFrames != null ? curtainFrames.Length.ToString() : "❌ NULL")} sprites");
-        if (curtainFrames != null && curtainFrames.Length > 0)
-            Debug.Log($"[Telón] frame 0: {(curtainFrames[0] != null ? curtainFrames[0].name : "❌ NULL")}");
 
         SetTextAlpha(0f);
         StartCoroutine(NextChapterAfterDelay());
@@ -34,37 +33,66 @@ public class ChapterTransition : MonoBehaviour
 
     IEnumerator NextChapterAfterDelay()
     {
-        yield return StartCoroutine(PlayFrames(forward: true));
+        // 1 — Telón se cierra (frames 0 → sceneChangeFrame)
+        yield return StartCoroutine(PlayFrames(0, sceneChangeFrame));
+
+        // 2 — Fade in texto
         yield return StartCoroutine(FadeText(0f, 1f, 0.4f));
+
+        // 3 — Esperar
         yield return new WaitForSeconds(transitionTime);
+
+        // 4 — Fade out texto
         yield return StartCoroutine(FadeText(1f, 0f, 0.3f));
-        yield return StartCoroutine(PlayFrames(forward: false));
-        SceneController.instance.LoadRealNextChapter();
+
+        // 5 — Cargar siguiente escena en memoria sin activarla todavía
+        string nextScene = SceneController.instance.GetNextSceneName();
+        AsyncOperation load = SceneManager.LoadSceneAsync(nextScene);
+        load.allowSceneActivation = false;
+
+        // Esperar a que esté lista en memoria
+        while (load.progress < 0.9f)
+            yield return null;
+
+        // Mover el Canvas del telón al root para que DontDestroyOnLoad funcione
+        Transform root = curtainImage.canvas.transform;
+        root.SetParent(null);
+        DontDestroyOnLoad(root.gameObject);
+        DontDestroyOnLoad(gameObject);
+
+        // 6 — Activar la escena
+        load.allowSceneActivation = true;
+
+        // Esperar un frame para que la escena termine de inicializarse
+        yield return null;
+        yield return null;
+
+        // 7 — Telón se abre (frames sceneChangeFrame → último)
+        yield return StartCoroutine(PlayFrames(sceneChangeFrame, curtainFrames.Length - 1));
+
+        // 8 — Destruir el Canvas del telón y este GameObject
+        Destroy(curtainImage.canvas.gameObject);
+        Destroy(gameObject);
     }
 
-    IEnumerator PlayFrames(bool forward)
+    IEnumerator PlayFrames(int from, int to)
     {
         if (curtainFrames == null || curtainFrames.Length == 0)
         {
-            Debug.LogError("[Telón] ❌ curtainFrames está vacío");
+            Debug.LogError("[Telón] curtainFrames está vacío");
             yield break;
         }
 
         float delay = 1f / fps;
-        int start = forward ? 0 : curtainFrames.Length - 1;
-        int end   = forward ? curtainFrames.Length - 1 : 0;
-        int step  = forward ? 1 : -1;
+        bool forward = to >= from;
+        int step = forward ? 1 : -1;
 
-        for (int i = start; forward ? i <= end : i >= end; i += step)
+        for (int i = from; forward ? i <= to : i >= to; i += step)
         {
-            if (curtainFrames[i] != null)
+            if (i >= 0 && i < curtainFrames.Length && curtainFrames[i] != null)
             {
                 curtainImage.sprite = curtainFrames[i];
-                curtainImage.color = Color.white; // asegura que sea visible
-            }
-            else
-            {
-                Debug.LogWarning($"[Telón] frame {i} es null");
+                curtainImage.color = Color.white;
             }
             yield return new WaitForSeconds(delay);
         }

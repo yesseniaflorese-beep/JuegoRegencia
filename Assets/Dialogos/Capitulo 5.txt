@@ -18,6 +18,9 @@ Sophie: Sean cuales sean sus razones, sin duda su gracia es un buen hombre pero 
 
 Nathaniel: El principe ha llegado.
 
+
+@SPRITE Sophie sorpresa protagonista
+
 Sophie: ¿El príncipe?
 
 Nathaniel: Si ¿Hay algo que deba saber?
@@ -30,6 +33,7 @@ Sophie: Hazlo pasar, no lo hagas esperar.
 
 Sebastian: Disculpe haber venido sin avisar señorita Hastings.
 
+@SPRITE Sophie feliz protagonista
 Sophie: No se preocupe su alteza
 
 Sophie: Es un honor recibirlo.
@@ -40,12 +44,15 @@ Sophie: En lo absoluto
 
 Sebastian: Tenía la intención de visitarla pronto.
 
+@SPRITE Sophie sorpresa protagonista
 Sophie: ¿De verdad?
 Sebastian: Si
 
 Sebastian: Considero nuestras conversaciones bastante agradables…
 
 Sebastian: además… en la velada anterior la conversación quedo inconclusa.
+
+@SPRITE Sophie neutral protagonista
 
 Sophie: Su alteza, le recuerdo que no soy muy buena con los acertijos…
 
@@ -59,6 +66,8 @@ Sophie: No tiene por qué.
 
 Sophie: Si alguien debería disculparse aquí soy yo. 
 
+@SPRITE Sebastian ceja derecha
+
 Sebastian: ¿Usted?
 
 Sophie: Puede que no haya entendido correctamente sus palabras en la velada anterior.
@@ -66,6 +75,8 @@ Sophie: Puede que no haya entendido correctamente sus palabras en la velada ante
 Sebastian: ¿de verdad?
 
 Sophie: …
+
+@SPRITE Sebastian neutral derecha
 
 Sebastian: Su silencio parece darme una respuesta, pero también me parece inquietante
 
@@ -111,7 +122,11 @@ Sebastian: Supongo que ha venido a visitarla ¿No es así?
 
 Sophie: Si…
 
+@SPRITE Sebastian ceja derecha
+
 Sebastian: Ya veo…
+
+@SPRITE Sebastian neutral derecha
 
 Sebastian: El duque no suele visitar a muchas personas.
 
@@ -125,11 +140,14 @@ reputacion | Fue una visita cordial | reputacion+2
 dinero | Fue una visita importante para mi familia | dinero+2
 @END
 
+@SPRITE Sebastian ceja derecha
 Sebastian: A diferencia del duque yo suelo observar antes de actuar
 
 Sebastian: Y asegurarme de que mis decisiones sean correctas.
 
 Sophie: ¿Y ya ha tomado una decisión?
+
+@SPRITE Sebastian neutral derecha
 
 Sebastian: Aún no completamente.
 
@@ -181,11 +199,15 @@ Sophie: Oh… no se que hacer…
 
 Sophie: Ambos mostraron interés y yo…
 
+@SPRITE Sophie camisonT protagonista
+
 Sophie: ¡No se que hacer!
 
 Sophie: El duque se ha portado como todo un caballero conmigo
 
 Sophie: disfruto nuestras charlas, es amable, encantador….
+
+@SPRITE Sophie camisonN protagonista
 
 Sophie: Pero el príncipe…
 
@@ -197,6 +219,7 @@ Sophie: Sin embargo, tengo que tomar una decision.
 
 Sophie: Pero temo herir a alguien.
 
+@SPRITE Sophie camisonT protagonista
 Sophie: o peor… tomar la decisión incorrecta
 
 Sophie: La temporada ha avanzado rápidamente y si no le doy una respuesta a alguno de los 2 buscaran a alguien más
@@ -207,11 +230,12 @@ Sophie: Tengo que ser honesta conmigo misma…
 
 Sophie: Si sigo dudando, terminaré perdiendo a ambos.
 
+@SPRITE Sophie camisonN protagonista
 Sophie: Y eso sería peor.
 
 @CHOICE
 duque | Elegir al duque | routetheo+1 
-principe | Elegir al principe | routesebastian+1 
+principe | Elegir al príncipe | routesebastian+1 
 @END
 
 @IF routetheo == 1
@@ -224,6 +248,7 @@ Sophie: Segura.
 
 Sophie: Tal vez… él es la persona correcta.
 
+@SPRITE Sophie camisonF protagonista
 Sophie: Debo hablar con él en la próxima velada.
 
 @ENDIF
@@ -237,6 +262,7 @@ Sophie: Y sus palabras no parecen vacías.
 
 Sophie: Tal vez… él es la persona correcta.
 
+@SPRITE Sophie camisonF protagonista
 Sophie: Debo hablar con él en la próxima velada.
 
 @ENDIF

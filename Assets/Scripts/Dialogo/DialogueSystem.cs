@@ -10,10 +10,11 @@ public class DialogueSystem : MonoBehaviour
     public bool waitingForChoice = false;
     public List<ChoiceData> currentChoices = new List<ChoiceData>();
 
-    private List<string> lines;
+    public List<string> lines;
     private Dictionary<string, int> labels = new Dictionary<string, int>();
 
     public int index = 0;
+    public int lastDisplayedIndex = 0; // índice de la última línea mostrada al jugador
 
     public bool isRestoring = false;
 
@@ -161,6 +162,9 @@ public class DialogueSystem : MonoBehaviour
             waitingForChoice = true;
             return null;
         }
+
+        // Guardar el índice de esta línea como la última mostrada al jugador
+        lastDisplayedIndex = index - 1;
 
         return line;
     }

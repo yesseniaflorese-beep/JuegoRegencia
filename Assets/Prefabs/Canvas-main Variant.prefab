@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5501428689707102492, guid: e325bfec2d5c24f4fadc62404f20a013, type: 3}
+  m_Sprite: {fileID: 846010472778899471, guid: 095bee5e63ff83c439b52a51815de10f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2721,7 +2721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[6].textures.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[7].textures.Array.size
@@ -2861,7 +2861,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: 34bc02ce0bb7d1241801aa41302c85fb, type: 3}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[6].expressions.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[6].textures.Array.data[0]'
@@ -2888,8 +2888,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: 09fa8bb6e8b1a1f4a9da66ae2100db89, type: 3}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
+      propertyPath: 'characters.Array.data[6].textures.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2800000, guid: d53b1e4c564c88a4e840c83abd4d2df0, type: 3}
+    - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: characters.Array.data[7].expressions.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[7].textures.Array.data[0]'
@@ -3089,7 +3093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[6].expressions.Array.data[6]'
-      value: sorprendido
+      value: ceja
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[7].expressions.Array.data[0]'
@@ -3109,11 +3113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[7].expressions.Array.data[4]'
-      value: sorprendido
+      value: triste
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[7].expressions.Array.data[5]'
-      value: triste
+      value: sonrojado
       objectReference: {fileID: 0}
     - target: {fileID: 1972174220278681620, guid: bb63195e329d7b44abf92dc75f24fc82, type: 3}
       propertyPath: 'characters.Array.data[0].expressions.Array.data[10]'
@@ -4188,6 +4192,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 9133938342253818232}
+    - target: {fileID: 5817511265856023031, guid: ae8b5c5ddcdc5f147b0bce176180970c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 846010472778899471, guid: 095bee5e63ff83c439b52a51815de10f, type: 3}
     - target: {fileID: 6240588200310061753, guid: ae8b5c5ddcdc5f147b0bce176180970c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4212,6 +4220,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7412491206415735436, guid: ae8b5c5ddcdc5f147b0bce176180970c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 846010472778899471, guid: 095bee5e63ff83c439b52a51815de10f, type: 3}
     - target: {fileID: 7722504973223926376, guid: ae8b5c5ddcdc5f147b0bce176180970c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -4222,6 +4234,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7722504973223926376, guid: ae8b5c5ddcdc5f147b0bce176180970c, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624259072570567294, guid: ae8b5c5ddcdc5f147b0bce176180970c, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9027976386501919490, guid: ae8b5c5ddcdc5f147b0bce176180970c, type: 3}

@@ -22,6 +22,8 @@ Sophie: Incluso el futuro de Nathaniel.
 
 Sophie: Sin embargo…
 
+@SPRITE Sophie camisonT protagonista
+
 Sophie: No sé si ellos podrían sentir algo real más allá de una alianza.
 
 Sophie: O si los problemas de mi familia los harían dudar.
@@ -38,7 +40,7 @@ Sophie: Alguien más conveniente.
 
 @SFX TocToc
 
-@SPRITE Sophie sorprendida protagonista
+@SPRITE Sophie camisonSor protagonista
 
 @SPRITE Nathaniel neutral derecha
 
@@ -437,6 +439,8 @@ Sebastian: Parece disfrutar particularmente su compañia.
 
 Sophie: Solo está siendo amable… eso es todo
 
+@SPRITE Sebastian ceja derecha
+
 Sebastian: Ya veo…
 
 Sebastian: El duque no suele ser considerado sin un motivo.
@@ -451,9 +455,13 @@ dinero | Es un caballero influyente | dinero+2
 
 Sebastian: Entiendo.
 
+@SPRITE Sebastian neutral derecha
+
 Sophie: Su alteza…
 Sophie: Si no es mucha indiscreción… 
 Sophie: Puedo preguntarle porque ha mencionado lo anterior
+
+@SPRITE Sebastian ceja derecha
 
 Sebastian: ¿Por qué? ¿Está interesada en él? 
 
@@ -462,6 +470,8 @@ amor | Es muy pronto para contestar una pregunta asi | amor+3 theopoints+1 sebas
 reputacion | Es importante conocerlo antes de tomar una decisión | reputacion+2 theopoints+1 sebastianpoints+1
 dinero | Es simple curiosidad | dinero+2 amor+2 sebastianpoints+2
 @END
+
+@SPRITE Sebastian neutral derecha
 
 Sebastian: Ya veo…
 
@@ -514,11 +524,13 @@ Sebastian: El duque parece bastante interesado en usted.
 @SPRITE Sophie neutral protagonista
 Sophie: Ya ha mencionado eso antes.
 
+@SPRITE Sebastian ceja derecha
 Sebastian: Porque es evidente.
 
 @SPRITE Sophie feliz protagonista
 Sophie: ¿Le molesta, su alteza?
 
+@SPRITE Sebastian neutral derecha
 Sebastian: No.
 
 Sebastian: Puede que este haciendo la pregunta a la persona incorrecta

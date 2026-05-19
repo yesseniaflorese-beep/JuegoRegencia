@@ -184,7 +184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Gracias Por jugar
+  m_text: Gracias por jugar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c18d4614c192593458446648fcf0c749, type: 2}
   m_sharedMaterial: {fileID: 4129222397555051393, guid: c18d4614c192593458446648fcf0c749, type: 2}
@@ -656,10 +656,11 @@ MonoBehaviour:
   introText: {fileID: 380206569}
   titleText: {fileID: 403721785}
   creditsTransform: {fileID: 1356489864}
-  creditsSpeed: 60
+  creditsSpeed: 100
   introDuration: 2
   titleDuration: 2
   fadeDuration: 1
+  endDelay: 12
 --- !u!4 &596464994
 Transform:
   m_ObjectHideFlags: 0
@@ -694,7 +695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &737048947
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1200,13 +1201,9 @@ MonoBehaviour:
   m_text: "DESARROLLO\n\nPROJECT MANAGER\nYessenia Flores\n\nDISE\xD1O DE PERSONAJES\nFernanda
     Corella\n\nPROGRAMACI\xD3N\nEthel Gonz\xE1lez\nYessenia Flores\n\nDISE\xD1O DE
     ESCENARIOS\nFernanda Corella\nJes\xFAs Barr\xF3n\nEthel Gonz\xE1lez\n\nHISTORIA\nYessenia
-    Flores\n\nAudio\nEthel Gonz\xE1lez\n\nTESTERS\nJorge Emilio Vargas Castro\nCarlos
+    Flores\n\nAUDIO\nEthel Gonz\xE1lez\n\nTESTERS\nJorge Emilio Vargas Castro\nCarlos
     Gael Busanez Castro\nJes\xFAs Arturo Quintana M\xE9ndez\nSarah Manzanarez\n\nAGRADECIMIENTOS
-    ESPECIALES\nAl se\xF1or del tutorial que me vi en el primer parcial, tenia la
-    voz bien hot.\n\nA Chat gpt y Claude, ustedden ya saben qp y asi\n\nA Enhypen
-    por ser la inpiracion del guapote del principe ujujuy\n\nA los slowed reverb
-    de youtube\n\nA Santos bravos\n\nY por ultimo pero no menos importante, a My
-    Shayla, Elisa Muak \n\n \n"
+    ESPECIALES\nElisa Monte\xF3n\nEnhypen\nSantos Bravos\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c18d4614c192593458446648fcf0c749, type: 2}
   m_sharedMaterial: {fileID: 4129222397555051393, guid: c18d4614c192593458446648fcf0c749, type: 2}
@@ -1272,7 +1269,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -79.605896, z: 0, w: -429.3603}
+  m_margin: {x: 0, y: -79.605896, z: 0, w: -2374.5095}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

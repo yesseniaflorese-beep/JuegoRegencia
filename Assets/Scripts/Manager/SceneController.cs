@@ -149,6 +149,11 @@ public class SceneController : MonoBehaviour
     // ==================================================
     // DATOS TRANSICIÓN
     // ==================================================
+    public string GetNextSceneName()
+    {
+        return pendingChapter;
+    }
+
     public string GetCurrentChapterTitle()
     {
         if (

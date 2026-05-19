@@ -41,13 +41,20 @@ public class SaveSystem : MonoBehaviour
             SceneController.instance.currentChapter
         );
 
-        // 🔥 IMPORTANTE: guardamos índice EXACTO sin restar 1
-        PlayerPrefs.SetInt(
-            "CurrentDialogueIndex",
-            DialogueSystem.instance.index
-        );
+        // 🔥 Si estamos en un @CHOICE, guardar la línea de diálogo anterior
+        // para que al restaurar el jugador llegue a las opciones naturalmente
+        int indexToSave = DialogueSystem.instance.lastDisplayedIndex;
+        if (DialogueSystem.instance.waitingForChoice)
+        {
+            indexToSave = DialogueSystem.instance.lastDisplayedIndex;
+            Debug.Log("GUARDANDO INDEX: " + indexToSave + " (retrocediendo antes del @CHOICE)");
+        }
+        else
+        {
+            Debug.Log("GUARDANDO INDEX: " + indexToSave + " (línea mostrada)");
+        }
 
-        Debug.Log("GUARDANDO INDEX: " + DialogueSystem.instance.index);
+        PlayerPrefs.SetInt("CurrentDialogueIndex", indexToSave);
 
         // Stats
         PlayerPrefs.SetInt("amor", GameManager.instance.amor);

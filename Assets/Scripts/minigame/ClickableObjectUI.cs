@@ -16,8 +16,8 @@ public class ClickableObjectUI : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private Vector3 posicionInicial;
 
     // Hover
-    public float hoverRotSpeed = 12f;
-    public float hoverRotAmount = 6f;
+    public float hoverRotSpeed = 2f;
+    public float hoverRotAmount = 2f;
 
     // Idle saltitos
     public float tiempoMin = 2f;

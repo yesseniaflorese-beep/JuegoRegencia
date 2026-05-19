@@ -165,8 +165,17 @@ MonoBehaviour:
   - {fileID: 4886073677573544157, guid: 92fc3b121254d06459b3d9f1c133d98a, type: 3}
   - {fileID: 362459098489630899, guid: 791b2312d8f67df4ea5c0fa222688912, type: 3}
   - {fileID: -3208053318993366640, guid: 35c8cb52820b46e4094a0b43d570f8a2, type: 3}
+  - {fileID: -7722593523560258437, guid: c6adea350594ef946a1839131de3ccbf, type: 3}
+  - {fileID: -3469937364525934971, guid: 84bdfe0d297458442b3e9290ae8adbf2, type: 3}
+  - {fileID: 3318093296768534727, guid: a3470c7fc1716464e8db3b8afe643c44, type: 3}
+  - {fileID: 1833321627151667778, guid: 9f65a7c99e6635b4bb5ef70bf4311476, type: 3}
+  - {fileID: 3889049902914437509, guid: db26a981486423548b063c4bc4d7434d, type: 3}
+  - {fileID: -2522537565361605202, guid: 048af2d10f2e0db419306351f219b348, type: 3}
+  - {fileID: -632659322789901306, guid: 735b33fc640c46e4b9d41c5b804cc308, type: 3}
+  - {fileID: 7155887467885920039, guid: c05d64f4bbf44584abc200d8ed1aed3a, type: 3}
   fps: 24
   transitionTime: 2
+  sceneChangeFrame: 11
 --- !u!4 &53493347
 Transform:
   m_ObjectHideFlags: 0
@@ -461,6 +470,10 @@ PrefabInstance:
     - target: {fileID: 5345187503137743643, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601017429321739533, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6719496348249316687, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

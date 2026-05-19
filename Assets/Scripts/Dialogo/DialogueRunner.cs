@@ -75,6 +75,11 @@ public class DialogueRunner : MonoBehaviour
     if (Keyboard.current == null)
         return;
 
+    // 🔥 BLOQUEO: historial abierto
+    if (DialogueHistoryManager.instance != null &&
+        DialogueHistoryManager.instance.historyPanel.activeSelf)
+        return;
+
     if (Keyboard.current.spaceKey.wasPressedThisFrame)
     {
         AdvanceDialogue();
@@ -88,6 +93,11 @@ public class DialogueRunner : MonoBehaviour
         // 🔥 BLOQUEO DURANTE RESTORE
         if (SceneController.instance != null &&
             SceneController.instance.isLoadingGame)
+            return;
+
+        // 🔥 BLOQUEO: historial abierto
+        if (DialogueHistoryManager.instance != null &&
+            DialogueHistoryManager.instance.historyPanel.activeSelf)
             return;
 
         // 🔥 BLOQUEO: minijuego activo

@@ -195,8 +195,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1095, y: 187}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -1083.7699, y: 218.03064}
+  m_SizeDelta: {x: 151.5805, y: 548.2415}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203713988
 MonoBehaviour:
@@ -212,12 +212,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickableObjectUI
   tieneObjetoDetras: 0
   objetoOculto: {fileID: 0}
-  hoverRotSpeed: 12
-  hoverRotAmount: 6
-  tiempoMin: 2
-  tiempoMax: 4
-  saltoAltura: 10
-  saltoDuracion: 0.15
+  hoverRotSpeed: 0
+  hoverRotAmount: 0
+  tiempoMin: 0
+  tiempoMax: 0
+  saltoAltura: 0
+  saltoDuracion: 0
 --- !u!114 &203713989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -235226904122077337, guid: fbbd2ff015cf25746880220799db9f39, type: 3}
+  m_Sprite: {fileID: -4292223542762438524, guid: 541eb26e011863a40b45fbe3a77f870f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1419,15 +1419,15 @@ RectTransform:
   m_GameObject: {fileID: 1186421705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5834, y: 1.5834, z: 1.5834}
+  m_LocalScale: {x: 1.6906348, y: 1.5834, z: 1.5834}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1763607926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109, y: 296}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 122.3, y: 286.6}
+  m_SizeDelta: {x: 121.3958, y: 179.0878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186421707
 MonoBehaviour:
@@ -1443,12 +1443,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickableObjectUI
   tieneObjetoDetras: 0
   objetoOculto: {fileID: 0}
-  hoverRotSpeed: 12
-  hoverRotAmount: 6
-  tiempoMin: 2
-  tiempoMax: 4
-  saltoAltura: 10
-  saltoDuracion: 0.15
+  hoverRotSpeed: 0
+  hoverRotAmount: 0
+  tiempoMin: 0
+  tiempoMax: 0
+  saltoAltura: 0
+  saltoDuracion: 0
 --- !u!114 &1186421708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,7 +1469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -235226904122077337, guid: fbbd2ff015cf25746880220799db9f39, type: 3}
+  m_Sprite: {fileID: 2670296782197889510, guid: bb6fcb2bbfe19b44bb9421cde84329f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1526,14 +1526,14 @@ RectTransform:
   m_GameObject: {fileID: 1264596794}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5834, y: 1.5834, z: 1.5834}
+  m_LocalScale: {x: 2.4313543, y: 6.1477976, z: 1.5834}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1763607926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 576.282, y: -236.9307}
+  m_AnchoredPosition: {x: 593, y: 35}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1264596796
@@ -1550,12 +1550,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickableObjectUI
   tieneObjetoDetras: 1
   objetoOculto: {fileID: 0}
-  hoverRotSpeed: 12
-  hoverRotAmount: 6
-  tiempoMin: 2
-  tiempoMax: 4
-  saltoAltura: 10
-  saltoDuracion: 0.15
+  hoverRotSpeed: 0
+  hoverRotAmount: 0
+  tiempoMin: 0
+  tiempoMax: 0
+  saltoAltura: 0
+  saltoDuracion: 0
 --- !u!114 &1264596797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -235226904122077337, guid: fbbd2ff015cf25746880220799db9f39, type: 3}
+  m_Sprite: {fileID: 7010031629529961501, guid: aa6f20beda68ee14090efe495c76ec95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1777,6 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinigameManager
   buscarObjetosUI: {fileID: 1763607925}
+  isMinigameActive: 0
 --- !u!1001 &1498526379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1836,6 +1837,10 @@ PrefabInstance:
     - target: {fileID: 2016080871032684397, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: m_Name
       value: Canvas-main
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016080871032684397, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2074028667161006037, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: m_MatchWidthOrHeight
@@ -2156,6 +2161,10 @@ PrefabInstance:
     - target: {fileID: 7136981970478628581, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694510890338787904, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8239264266611710812, guid: c231f0cbc89aa6e4091034deb3564aae, type: 3}
       propertyPath: m_AnchorMax.x
